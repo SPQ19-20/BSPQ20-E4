@@ -1,6 +1,6 @@
 # BSPQ20-E4
 ![9f2d5def-bced-4419-b239-b7130270cc02_200x200](https://user-images.githubusercontent.com/43065732/80421676-25b52580-88dd-11ea-870e-861f738dead6.png)
-
+[![Build Status](https://travis-ci.org/SPQ19-20/BSPQ20-E4.svg?branch=master)](https://travis-ci.org/SPQ19-20/BSPQ20-E4)
 # About the project
 
 EasyFilmin is a platform where film lovers can share their taste in films. Users can use it as a diary to:
