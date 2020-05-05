@@ -1,6 +1,9 @@
 language: java
 jdk:
  - openjdk8
+os:
+ - windows
+ - osx
 services:
  - mysql
 install: 
@@ -9,6 +12,7 @@ script:
  - mvn clean compile
  - mvn datanucleus:schema-create 
  - mvn test
+ 
 branches:
   only:
   - master
