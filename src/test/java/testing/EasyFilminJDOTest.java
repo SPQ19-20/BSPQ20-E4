@@ -41,8 +41,9 @@ public class EasyFilminJDOTest {
 	static Logger logger = Logger.getLogger(EasyFilminJDOTest.class.getName());
 	
 	private User user = new User("UserTest1", "23", "test@opentest.test", "321");
-	private Actor a = new Actor("ActorTest0",null,"1965-03-16");
-	private Director d = new Director("DirectorTest1",null,"1954-09-10");
+	private Actor a = new Actor("ActorTest0","pic1","1965-03-16");
+	private Director d = new Director("DirectorTest1","pic2","1954-09-10");
+	private static Film f = new Film();
 	private IEasyFilminDAO iDAO = new EasyFilminJDO();
 	static LocalDate ld;
 	
@@ -58,11 +59,19 @@ public class EasyFilminJDOTest {
 		return new JUnit4TestAdapter(EasyFilminJDOTest.class);
 		}
 	
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception{
+		f.setTitle("Film1");
+		f.setDescription("NiceFilm10/10");
+		f.setRelease("1954-09-10");
+		f.setRating(5);
+		
+	}
 	
 	
 	@Test
 	@PerfTest(invocations = 5)
-	@Required(max = 3000)
+	@Required(max = 2500)
 	public void testSaveLoadUser() {
 		iDAO = new EasyFilminJDO();
 		User userLoaded = null;
@@ -76,63 +85,58 @@ public class EasyFilminJDOTest {
 		assertEquals("Watched", userLoaded.getWatched().getName());
 		assertEquals("Watched", userLoaded.getLists().get(0).getName());
 		assertTrue(userLoaded.getLists().get(0).getFilmList().isEmpty());
-		FilmListData fg = new FilmListData(userLoaded.getLists().get(0));
-		assertEquals("Watched", fg.getName());
-		assertTrue(fg.getFilmList().isEmpty());
-		logger.error("Save Load User tested nuevo2354");
+		//FilmListData fg = new FilmListData(userLoaded.getLists().get(0));
+		//assertEquals("Watched", fg.getName());
+		//assertTrue(fg.getFilmList().isEmpty());
+		logger.debug("Save Load User tested");
 
 	}
 	
 	@Test
-	@PerfTest(invocations = 1)
-	@Required(max = 2500)
+	@PerfTest(invocations = 20, threads = 2)
+	@Required(average = 700)
 	public void testSaveLoadActor() {
 		iDAO = new EasyFilminJDO();
 		Actor actorLoaded1=null;
-		//Actor actorLoaded2=null;
 		iDAO.saveActor(a); 
 		actorLoaded1 =iDAO.loadActor("ActorTest0");
 		iDAO.deleteActor("ActorTest0");
-		//iDAO.deleteActor("ActorTest1"); //from previous tests
-		//actorLoaded2 =iDAO.loadActor("ActorTest2");
 		assertEquals("ActorTest0", actorLoaded1.getName());
-		//assertFalse("ActorTest2",actorLoaded2.getName() !=null);
+		assertEquals("pic1", actorLoaded1.getPic());
+		assertEquals("1965-03-16", actorLoaded1.getBday());
 		logger.debug("Save Load Actor tested");
 	}
 	@Test
-	@PerfTest(invocations = 1)
-	@Required(max = 2500)
+	@PerfTest(invocations = 20, threads = 2)
+	@Required(average = 700)
 	public void testSaveLoadDirector() {
 		iDAO = new EasyFilminJDO();
 		Director directorLoaded1=null;
-		//Director directorLoaded2=null;
 		iDAO.saveDirector(d); 
 		directorLoaded1 =iDAO.loadDirector("DirectorTest1");
 		iDAO.deleteDirector("DirectorTest1");
-		//directorLoaded2 =iDAO.loadDirector("DirectorTest2");
 		assertEquals("DirectorTest1", directorLoaded1.getName());
-		//assertFalse("ActorTest2",directorLoaded2.getName() !=null);
+		assertEquals("pic2", directorLoaded1.getPic());
+		assertEquals("1954-09-10", directorLoaded1.getBday());
 		logger.debug("Save Load Director tested");
 	}
-	/*
+	
 	@Test
-	@PerfTest(invocations = 5)
-	@Required(max = 3000)
+	@PerfTest(invocations = 20)
+	@Required(average = 700)
 	public void testSaveLoadFilm() {
 		iDAO = new EasyFilminJDO();
-		Film prueba= new Film();
-		prueba.setTitle("PRUEBAPELICULA");
-		Film fLoaded1=null;
-		//Film fLoaded2=null;
-		iDAO.saveFilm(prueba); 
-		fLoaded1 =iDAO.loadFilm("PRUEBAPELICULA");
-		iDAO.deleteFilm("PRUEBAPELICULA");
-		//fLoaded2 =iDAO.loadFilm("FilmTest2");
-		assertEquals("PRUEBAPELICULA", fLoaded1.getTitle());
-		//assertFalse("FilmTest2",fLoaded2.getTitle() !=null);
+		Film fLoaded1 = null;
+		iDAO.saveFilm(f); 
+		fLoaded1 = iDAO.loadFilm("Film1");
+		iDAO.deleteFilm("Film1");
+		assertEquals("Film1", fLoaded1.getTitle());
+		assertEquals("NiceFilm10/10", fLoaded1.getDescription());
+		assertEquals("1954-09-10", fLoaded1.getRelease());
+		assertEquals(5, fLoaded1.getRating(), 0.2);
 		logger.debug("Save Load Film tested");
 	}
-*/
+
 /*
 	@Test
 	@PerfTest(invocations = 5)

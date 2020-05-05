@@ -119,7 +119,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 			User duser = pm.detachCopy(user);
 			tx.commit();
 			
-			//System.out.println("username " + duser.getIcon()); //??? What is going on here
+			
 			return duser;
 		} catch (Exception ex) {
 			logger.error(" $ Error retrieving users using a 'Query': " + ex.getMessage());
