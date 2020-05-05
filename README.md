@@ -9,7 +9,7 @@ EasyFilmin is a platform where film lovers can share their taste in films. Users
 * Create watchlists
 
 ## Prerequisites
-- [Java JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+- [Java JDK 12](https://www.oracle.com/java/technologies/javase/jdk12-archive-downloads.html)
 - [MySQL](https://dev.mysql.com/downloads/mysql/)
 - [MySQL Workbench](https://www.mysql.com/products/workbench/)
 - [Maven](https://maven.apache.org/download.cgi)
