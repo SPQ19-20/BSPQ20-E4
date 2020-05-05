@@ -44,7 +44,7 @@ It executes Client's main and the Register/Login window will show up.
 
 - To check *Jacoco results*: go to ***target\site\jacoco\index.html***
 - To check *ContiPerf results*: go to ***target\contiperf-report\index.html***
-- To check *DOxygen documentation*: go to ***target\site\doxygen\index.html***
+- To check *DOxygen documentation*: go to ***target\site\doxygen\html\index.html***
 
 ### 8- Create DOxygen documentation:
 - To generate doxygen reports:
