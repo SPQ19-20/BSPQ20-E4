@@ -7,8 +7,6 @@ EasyFilmin is a platform where film lovers can share their taste in films. Users
 * Record their opinions about films and rate them
 * Keep track of films they have seen
 * Create watchlists
-* Showcase their favorite films
-* Interact with other cinephiles
 
 ## Prerequisites
 - [Java JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
@@ -16,7 +14,7 @@ EasyFilmin is a platform where film lovers can share their taste in films. Users
 - [MySQL Workbench](https://www.mysql.com/products/workbench/)
 - [Maven](https://maven.apache.org/download.cgi)
 
-🠮Also the following libraries should be added to *pom.xml* file for the project to work: **JUnit, OpenCSV, Datanucleus, Log4J, Jersey, Jacoco,ContiPerf.**
+🠮Also the following libraries should be added to *pom.xml* file for the project to work: **JUnit, OpenCSV, Datanucleus, Log4J, Jersey, Jacoco,ContiPerf,DOxygen.**
 
 # Building and running the project
 These are the steps that must be followed in order to succesfully build and run the project:
@@ -35,6 +33,7 @@ Click on the thunder icon
 
 (**ONLY** in case data from CSV files has not been previously stored)
 
+*open another cmd window to run client side*
 ### 6- Run Client App:
 ```mvn exec:java -Pclient``` 
 
@@ -43,8 +42,18 @@ It executes Client's main and the Register/Login window will show up.
 ### 7- Run Unit Tests:
 ```mvn test``` 
 
-To check *Jacoco results*: go to ***target\site\jacoco\index.html***
-To check *ContiPerf results*: go to ***target\contiperf-report\index.html***
+- To check *Jacoco results*: go to ***target\site\jacoco\index.html***
+- To check *ContiPerf results*: go to ***target\contiperf-report\index.html***
+- To check *DOxygen documentation*: go to ***target\site\doxygen\index.html***
+
+### 8- Create DOxygen documentation:
+- To generate doxygen reports:
+``` mvn doxygen:report``` 
+- To copy generated html directory into docs folder:
+``` mvn validate``` 
+- To remove generated target files including dir docs with html code:
+``` mvn clean```
+
 
 
 # Authors
