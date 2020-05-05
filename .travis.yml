@@ -5,6 +5,13 @@ services:
  - mysql
 install: 
  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+before_script:
+- mysql -u root -e "DROP SCHEMA IF EXISTS easyfilminDB;"
+- mysql -u root -e "DROP USER IF EXISTS 'spq'@'localhost';"
+- mysql -u root -e "CREATE SCHEMA easyfilminDB;"
+- mysql -u root -e "CREATE USER IF NOT EXISTS 'spq'@'localhost' IDENTIFIED BY 'spq';"
+- mysql -u root -e "GRANT ALL ON easyfilminDB.* TO 'spq'@'localhost';"
+
 script:
  - mvn clean compile
  - mvn datanucleus:schema-create 
