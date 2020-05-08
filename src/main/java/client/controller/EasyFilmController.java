@@ -59,7 +59,20 @@ public class EasyFilmController {
 			logger.info("User correctly registered");
 		}
 	}
+	
+	public void deleteUser(String login) {
+		WebTarget registerUserWebTarget = webTarget.path("server/deleteUser"+"/"+login);
+		Invocation.Builder invocationBuilder = registerUserWebTarget.request(MediaType.APPLICATION_JSON);
+		
+		Response response = invocationBuilder.delete();
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			logger.error("Error connecting with the server. Code: " + response.getStatus());
+		} else {
+			logger.info("User correctly deleted");
+		}
+	}
 
+	
 	/** CHECKS if the login is correct
 	 * @param login - login of the user
 	 * @param password - pass of the user

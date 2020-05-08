@@ -22,6 +22,7 @@ import server.easyFilminData.User;
 import server.easyFilminData.WatchList;
 import server.easyFilminData.Watched;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -104,13 +105,30 @@ public class Server {
 	@Produces(MediaType.APPLICATION_JSON)
 	public UserData login(@PathParam("nick") String login) {
 		User user = null;
-		user = iDAO.loadUser(login);
-				
-		logger.debug(" * Client number: " + cont);
-		UserData usData = new UserData(user);
-		return usData;
+		try {
+			user = iDAO.loadUser(login);
+			logger.debug(" * Client number: " + cont);
+			UserData usData = new UserData(user);
+			return usData;
+		}catch(Exception e) {
+			logger.debug(" No User with that nick, returning null");
+			return null;
+		}
 	}
 
+	/** DELETEs a particular User from the DB by its nick
+	 * @param nick - nick of the user
+	 * @return Response - If the deletion was successful Status.OK / Status.NOT_FOUND if not
+	 */
+	@DELETE
+	@Path("/deleteUser/{nick}")
+	public Response deleteUser(@PathParam("nick") String nick) {
+		iDAO.deleteUser(nick);
+		System.out.println("Deleting user...");
+		return Response.status(Response.Status.OK).build();
+
+	}
+	
 	/** GETs a list of all lists for a given user
 	 * @param login - nick of the given user
 	 * @return listsData - ArrayList of FilmListData
