@@ -96,6 +96,12 @@ public interface IEasyFilminDAO {
 	public void saveWatched(Watched watched);
 	
 	/**
+	 * Deletes form the DB the Watched film list. 
+	 * @param name name if the watched film list to be deleted
+	 */
+	public void deleteWatched(String name);
+	
+	/**
 	 * Returns a watchList object after searching for it in the DB
 	 * @param name name of the watchList filmList
 	 * @return the watchList fimList
@@ -110,11 +116,30 @@ public interface IEasyFilminDAO {
 	public void saveWatchList(WatchList watchlist);
 	
 	/**
-	 * Returns a filmList matching the name received
-	 * @param listName String of the filmList 
+	 * Deletes form the DB the WatchList film list. 
+	 * @param name name of the WatchList film list to be deleted.
+	 */
+	public void deleteWatchList(String name);
+	
+	/**
+	 * Returns a filmList matching the name received.
+	 * @param listName String of the filmList. 
 	 * @return a FilmList
 	 */
 	public FilmList loadFilmList(String listName);
+	
+	/**
+	 * Stores the filmList received in a Database. 
+	 * The type of storage may differ depending on the instance of this interface created.
+	 * @param watchlist the filmList object whose data will be stored.
+	 */
+	public void saveFilmList(FilmList filmList);
+	
+	/**
+	 * Deletes form the DB the film list. 
+	 * @param name name of the  film list to be deleted.
+	 */
+	public void deleteFilmList(String name);
 	
 	/**
 	 * Stores the comment received in a Database. 

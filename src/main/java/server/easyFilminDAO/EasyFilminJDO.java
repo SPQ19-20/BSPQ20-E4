@@ -690,12 +690,13 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 					query.setUnique(true);
 					@SuppressWarnings("unchecked")
 					Watched watched = (Watched) query.execute();
-
+					
+					Watched dwatched = pm.detachCopy(watched);
 					//End the transaction
 					tx.commit();
 					
 					
-					return watched;
+					return dwatched;
 				} catch (Exception ex) {
 					logger.error(" $ Error retrieving directors using a 'Query': " + ex.getMessage());
 				} finally {
@@ -967,12 +968,13 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 			query.setUnique(true);
 			@SuppressWarnings("unchecked")
 			FilmList filmlist = (FilmList) query.execute();
-
+			
+			FilmList dfilmlist = pm.detachCopy(filmlist);
 			//End the transaction
 			tx.commit();
 			
 			
-			return filmlist;
+			return dfilmlist;
 		} catch (Exception ex) {
 			logger.error(" $ Error retrieving WatchList using a 'Query': " + ex.getMessage());
 		} finally {
@@ -1026,6 +1028,177 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 				// ATTENTION -  Datanucleus detects that the objects in memory were changed and they are flushed to DB
 			}
 		}
+		
+	}
+
+
+	@Override
+	public void deleteWatched(String name) {
+		
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		
+		try {
+			logger.info("- Deleting watched");			
+			//Get the Persistence Manager
+			pm = pmf.getPersistenceManager();
+			//pm.getFetchPlan().setMaxFetchDepth(4);
+			//Obtain the current transaction
+			tx = pm.currentTransaction();		
+			//Start the transaction
+			tx.begin();
+			
+			Query<Watched> query = pm.newQuery(Watched.class);
+			query.setFilter("name == '" + name + "'"); //we find the user by his username
+			query.setUnique(true);
+			@SuppressWarnings("unchecked")
+			Watched watched = (Watched) query.execute();
+
+			//End the transaction
+			pm.deletePersistent(watched);
+			tx.commit();
+			
+			
+			
+		} catch (Exception ex) {
+			logger.error(" $ Error deleting Watched using a 'Query': " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		
+	}
+
+
+	@Override
+	public void deleteWatchList(String name) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		
+		try {
+			logger.info("- Deleting watchList");			
+			//Get the Persistence Manager
+			pm = pmf.getPersistenceManager();
+			//pm.getFetchPlan().setMaxFetchDepth(4);
+			//Obtain the current transaction
+			tx = pm.currentTransaction();		
+			//Start the transaction
+			tx.begin();
+			
+			Query<WatchList> query = pm.newQuery(WatchList.class);
+			query.setFilter("name == '" + name + "'"); //we find the user by his username
+			query.setUnique(true);
+			@SuppressWarnings("unchecked")
+			WatchList watchList = (WatchList) query.execute();
+
+			//End the transaction
+			pm.deletePersistent(watchList);
+			tx.commit();
+			
+			
+			
+		} catch (Exception ex) {
+			logger.error(" $ Error deleting WatchList using a 'Query': " + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
+		
+	}
+
+
+	@Override
+	public void saveFilmList(FilmList filmList) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		
+		try {
+			logger.debug("Insert filmList in the DB");			
+			//Get the Persistence Manager
+			pm = pmf.getPersistenceManager();
+			//Obtain the current transaction
+			tx = pm.currentTransaction();		
+			//Start the transaction
+			tx.begin();
+			
+			pm.makePersistent(filmList);
+			
+			
+			//End the transaction
+			tx.commit();
+			logger.debug("Changes committed");
+			
+		} catch (Exception ex) {
+			logger.error(" $ Error storing objects in the DB: " + ex.getMessage());
+			ex.printStackTrace();
+		
+		}finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+				logger.debug("Changes rollbacked");
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+				logger.debug("Closing the connection");
+				// ATTENTION -  Datanucleus detects that the objects in memory were changed and they are flushed to DB
+			}
+		}
+		
+	}
+
+
+	@Override
+	public void deleteFilmList(String name) {
+		// TODO Auto-generated method stub
+				PersistenceManager pm = null;
+				Transaction tx = null;
+				
+				try {
+					logger.info("- Deleting filmList");			
+					//Get the Persistence Manager
+					pm = pmf.getPersistenceManager();
+					//pm.getFetchPlan().setMaxFetchDepth(4);
+					//Obtain the current transaction
+					tx = pm.currentTransaction();		
+					//Start the transaction
+					tx.begin();
+					
+					Query<FilmList> query = pm.newQuery(FilmList.class);
+					query.setFilter("name == '" + name + "'"); 
+					query.setUnique(true);
+					@SuppressWarnings("unchecked")
+					FilmList filmList = (FilmList) query.execute();
+
+					//End the transaction
+					pm.deletePersistent(filmList);
+					tx.commit();
+					
+					
+					
+				} catch (Exception ex) {
+					logger.error(" $ Error deleting filmList using a 'Query': " + ex.getMessage());
+				} finally {
+					if (tx != null && tx.isActive()) {
+						tx.rollback();
+					}
+					
+					if (pm != null && !pm.isClosed()) {
+						pm.close();
+					}
+				}
 		
 	}
 }

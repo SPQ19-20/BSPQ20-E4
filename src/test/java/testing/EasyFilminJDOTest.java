@@ -44,6 +44,7 @@ public class EasyFilminJDOTest {
 	private Actor a = new Actor("ActorTest0","pic1","1965-03-16");
 	private Director d = new Director("DirectorTest1","pic2","1954-09-10");
 	private static Film f = new Film();
+	private static Film fprueba = new Film("prueba", "","","",1,new Genre("Drama"),2.5, null, null);
 	private IEasyFilminDAO iDAO = new EasyFilminJDO();
 	static LocalDate ld;
 	
@@ -137,44 +138,40 @@ public class EasyFilminJDOTest {
 		logger.debug("Save Load Film tested");
 	}
 
-/*
+
 	@Test
 	@PerfTest(invocations = 5)
 	@Required(max = 5000)
 	public void testSaveLoadWatched() {
 		iDAO = new EasyFilminJDO();
-		Watched w = new Watched("Watched");
-		Film prueba = new Film("prueba", "","","",1,new Genre("Drama"),2.5, null, null);
-		w.addFilm(prueba);
-		Watched w1 = null;
-		Watched w2 = null;
+		Watched w = new Watched("Watched1");
+		w.addFilm(fprueba);
+		Watched wLoaded = null;
 		iDAO.saveWatched(w); 
-		w1 =iDAO.loadWatched("Watched");
-		w2 =iDAO.loadWatched("Watched2");
-		assertEquals(w1.getFilmList(), w.getFilmList());
-		assertNull(w2);
+		wLoaded =iDAO.loadWatched("Watched1");
+		iDAO.deleteWatched("Watched1");
+		iDAO.deleteFilm("prueba");
+		assertEquals(wLoaded.getFilmList().get(0).getTitle(), w.getFilmList().get(0).getTitle());
 		logger.debug("Save Load Watched tested");
 	}
-*/
-/*
+
+
 	@Test
 	@PerfTest(invocations = 5)
 	@Required(max = 5000)
 	public void testSaveLoadWatchList() {
 		iDAO = new EasyFilminJDO();
-		WatchList w = new WatchList("WatchList");
-		Film prueba = new Film("prueba", "","","",1,new Genre("Drama"),2.5, null, null);
-		w.addFilm(prueba);
-		WatchList w1 = null;
-		WatchList w2 = null;
+		WatchList w = new WatchList("WatchList1");
+		w.addFilm(fprueba);
+		WatchList wLoaded = null;
 		iDAO.saveWatchList(w); 
-		w1 =iDAO.loadWatchList("WatchList");
-		w2 =iDAO.loadWatchList("WatchList2");
-		assertEquals(w1.getFilmList(), w.getFilmList());
-		assertNull(w2);
+		wLoaded =iDAO.loadWatchList("WatchList1");
+		iDAO.deleteWatchList("WatchList1");
+		iDAO.deleteFilm("prueba");
+		assertEquals(wLoaded.getFilmList().get(0).getTitle(), w.getFilmList().get(0).getTitle());
 		logger.debug("Save Load WatchList tested");
 	}
-*/
+
 	//CANNOT INSTANTIATE COMMENT ERROR 
 //	@Test
 //	@PerfTest(invocations = 15)
@@ -214,19 +211,21 @@ public class EasyFilminJDOTest {
 		logger.debug("get All Films tested");
 	}
 	*/
-	/*
+	
 	@Test
-	@PerfTest(invocations = 15)
+	@PerfTest(invocations = 5)
 	@Required(max = 5000)
-	public void loadFilmListTest() {
+	public void testSaveloadFilmList() {
 		iDAO = new EasyFilminJDO();
 		FilmList f = new FilmList("NoName");
-		FilmList fl = iDAO.loadFilmList("Watched");
-		
-		assertNotEquals(f, fl);
-
-		logger.debug("loadFilmList test");
-		//logger.error("We need to fix the loadFilmList method in the first place");
+		f.addFilm(fprueba);
+		FilmList fLoaded = null;
+		iDAO.saveFilmList(f); 
+		fLoaded =iDAO.loadFilmList("NoName");
+		iDAO.deleteFilmList("NoName");
+		iDAO.deleteFilm("prueba");
+		assertEquals(fLoaded.getFilmList().get(0).getTitle(), f.getFilmList().get(0).getTitle());
+		logger.debug("Save Load FilmList tested");
 	}
-	*/
+	
 }
