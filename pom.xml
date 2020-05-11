@@ -44,9 +44,7 @@
 			<groupId>org.glassfish.jersey.media</groupId>
 			<artifactId>jersey-media-json-jackson</artifactId>
 			<version>2.29</version>
-		</dependency>
-		
-		
+		</dependency>		
 		
 		<dependency><!-- Dependency for OpenCSV -->
     		<groupId>com.opencsv</groupId>
@@ -77,9 +75,7 @@
 			<groupId>org.datanucleus</groupId>
 			<artifactId>datanucleus-rdbms</artifactId>
 			<version>5.2.2</version>
-		</dependency>
-		
-		
+		</dependency>				
 		
         <dependency><!-- Dependency for Log4J -->
 			<groupId>log4j</groupId>
@@ -98,8 +94,7 @@
  			<version>2.3.4</version>
  			<scope>test</scope>
 		</dependency>
-		
-		
+				
 				<!-- Dependency for org.Eclipse and JettyTesting -->
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
@@ -163,7 +158,7 @@
 				</configuration>
 			</plugin>
 			
-			<plugin>   <!-- Plugin to set the java version to Java 8 -->
+			<plugin>  <!-- Plugin to set the java version to Java 8 -->
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
@@ -173,13 +168,13 @@
 				</configuration>
 			</plugin>
 			
-			<plugin>
+			<plugin> <!-- Plugin to use Jetty -->
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.4.19.v20190610</version>
             </plugin>
-			<!-- Plugins to use DOxygen -->
-			<plugin>
+			
+			<plugin> <!-- Plugins to use DOxygen -->
 				<groupId>com.soebes.maven.plugins.dmg</groupId>
 				<artifactId>doxygen-maven-plugin</artifactId>
 				<version>1.1.0</version>
@@ -187,7 +182,6 @@
 					<configurationFile>${doxygen.config.file}</configurationFile>
 				</configuration>
 			</plugin>
-			
 			<plugin>
 				<groupId>com.soebes.maven.plugins</groupId>
 				<artifactId>doxygen-maven-plugin</artifactId>
@@ -196,7 +190,6 @@
 				<configurationFile>${doxygen.config.file}</configurationFile>
 				</configuration>
 			</plugin>
-
             
             <plugin> <!-- Plugin to use Jacoco -->
 				<groupId>org.jacoco</groupId>
@@ -217,6 +210,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			
             <plugin> <!-- Plugin to use javadocs -->
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
