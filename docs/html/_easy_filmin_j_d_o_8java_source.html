@@ -1249,66 +1249,120 @@ $(document).ready(function(){initNavTree('_easy_filmin_j_d_o_8java_source.html',
 <div class="line"><a name="l01184"></a><span class="lineno"> 1184</span>&#160; </div>
 <div class="line"><a name="l01185"></a><span class="lineno"> 1185</span>&#160;                    <span class="comment">//End the transaction</span></div>
 <div class="line"><a name="l01186"></a><span class="lineno"> 1186</span>&#160;                    pm.deletePersistent(filmList);</div>
-<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;                    tx.commit();</div>
-<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;                    </div>
+<div class="line"><a name="l01187"></a><span class="lineno"> 1187</span>&#160;                    </div>
+<div class="line"><a name="l01188"></a><span class="lineno"> 1188</span>&#160;                    tx.commit();</div>
 <div class="line"><a name="l01189"></a><span class="lineno"> 1189</span>&#160;                    </div>
 <div class="line"><a name="l01190"></a><span class="lineno"> 1190</span>&#160;                    </div>
-<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;                } <span class="keywordflow">catch</span> (Exception ex) {</div>
-<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;                    logger.error(<span class="stringliteral">&quot; $ Error deleting filmList using a &#39;Query&#39;: &quot;</span> + ex.getMessage());</div>
-<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;                } <span class="keywordflow">finally</span> {</div>
-<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;                    <span class="keywordflow">if</span> (tx != <span class="keyword">null</span> &amp;&amp; tx.isActive()) {</div>
-<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;                        tx.rollback();</div>
-<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;                    }</div>
-<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;                    </div>
-<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;                    <span class="keywordflow">if</span> (pm != <span class="keyword">null</span> &amp;&amp; !pm.isClosed()) {</div>
-<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;                        pm.close();</div>
-<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;                    }</div>
-<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;                }</div>
-<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;        </div>
-<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;    }</div>
-<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;}</div>
-<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160;<span class="comment">//  @Override</span></div>
-<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;<span class="comment">//  public ArrayList&lt;FilmList&gt; getUserLists(String username) {</span></div>
-<div class="line"><a name="l01208"></a><span class="lineno"> 1208</span>&#160;<span class="comment">//      // TODO Auto-generated method stub</span></div>
-<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;<span class="comment">//      </span></div>
-<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;<span class="comment">//      PersistenceManager pm = null;</span></div>
-<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;<span class="comment">//      Transaction tx = null;</span></div>
-<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;<span class="comment">//      </span></div>
-<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;<span class="comment">//      try {</span></div>
-<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;<span class="comment">//          logger.info(&quot;- Retrieving lists created by this user&quot;);         </span></div>
-<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;<span class="comment">//          //Get the Persistence Manager</span></div>
-<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;<span class="comment">//          pm = pmf.getPersistenceManager();</span></div>
-<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;<span class="comment">//          //Obtain the current transaction</span></div>
-<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;<span class="comment">//          tx = pm.currentTransaction();       </span></div>
-<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;<span class="comment">//          //Start the transaction</span></div>
-<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;<span class="comment">//          tx.begin();</span></div>
-<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;<span class="comment">//          Query&lt;FilmList&gt; query = pm.newQuery(FilmList.class);</span></div>
-<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;<span class="comment">//          query.setFilter(&quot;nickname == &#39;&quot; + username+ &quot;&#39;&quot;); </span></div>
-<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;<span class="comment">//          @SuppressWarnings(&quot;unchecked&quot;)</span></div>
-<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;<span class="comment">//          ArrayList&lt;FilmList&gt; userLists = (ArrayList&lt;FilmList&gt;) query.execute();</span></div>
-<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;<span class="comment">//</span></div>
-<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;<span class="comment">//          //End the transaction</span></div>
-<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;<span class="comment">//          tx.commit();</span></div>
-<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;<span class="comment">//          </span></div>
-<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;<span class="comment">//          </span></div>
-<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;<span class="comment">//          return userLists;</span></div>
-<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;<span class="comment">//      } catch (Exception ex) {</span></div>
-<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;<span class="comment">//          logger.error(&quot; $ Error retrieving this user&#39;s film lists: &quot; + ex.getMessage());</span></div>
-<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;<span class="comment">//      } finally {</span></div>
-<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;<span class="comment">//          if (tx != null &amp;&amp; tx.isActive()) {</span></div>
-<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;<span class="comment">//              tx.rollback();</span></div>
-<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;<span class="comment">//          }</span></div>
-<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;<span class="comment">//          </span></div>
-<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;<span class="comment">//          if (pm != null &amp;&amp; !pm.isClosed()) {</span></div>
-<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;<span class="comment">//              pm.close();</span></div>
-<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;<span class="comment">//          }</span></div>
-<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;<span class="comment">//      }</span></div>
-<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;<span class="comment">//      return null;</span></div>
-<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;<span class="comment">//      </span></div>
-<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;<span class="comment">//  }</span></div>
-<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;<span class="comment">//}</span></div>
+<div class="line"><a name="l01191"></a><span class="lineno"> 1191</span>&#160;                    </div>
+<div class="line"><a name="l01192"></a><span class="lineno"> 1192</span>&#160;                } <span class="keywordflow">catch</span> (Exception ex) {</div>
+<div class="line"><a name="l01193"></a><span class="lineno"> 1193</span>&#160;                    logger.error(<span class="stringliteral">&quot; $ Error deleting filmList using a &#39;Query&#39;: &quot;</span> + ex.getMessage());</div>
+<div class="line"><a name="l01194"></a><span class="lineno"> 1194</span>&#160;                } <span class="keywordflow">finally</span> {</div>
+<div class="line"><a name="l01195"></a><span class="lineno"> 1195</span>&#160;                    <span class="keywordflow">if</span> (tx != <span class="keyword">null</span> &amp;&amp; tx.isActive()) {</div>
+<div class="line"><a name="l01196"></a><span class="lineno"> 1196</span>&#160;                        tx.rollback();</div>
+<div class="line"><a name="l01197"></a><span class="lineno"> 1197</span>&#160;                    }</div>
+<div class="line"><a name="l01198"></a><span class="lineno"> 1198</span>&#160;                    </div>
+<div class="line"><a name="l01199"></a><span class="lineno"> 1199</span>&#160;                    <span class="keywordflow">if</span> (pm != <span class="keyword">null</span> &amp;&amp; !pm.isClosed()) {</div>
+<div class="line"><a name="l01200"></a><span class="lineno"> 1200</span>&#160;                        pm.close();</div>
+<div class="line"><a name="l01201"></a><span class="lineno"> 1201</span>&#160;                    }</div>
+<div class="line"><a name="l01202"></a><span class="lineno"> 1202</span>&#160;                }</div>
+<div class="line"><a name="l01203"></a><span class="lineno"> 1203</span>&#160;        </div>
+<div class="line"><a name="l01204"></a><span class="lineno"> 1204</span>&#160;    }</div>
+<div class="line"><a name="l01205"></a><span class="lineno"> 1205</span>&#160; </div>
+<div class="line"><a name="l01206"></a><span class="lineno"> 1206</span>&#160; </div>
+<div class="line"><a name="l01207"></a><span class="lineno"> 1207</span>&#160;    @Override</div>
+<div class="line"><a name="l01208"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#aaf6870b79a3bd3c214114a4266adb997"> 1208</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#aaf6870b79a3bd3c214114a4266adb997">cleanBD</a>() {</div>
+<div class="line"><a name="l01209"></a><span class="lineno"> 1209</span>&#160;        <span class="comment">// TODO Auto-generated method stub</span></div>
+<div class="line"><a name="l01210"></a><span class="lineno"> 1210</span>&#160;        PersistenceManager pm = pmf.getPersistenceManager();</div>
+<div class="line"><a name="l01211"></a><span class="lineno"> 1211</span>&#160;        Transaction tx = pm.currentTransaction();</div>
+<div class="line"><a name="l01212"></a><span class="lineno"> 1212</span>&#160;<span class="keywordflow">try</span> {       </div>
+<div class="line"><a name="l01213"></a><span class="lineno"> 1213</span>&#160;        tx.begin();  </div>
+<div class="line"><a name="l01214"></a><span class="lineno"> 1214</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l01215"></a><span class="lineno"> 1215</span>&#160;<span class="comment">        Extent&lt;Book&gt; extentB = pm.getExtent(Book.class, true);</span></div>
+<div class="line"><a name="l01216"></a><span class="lineno"> 1216</span>&#160;<span class="comment">        for (Book b : extentB) {</span></div>
+<div class="line"><a name="l01217"></a><span class="lineno"> 1217</span>&#160;<span class="comment">            b.removeCopies();</span></div>
+<div class="line"><a name="l01218"></a><span class="lineno"> 1218</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l01219"></a><span class="lineno"> 1219</span>&#160;<span class="comment">        // Updating the database so changes are considered before commit</span></div>
+<div class="line"><a name="l01220"></a><span class="lineno"> 1220</span>&#160;<span class="comment">        pm.flush();             </span></div>
+<div class="line"><a name="l01221"></a><span class="lineno"> 1221</span>&#160;<span class="comment">        */</span></div>
+<div class="line"><a name="l01222"></a><span class="lineno"> 1222</span>&#160;        </div>
+<div class="line"><a name="l01223"></a><span class="lineno"> 1223</span>&#160;        Query&lt;Film&gt; queryF = pm.newQuery(<a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html">Film</a>.class);</div>
+<div class="line"><a name="l01224"></a><span class="lineno"> 1224</span>&#160;        logger.info(<span class="stringliteral">&quot; * &#39;&quot;</span> + queryF.deletePersistentAll() + <span class="stringliteral">&quot;&#39; films deleted from the DB.&quot;</span>);            </div>
+<div class="line"><a name="l01225"></a><span class="lineno"> 1225</span>&#160;        </div>
+<div class="line"><a name="l01226"></a><span class="lineno"> 1226</span>&#160;        Query&lt;Actor&gt; queryA = pm.newQuery(<a class="code" href="classserver_1_1easy_filmin_data_1_1_actor.html">Actor</a>.class);</div>
+<div class="line"><a name="l01227"></a><span class="lineno"> 1227</span>&#160;        logger.info(<span class="stringliteral">&quot; * &#39;&quot;</span> + queryA.deletePersistentAll() + <span class="stringliteral">&quot;&#39; actors deleted from the DB.&quot;</span>);</div>
+<div class="line"><a name="l01228"></a><span class="lineno"> 1228</span>&#160;        </div>
+<div class="line"><a name="l01229"></a><span class="lineno"> 1229</span>&#160;        Query&lt;Director&gt; queryD = pm.newQuery(<a class="code" href="classserver_1_1easy_filmin_data_1_1_director.html">Director</a>.class);</div>
+<div class="line"><a name="l01230"></a><span class="lineno"> 1230</span>&#160;        logger.info(<span class="stringliteral">&quot; * &#39;&quot;</span> + queryD.deletePersistentAll() + <span class="stringliteral">&quot;&#39; directors deleted from the DB.&quot;</span>);</div>
+<div class="line"><a name="l01231"></a><span class="lineno"> 1231</span>&#160;        </div>
+<div class="line"><a name="l01232"></a><span class="lineno"> 1232</span>&#160;        Query&lt;User&gt; queryU = pm.newQuery(<a class="code" href="classserver_1_1easy_filmin_data_1_1_user.html">User</a>.class);</div>
+<div class="line"><a name="l01233"></a><span class="lineno"> 1233</span>&#160;        logger.info(<span class="stringliteral">&quot; * &#39;&quot;</span> + queryU.deletePersistentAll() + <span class="stringliteral">&quot;&#39; users deleted from the DB.&quot;</span>);</div>
+<div class="line"><a name="l01234"></a><span class="lineno"> 1234</span>&#160;        </div>
+<div class="line"><a name="l01235"></a><span class="lineno"> 1235</span>&#160;        Query&lt;Watched&gt; queryW = pm.newQuery(<a class="code" href="classserver_1_1easy_filmin_data_1_1_watched.html">Watched</a>.class);</div>
+<div class="line"><a name="l01236"></a><span class="lineno"> 1236</span>&#160;        logger.info(<span class="stringliteral">&quot; * &#39;&quot;</span> + queryW.deletePersistentAll() + <span class="stringliteral">&quot;&#39; watched deleted from the DB.&quot;</span>);</div>
+<div class="line"><a name="l01237"></a><span class="lineno"> 1237</span>&#160;        </div>
+<div class="line"><a name="l01238"></a><span class="lineno"> 1238</span>&#160;        Query&lt;WatchList&gt; queryWl = pm.newQuery(<a class="code" href="classserver_1_1easy_filmin_data_1_1_watch_list.html">WatchList</a>.class);</div>
+<div class="line"><a name="l01239"></a><span class="lineno"> 1239</span>&#160;        logger.info(<span class="stringliteral">&quot; * &#39;&quot;</span> + queryWl.deletePersistentAll() + <span class="stringliteral">&quot;&#39; watchList deleted from the DB.&quot;</span>);</div>
+<div class="line"><a name="l01240"></a><span class="lineno"> 1240</span>&#160;        </div>
+<div class="line"><a name="l01241"></a><span class="lineno"> 1241</span>&#160;        tx.commit();</div>
+<div class="line"><a name="l01242"></a><span class="lineno"> 1242</span>&#160;        </div>
+<div class="line"><a name="l01243"></a><span class="lineno"> 1243</span>&#160;    } <span class="keywordflow">catch</span> (Exception ex) {</div>
+<div class="line"><a name="l01244"></a><span class="lineno"> 1244</span>&#160;        logger.error(<span class="stringliteral">&quot; $ Error cleaning the DB: &quot;</span> + ex.getMessage());</div>
+<div class="line"><a name="l01245"></a><span class="lineno"> 1245</span>&#160;        ex.printStackTrace();</div>
+<div class="line"><a name="l01246"></a><span class="lineno"> 1246</span>&#160;    } <span class="keywordflow">finally</span> {</div>
+<div class="line"><a name="l01247"></a><span class="lineno"> 1247</span>&#160;        <span class="keywordflow">if</span> (tx != <span class="keyword">null</span> &amp;&amp; tx.isActive()) {</div>
+<div class="line"><a name="l01248"></a><span class="lineno"> 1248</span>&#160;            tx.rollback();</div>
+<div class="line"><a name="l01249"></a><span class="lineno"> 1249</span>&#160;        }</div>
+<div class="line"><a name="l01250"></a><span class="lineno"> 1250</span>&#160;        </div>
+<div class="line"><a name="l01251"></a><span class="lineno"> 1251</span>&#160;        <span class="keywordflow">if</span> (pm != <span class="keyword">null</span> &amp;&amp; !pm.isClosed()) {</div>
+<div class="line"><a name="l01252"></a><span class="lineno"> 1252</span>&#160;            pm.close();</div>
+<div class="line"><a name="l01253"></a><span class="lineno"> 1253</span>&#160;        }</div>
+<div class="line"><a name="l01254"></a><span class="lineno"> 1254</span>&#160;    }</div>
+<div class="line"><a name="l01255"></a><span class="lineno"> 1255</span>&#160;        </div>
+<div class="line"><a name="l01256"></a><span class="lineno"> 1256</span>&#160;    }</div>
+<div class="line"><a name="l01257"></a><span class="lineno"> 1257</span>&#160;    </div>
+<div class="line"><a name="l01258"></a><span class="lineno"> 1258</span>&#160;}</div>
+<div class="line"><a name="l01259"></a><span class="lineno"> 1259</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l01260"></a><span class="lineno"> 1260</span>&#160;<span class="comment">//  @Override</span></div>
+<div class="line"><a name="l01261"></a><span class="lineno"> 1261</span>&#160;<span class="comment">//  public ArrayList&lt;FilmList&gt; getUserLists(String username) {</span></div>
+<div class="line"><a name="l01262"></a><span class="lineno"> 1262</span>&#160;<span class="comment">//      // TODO Auto-generated method stub</span></div>
+<div class="line"><a name="l01263"></a><span class="lineno"> 1263</span>&#160;<span class="comment">//      </span></div>
+<div class="line"><a name="l01264"></a><span class="lineno"> 1264</span>&#160;<span class="comment">//      PersistenceManager pm = null;</span></div>
+<div class="line"><a name="l01265"></a><span class="lineno"> 1265</span>&#160;<span class="comment">//      Transaction tx = null;</span></div>
+<div class="line"><a name="l01266"></a><span class="lineno"> 1266</span>&#160;<span class="comment">//      </span></div>
+<div class="line"><a name="l01267"></a><span class="lineno"> 1267</span>&#160;<span class="comment">//      try {</span></div>
+<div class="line"><a name="l01268"></a><span class="lineno"> 1268</span>&#160;<span class="comment">//          logger.info(&quot;- Retrieving lists created by this user&quot;);         </span></div>
+<div class="line"><a name="l01269"></a><span class="lineno"> 1269</span>&#160;<span class="comment">//          //Get the Persistence Manager</span></div>
+<div class="line"><a name="l01270"></a><span class="lineno"> 1270</span>&#160;<span class="comment">//          pm = pmf.getPersistenceManager();</span></div>
+<div class="line"><a name="l01271"></a><span class="lineno"> 1271</span>&#160;<span class="comment">//          //Obtain the current transaction</span></div>
+<div class="line"><a name="l01272"></a><span class="lineno"> 1272</span>&#160;<span class="comment">//          tx = pm.currentTransaction();       </span></div>
+<div class="line"><a name="l01273"></a><span class="lineno"> 1273</span>&#160;<span class="comment">//          //Start the transaction</span></div>
+<div class="line"><a name="l01274"></a><span class="lineno"> 1274</span>&#160;<span class="comment">//          tx.begin();</span></div>
+<div class="line"><a name="l01275"></a><span class="lineno"> 1275</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l01276"></a><span class="lineno"> 1276</span>&#160;<span class="comment">//          Query&lt;FilmList&gt; query = pm.newQuery(FilmList.class);</span></div>
+<div class="line"><a name="l01277"></a><span class="lineno"> 1277</span>&#160;<span class="comment">//          query.setFilter(&quot;nickname == &#39;&quot; + username+ &quot;&#39;&quot;); </span></div>
+<div class="line"><a name="l01278"></a><span class="lineno"> 1278</span>&#160;<span class="comment">//          @SuppressWarnings(&quot;unchecked&quot;)</span></div>
+<div class="line"><a name="l01279"></a><span class="lineno"> 1279</span>&#160;<span class="comment">//          ArrayList&lt;FilmList&gt; userLists = (ArrayList&lt;FilmList&gt;) query.execute();</span></div>
+<div class="line"><a name="l01280"></a><span class="lineno"> 1280</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l01281"></a><span class="lineno"> 1281</span>&#160;<span class="comment">//          //End the transaction</span></div>
+<div class="line"><a name="l01282"></a><span class="lineno"> 1282</span>&#160;<span class="comment">//          tx.commit();</span></div>
+<div class="line"><a name="l01283"></a><span class="lineno"> 1283</span>&#160;<span class="comment">//          </span></div>
+<div class="line"><a name="l01284"></a><span class="lineno"> 1284</span>&#160;<span class="comment">//          </span></div>
+<div class="line"><a name="l01285"></a><span class="lineno"> 1285</span>&#160;<span class="comment">//          return userLists;</span></div>
+<div class="line"><a name="l01286"></a><span class="lineno"> 1286</span>&#160;<span class="comment">//      } catch (Exception ex) {</span></div>
+<div class="line"><a name="l01287"></a><span class="lineno"> 1287</span>&#160;<span class="comment">//          logger.error(&quot; $ Error retrieving this user&#39;s film lists: &quot; + ex.getMessage());</span></div>
+<div class="line"><a name="l01288"></a><span class="lineno"> 1288</span>&#160;<span class="comment">//      } finally {</span></div>
+<div class="line"><a name="l01289"></a><span class="lineno"> 1289</span>&#160;<span class="comment">//          if (tx != null &amp;&amp; tx.isActive()) {</span></div>
+<div class="line"><a name="l01290"></a><span class="lineno"> 1290</span>&#160;<span class="comment">//              tx.rollback();</span></div>
+<div class="line"><a name="l01291"></a><span class="lineno"> 1291</span>&#160;<span class="comment">//          }</span></div>
+<div class="line"><a name="l01292"></a><span class="lineno"> 1292</span>&#160;<span class="comment">//          </span></div>
+<div class="line"><a name="l01293"></a><span class="lineno"> 1293</span>&#160;<span class="comment">//          if (pm != null &amp;&amp; !pm.isClosed()) {</span></div>
+<div class="line"><a name="l01294"></a><span class="lineno"> 1294</span>&#160;<span class="comment">//              pm.close();</span></div>
+<div class="line"><a name="l01295"></a><span class="lineno"> 1295</span>&#160;<span class="comment">//          }</span></div>
+<div class="line"><a name="l01296"></a><span class="lineno"> 1296</span>&#160;<span class="comment">//      }</span></div>
+<div class="line"><a name="l01297"></a><span class="lineno"> 1297</span>&#160;<span class="comment">//      return null;</span></div>
+<div class="line"><a name="l01298"></a><span class="lineno"> 1298</span>&#160;<span class="comment">//      </span></div>
+<div class="line"><a name="l01299"></a><span class="lineno"> 1299</span>&#160;<span class="comment">//  }</span></div>
+<div class="line"><a name="l01300"></a><span class="lineno"> 1300</span>&#160;<span class="comment">//}</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_watched_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_watched.html">server.easyFilminData.Watched</a></div><div class="ttdef"><b>Definition:</b> <a href="_watched_8java_source.html#l00015">Watched.java:15</a></div></div>
@@ -1317,6 +1371,7 @@ $(document).ready(function(){initNavTree('_easy_filmin_j_d_o_8java_source.html',
 <div class="ttc" id="aclassserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o_html_aa05946ebbf1f01b1615e1289aada4bbb"><div class="ttname"><a href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#aa05946ebbf1f01b1615e1289aada4bbb">server.easyFilminDAO.EasyFilminJDO.saveFilmList</a></div><div class="ttdeci">void saveFilmList(FilmList filmList)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l01122">EasyFilminJDO.java:1122</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o_html_a2a3a1998dfdb1d28f1015915f37e34da"><div class="ttname"><a href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#a2a3a1998dfdb1d28f1015915f37e34da">server.easyFilminDAO.EasyFilminJDO.loadDirector</a></div><div class="ttdeci">Director loadDirector(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l00634">EasyFilminJDO.java:634</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o_html_aa3181659b1cb7625597886748963e121"><div class="ttname"><a href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#aa3181659b1cb7625597886748963e121">server.easyFilminDAO.EasyFilminJDO.loadFilmList</a></div><div class="ttdeci">FilmList loadFilmList(String listName)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l00952">EasyFilminJDO.java:952</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o_html_aaf6870b79a3bd3c214114a4266adb997"><div class="ttname"><a href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#aaf6870b79a3bd3c214114a4266adb997">server.easyFilminDAO.EasyFilminJDO.cleanBD</a></div><div class="ttdeci">void cleanBD()</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l01208">EasyFilminJDO.java:1208</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o_html_a222dcaabd73101d79a53f3d0e6c80a83"><div class="ttname"><a href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#a222dcaabd73101d79a53f3d0e6c80a83">server.easyFilminDAO.EasyFilminJDO.deleteFilmList</a></div><div class="ttdeci">void deleteFilmList(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l01164">EasyFilminJDO.java:1164</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o_html_af7d8a1ae2e73f5352041fa2518b37c3b"><div class="ttname"><a href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#af7d8a1ae2e73f5352041fa2518b37c3b">server.easyFilminDAO.EasyFilminJDO.deleteWatchList</a></div><div class="ttdeci">void deleteWatchList(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l01079">EasyFilminJDO.java:1079</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o_html_a9ae7b9605e321dcb768f3b5a7c528b75"><div class="ttname"><a href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html#a9ae7b9605e321dcb768f3b5a7c528b75">server.easyFilminDAO.EasyFilminJDO.saveWatched</a></div><div class="ttdeci">void saveWatched(Watched watched)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l00717">EasyFilminJDO.java:717</a></div></div>

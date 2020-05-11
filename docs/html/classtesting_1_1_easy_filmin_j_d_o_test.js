@@ -1,6 +1,7 @@
 var classtesting_1_1_easy_filmin_j_d_o_test =
 [
     [ "EasyFilminJDOTest", "classtesting_1_1_easy_filmin_j_d_o_test.html#a70fafad7b909b5ebcb2358aeac27ed53", null ],
+    [ "startBDgetAllFilmsTest", "classtesting_1_1_easy_filmin_j_d_o_test.html#a626ecf335c8f0f01959208ccd8e5c73a", null ],
     [ "testSaveLoadActor", "classtesting_1_1_easy_filmin_j_d_o_test.html#a5666a3056cc0c3d90c2e89ac2fc4d95a", null ],
     [ "testSaveLoadDirector", "classtesting_1_1_easy_filmin_j_d_o_test.html#a1e989e49d1aa8b2096bf8becb73517cf", null ],
     [ "testSaveLoadFilm", "classtesting_1_1_easy_filmin_j_d_o_test.html#ace76000930c73c7e44daa76b3a85f972", null ],

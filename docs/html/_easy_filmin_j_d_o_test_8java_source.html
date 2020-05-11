@@ -272,32 +272,32 @@ $(document).ready(function(){initNavTree('_easy_filmin_j_d_o_test_8java_source.h
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">//      prueba.setComments(comments);</span></div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">//  }</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment">/*</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">    @Test</span></div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">    //@PerfTest(invocations = 15)</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">    //@Required(max = 5000)</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">    public void startBDgetAllFilmsTest() {</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">        iDAO = new EasyFilminJDO();</span></div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">        iDAO.startBD();</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">        List&lt;Film&gt; alFilms = iDAO.getAllFilms();</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">        List&lt;Film&gt; alPrueba = null;</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">        BufferedReader bufferedReader;</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">        int count = 0;</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">        try {</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">            bufferedReader = new BufferedReader(new FileReader(&quot;src\\main\\resources\\filmsPRUEBA.csv&quot;));</span></div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">            String input;</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">            while((input = bufferedReader.readLine()) != null)count++;</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">            System.out.println(&quot;Count : &quot;+count);</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">        } catch (IOException e) {</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">            logger.error(&quot;CSV FILE NOT FOUND&quot;);</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">            e.printStackTrace();</span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">        assertEquals(alFilms.size(),count-1);</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">        logger.debug(&quot;get All Films tested&quot;);</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">    }</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    @Test</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    @PerfTest(invocations = 10)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    @Required(average = 2000)</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="classtesting_1_1_easy_filmin_j_d_o_test.html#a626ecf335c8f0f01959208ccd8e5c73a">  192</a></span>&#160;    public <span class="keywordtype">void</span> <a class="code" href="classtesting_1_1_easy_filmin_j_d_o_test.html#a626ecf335c8f0f01959208ccd8e5c73a">startBDgetAllFilmsTest</a>() {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        iDAO = <span class="keyword">new</span> <a class="code" href="classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html">EasyFilminJDO</a>();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        iDAO.<a class="code" href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ac7291223d9ecf231c9e5a443863468f3">startBD</a>();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        List&lt;Film&gt; alFilms = iDAO.<a class="code" href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ae8fe35749a99238b060320de154bc418">getAllFilms</a>();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        List&lt;Film&gt; alPrueba = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        BufferedReader bufferedReader;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> FileReader(<span class="stringliteral">&quot;src\\main\\resources\\filmsPRUEBA.csv&quot;</span>));</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            String input;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">while</span>((input = bufferedReader.readLine()) != <span class="keyword">null</span>)count++;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            logger.info(<span class="stringliteral">&quot;Count : &quot;</span>+count);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        } <span class="keywordflow">catch</span> (IOException e) {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            logger.error(<span class="stringliteral">&quot;CSV FILE NOT FOUND&quot;</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            e.printStackTrace();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        assertEquals(alFilms.size(), count-2);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        iDAO.<a class="code" href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ac4a81e83508e578cb4597cc6e873a006">cleanBD</a>();</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        logger.debug(<span class="stringliteral">&quot;get All Films tested&quot;</span>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    </div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    </div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    @Test</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    @PerfTest(invocations = 5)</div>
@@ -318,9 +318,11 @@ $(document).ready(function(){initNavTree('_easy_filmin_j_d_o_test_8java_source.h
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_ac4a81e83508e578cb4597cc6e873a006"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ac4a81e83508e578cb4597cc6e873a006">server.easyFilminDAO.IEasyFilminDAO.cleanBD</a></div><div class="ttdeci">void cleanBD()</div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_html_a89995325c0bde245025537e1800eb429"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film.html#a89995325c0bde245025537e1800eb429">server.easyFilminData.Film.setDescription</a></div><div class="ttdeci">void setDescription(String description)</div><div class="ttdef"><b>Definition:</b> <a href="_film_8java_source.html#l00261">Film.java:261</a></div></div>
 <div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_a3fcaff95341ec9c944252414f4e5b596"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a3fcaff95341ec9c944252414f4e5b596">server.easyFilminDAO.IEasyFilminDAO.saveDirector</a></div><div class="ttdeci">void saveDirector(Director director)</div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_user_html_a237d6906cce616cf1cbe437cb4f9a902"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_user.html#a237d6906cce616cf1cbe437cb4f9a902">server.easyFilminData.User.getIcon</a></div><div class="ttdeci">String getIcon()</div><div class="ttdef"><b>Definition:</b> <a href="_user_8java_source.html#l00131">User.java:131</a></div></div>
+<div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_ae8fe35749a99238b060320de154bc418"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ae8fe35749a99238b060320de154bc418">server.easyFilminDAO.IEasyFilminDAO.getAllFilms</a></div><div class="ttdeci">List&lt; Film &gt; getAllFilms()</div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_watched_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_watched.html">server.easyFilminData.Watched</a></div><div class="ttdef"><b>Definition:</b> <a href="_watched_8java_source.html#l00015">Watched.java:15</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_actor_html_a851fae77902759b73dd24825e9384b18"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_actor.html#a851fae77902759b73dd24825e9384b18">server.easyFilminData.Actor.getPic</a></div><div class="ttdeci">String getPic()</div><div class="ttdef"><b>Definition:</b> <a href="_actor_8java_source.html#l00045">Actor.java:45</a></div></div>
 <div class="ttc" id="aclasstesting_1_1_easy_filmin_j_d_o_test_html_a5666a3056cc0c3d90c2e89ac2fc4d95a"><div class="ttname"><a href="classtesting_1_1_easy_filmin_j_d_o_test.html#a5666a3056cc0c3d90c2e89ac2fc4d95a">testing.EasyFilminJDOTest.testSaveLoadActor</a></div><div class="ttdeci">void testSaveLoadActor()</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_test_8java_source.html#l00099">EasyFilminJDOTest.java:99</a></div></div>
@@ -374,6 +376,7 @@ $(document).ready(function(){initNavTree('_easy_filmin_j_d_o_test_8java_source.h
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_user_html_a5cdf543e610925c9c36b660637610f29"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_user.html#a5cdf543e610925c9c36b660637610f29">server.easyFilminData.User.getEmail</a></div><div class="ttdeci">String getEmail()</div><div class="ttdef"><b>Definition:</b> <a href="_user_8java_source.html#l00138">User.java:138</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_director_html_a97ead7e1f5f5d52cb97f11cceff7f7ab"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_director.html#a97ead7e1f5f5d52cb97f11cceff7f7ab">server.easyFilminData.Director.getBday</a></div><div class="ttdeci">String getBday()</div><div class="ttdef"><b>Definition:</b> <a href="_director_8java_source.html#l00046">Director.java:46</a></div></div>
 <div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_a65683b5f24fda60fdb287fa61b9992f3"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a65683b5f24fda60fdb287fa61b9992f3">server.easyFilminDAO.IEasyFilminDAO.saveFilmList</a></div><div class="ttdeci">void saveFilmList(FilmList filmList)</div></div>
+<div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_ac7291223d9ecf231c9e5a443863468f3"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ac7291223d9ecf231c9e5a443863468f3">server.easyFilminDAO.IEasyFilminDAO.startBD</a></div><div class="ttdeci">void startBD()</div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_html_a495a203e766e699a2863b6ae7ba384d5"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film.html#a495a203e766e699a2863b6ae7ba384d5">server.easyFilminData.Film.setRelease</a></div><div class="ttdeci">void setRelease(String release)</div><div class="ttdef"><b>Definition:</b> <a href="_film_8java_source.html#l00253">Film.java:253</a></div></div>
 <div class="ttc" id="anamespaceserialization_html"><div class="ttname"><a href="namespaceserialization.html">serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_actor_data_8java_source.html#l00001">ActorData.java:1</a></div></div>
 <div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_aaf4f0402690dda84339856ec4b09f370"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#aaf4f0402690dda84339856ec4b09f370">server.easyFilminDAO.IEasyFilminDAO.loadWatched</a></div><div class="ttdeci">Watched loadWatched(String name)</div></div>
@@ -388,6 +391,7 @@ $(document).ready(function(){initNavTree('_easy_filmin_j_d_o_test_8java_source.h
 <div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_ad8339d2c76f0d79324389c8cd9625868"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ad8339d2c76f0d79324389c8cd9625868">server.easyFilminDAO.IEasyFilminDAO.deleteFilm</a></div><div class="ttdeci">void deleteFilm(String moviename)</div></div>
 <div class="ttc" id="aclasstesting_1_1_easy_filmin_j_d_o_test_html_a66c41ae25b657f7a8c96f82a83562b46"><div class="ttname"><a href="classtesting_1_1_easy_filmin_j_d_o_test.html#a66c41ae25b657f7a8c96f82a83562b46">testing.EasyFilminJDOTest.testSaveLoadWatchList</a></div><div class="ttdeci">void testSaveLoadWatchList()</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_test_8java_source.html#l00162">EasyFilminJDOTest.java:162</a></div></div>
 <div class="ttc" id="ainterfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o_html_a81ce97ad071c68141efc354d80705b95"><div class="ttname"><a href="interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a81ce97ad071c68141efc354d80705b95">server.easyFilminDAO.IEasyFilminDAO.loadDirector</a></div><div class="ttdeci">Director loadDirector(String name)</div></div>
+<div class="ttc" id="aclasstesting_1_1_easy_filmin_j_d_o_test_html_a626ecf335c8f0f01959208ccd8e5c73a"><div class="ttname"><a href="classtesting_1_1_easy_filmin_j_d_o_test.html#a626ecf335c8f0f01959208ccd8e5c73a">testing.EasyFilminJDOTest.startBDgetAllFilmsTest</a></div><div class="ttdeci">void startBDgetAllFilmsTest()</div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_test_8java_source.html#l00192">EasyFilminJDOTest.java:192</a></div></div>
 <div class="ttc" id="anamespaceserver_1_1easy_filmin_d_a_o_html"><div class="ttname"><a href="namespaceserver_1_1easy_filmin_d_a_o.html">server.easyFilminDAO</a></div><div class="ttdef"><b>Definition:</b> <a href="_easy_filmin_j_d_o_8java_source.html#l00001">EasyFilminJDO.java:1</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

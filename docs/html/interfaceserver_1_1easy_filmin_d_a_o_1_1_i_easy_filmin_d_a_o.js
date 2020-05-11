@@ -1,5 +1,6 @@
 var interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o =
 [
+    [ "cleanBD", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ac4a81e83508e578cb4597cc6e873a006", null ],
     [ "deleteActor", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a72067f6ff6820057d7db44288752c858", null ],
     [ "deleteDirector", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ad3be460c53e7e6d1fd23d897a5fe39a7", null ],
     [ "deleteFilm", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ad8339d2c76f0d79324389c8cd9625868", null ],
