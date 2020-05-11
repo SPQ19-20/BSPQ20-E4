@@ -1184,6 +1184,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 
 					//End the transaction
 					pm.deletePersistent(filmList);
+					
 					tx.commit();
 					
 					
@@ -1201,6 +1202,59 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 				}
 		
 	}
+
+
+	@Override
+	public void cleanBD() {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+try {		
+		tx.begin();	 
+		/*
+		Extent<Book> extentB = pm.getExtent(Book.class, true);
+		for (Book b : extentB) {
+			b.removeCopies();
+		}
+		// Updating the database so changes are considered before commit
+		pm.flush();				
+		*/
+		
+		Query<Film> queryF = pm.newQuery(Film.class);
+		logger.info(" * '" + queryF.deletePersistentAll() + "' films deleted from the DB.");			
+		
+		Query<Actor> queryA = pm.newQuery(Actor.class);
+		logger.info(" * '" + queryA.deletePersistentAll() + "' actors deleted from the DB.");
+		
+		Query<Director> queryD = pm.newQuery(Director.class);
+		logger.info(" * '" + queryD.deletePersistentAll() + "' directors deleted from the DB.");
+		
+		Query<User> queryU = pm.newQuery(User.class);
+		logger.info(" * '" + queryU.deletePersistentAll() + "' users deleted from the DB.");
+		
+		Query<Watched> queryW = pm.newQuery(Watched.class);
+		logger.info(" * '" + queryW.deletePersistentAll() + "' watched deleted from the DB.");
+		
+		Query<WatchList> queryWl = pm.newQuery(WatchList.class);
+		logger.info(" * '" + queryWl.deletePersistentAll() + "' watchList deleted from the DB.");
+		
+		tx.commit();
+		
+	} catch (Exception ex) {
+		logger.error(" $ Error cleaning the DB: " + ex.getMessage());
+		ex.printStackTrace();
+	} finally {
+		if (tx != null && tx.isActive()) {
+			tx.rollback();
+		}
+		
+		if (pm != null && !pm.isClosed()) {
+			pm.close();
+		}
+	}
+		
+	}
+	
 }
 //
 //	@Override

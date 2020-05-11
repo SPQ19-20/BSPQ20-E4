@@ -194,4 +194,9 @@ public interface IEasyFilminDAO {
 	 * This data mainly consists in Actors, Films and Directors.
 	 */
 	public void startBD();
+	
+	/**
+	 * Deletes all the data currently stored in the DB.
+	 */
+	public void cleanBD();
 }

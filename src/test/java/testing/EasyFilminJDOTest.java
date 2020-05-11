@@ -185,10 +185,10 @@ public class EasyFilminJDOTest {
 //		prueba.setComments(comments);
 //	}
 	
-	/*
+	
 	@Test
-	//@PerfTest(invocations = 15)
-	//@Required(max = 5000)
+	@PerfTest(invocations = 10)
+	@Required(average = 2000)
 	public void startBDgetAllFilmsTest() {
 		iDAO = new EasyFilminJDO();
 		iDAO.startBD();
@@ -200,17 +200,17 @@ public class EasyFilminJDOTest {
 			bufferedReader = new BufferedReader(new FileReader("src\\main\\resources\\filmsPRUEBA.csv"));
 		    String input;
 		    while((input = bufferedReader.readLine()) != null)count++;
-		    System.out.println("Count : "+count);
+		    logger.info("Count : "+count);
 
 		} catch (IOException e) {
 			logger.error("CSV FILE NOT FOUND");
 			e.printStackTrace();
 		}
-		assertEquals(alFilms.size(),count-1);
-
+		assertEquals(alFilms.size(), count-2);
+		iDAO.cleanBD();
 		logger.debug("get All Films tested");
 	}
-	*/
+	
 	
 	@Test
 	@PerfTest(invocations = 5)
