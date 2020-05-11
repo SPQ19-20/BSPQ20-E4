@@ -187,8 +187,8 @@ public class EasyFilminJDOTest {
 	
 	
 	@Test
-	@PerfTest(invocations = 10)
-	@Required(average = 2000)
+	@PerfTest(invocations = 20)
+	@Required(average = 5000)
 	public void startBDgetAllFilmsTest() {
 		iDAO = new EasyFilminJDO();
 		iDAO.startBD();
