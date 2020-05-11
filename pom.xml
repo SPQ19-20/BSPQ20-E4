@@ -175,21 +175,14 @@
             </plugin>
 			
 			<plugin> <!-- Plugins to use DOxygen -->
-				<groupId>com.soebes.maven.plugins.dmg</groupId>
+				<groupId>com.soebes.maven.plugins</groupId>
 				<artifactId>doxygen-maven-plugin</artifactId>
 				<version>1.1.0</version>
 				<configuration>
 					<configurationFile>${doxygen.config.file}</configurationFile>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>com.soebes.maven.plugins</groupId>
-				<artifactId>doxygen-maven-plugin</artifactId>
-				<version>1.1.0</version>
-				<configuration>
-				<configurationFile>${doxygen.config.file}</configurationFile>
-				</configuration>
-			</plugin>
+
             
             <plugin> <!-- Plugin to use Jacoco -->
 				<groupId>org.jacoco</groupId>
@@ -265,7 +258,7 @@
 					</descriptors>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 	

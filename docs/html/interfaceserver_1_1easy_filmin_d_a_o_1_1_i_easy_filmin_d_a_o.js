@@ -1,0 +1,28 @@
+var interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o =
+[
+    [ "deleteActor", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a72067f6ff6820057d7db44288752c858", null ],
+    [ "deleteDirector", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ad3be460c53e7e6d1fd23d897a5fe39a7", null ],
+    [ "deleteFilm", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ad8339d2c76f0d79324389c8cd9625868", null ],
+    [ "deleteFilmList", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a5d68709b5d70daa669baa5357e3c1ab1", null ],
+    [ "deleteUser", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a1ecef348eafa47619b78fa057f0743d0", null ],
+    [ "deleteWatched", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a8710a60848f98958c569f70c7b8bf50d", null ],
+    [ "deleteWatchList", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a5b6bbdaa31f9a39653804d55ee67cbe3", null ],
+    [ "getAllFilms", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ae8fe35749a99238b060320de154bc418", null ],
+    [ "loadActor", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a7616a1db60266b17c453d98a26e6eb84", null ],
+    [ "loadComments", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a63badaa072be344f4e41799f1c860b77", null ],
+    [ "loadDirector", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a81ce97ad071c68141efc354d80705b95", null ],
+    [ "loadFilm", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a11c1f56d18400012eb23cfbcbe0e0dee", null ],
+    [ "loadFilmList", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a36776412d8dbc6c0d60a18399d45b6ff", null ],
+    [ "loadUser", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#aea7d7f104fb126ced81e263d14631c33", null ],
+    [ "loadWatched", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#aaf4f0402690dda84339856ec4b09f370", null ],
+    [ "loadWatchList", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a429da8c7b04808e060a73014ef5e07c8", null ],
+    [ "saveActor", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ad73366503c92d5ac3b3510789f79cf3b", null ],
+    [ "saveComment", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#af7ee65ba06a72edd1a094524235cbd00", null ],
+    [ "saveDirector", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a3fcaff95341ec9c944252414f4e5b596", null ],
+    [ "saveFilm", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ae3e891143f1804c725a730adcd510968", null ],
+    [ "saveFilmList", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a65683b5f24fda60fdb287fa61b9992f3", null ],
+    [ "saveUser", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a0ddddac8ca420265a22f58a247185650", null ],
+    [ "saveWatched", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ae63e7afa3006128a9703b84de256c089", null ],
+    [ "saveWatchList", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#a8df8e5de3e56f7b414c08963b5e2401b", null ],
+    [ "startBD", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html#ac7291223d9ecf231c9e5a443863468f3", null ]
+];

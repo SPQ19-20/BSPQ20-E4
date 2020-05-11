@@ -1,0 +1,208 @@
+\hypertarget{classclient_1_1controller_1_1_easy_film_controller}{}\doxysection{client.\+controller.\+Easy\+Film\+Controller Class Reference}
+\label{classclient_1_1controller_1_1_easy_film_controller}\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a09c44129fbaa8923408e595a16f18dbe}{Easy\+Film\+Controller}} (String hostname, String port)
+\item 
+void \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a4f94d29f58763671024b66796c1bb5aa}{register\+User}} (String \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a4669c97e2a84ad4576fc6ae5e2f08dd3}{login}}, String icon, String email, String password)
+\item 
+void \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_aca8d7fc125c72592327df7936ca90ad3}{delete\+User}} (String \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a4669c97e2a84ad4576fc6ae5e2f08dd3}{login}})
+\item 
+boolean \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a4669c97e2a84ad4576fc6ae5e2f08dd3}{login}} (String login, String password)
+\item 
+\mbox{\hyperlink{classserialization_1_1_user_data}{User\+Data}} \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a46d79ff4c127de4576daa10e1c39c960}{get\+User}} (String nick)
+\item 
+Array\+List$<$ \mbox{\hyperlink{classserialization_1_1_film_list_data}{Film\+List\+Data}} $>$ \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a2f0a58de67f6a72424e402096a33372f}{get\+All\+Lists}} (String user\+Nick)
+\item 
+\mbox{\hyperlink{classserialization_1_1_film_data}{Film\+Data}} \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a3963460a63ee779c779963ec2ffb64f7}{get\+Film}} (String name)
+\item 
+\mbox{\hyperlink{classserialization_1_1_film_list_data}{Film\+List\+Data}} \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a85334b4ff6aaeb79f6666f01bcc94494}{get\+Film\+List}} (\mbox{\hyperlink{classserialization_1_1_user_data}{User\+Data}} user\+Data, String name)
+\item 
+void \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a1e5e70529c9235b838c16200594e6e9b}{add\+To\+List}} (String list\+Name, String film\+Title)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classclient_1_1controller_1_1_easy_film_controller_a6c982ced9f769f77135484e59c0787e2}{main}} (String\mbox{[}$\,$\mbox{]} args)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 29 of file Easy\+Film\+Controller.\+java.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a09c44129fbaa8923408e595a16f18dbe}\label{classclient_1_1controller_1_1_easy_film_controller_a09c44129fbaa8923408e595a16f18dbe}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!EasyFilmController@{EasyFilmController}}
+\index{EasyFilmController@{EasyFilmController}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{EasyFilmController()}{EasyFilmController()}}
+{\footnotesize\ttfamily client.\+controller.\+Easy\+Film\+Controller.\+Easy\+Film\+Controller (\begin{DoxyParamCaption}\item[{String}]{hostname,  }\item[{String}]{port }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file Easy\+Film\+Controller.\+java.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a1e5e70529c9235b838c16200594e6e9b}\label{classclient_1_1controller_1_1_easy_film_controller_a1e5e70529c9235b838c16200594e6e9b}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!addToList@{addToList}}
+\index{addToList@{addToList}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{addToList()}{addToList()}}
+{\footnotesize\ttfamily void client.\+controller.\+Easy\+Film\+Controller.\+add\+To\+List (\begin{DoxyParamCaption}\item[{String}]{list\+Name,  }\item[{String}]{film\+Title }\end{DoxyParamCaption})}
+
+This methods adds a given film to a list unless this list is already in the list or if that film is in watch\+List and we are adding to watched, this will delete the movie from watch\+List 
+\begin{DoxyParams}{Parameters}
+{\em list\+Name} & -\/ name of the list for the film to be added \\
+\hline
+{\em film\+Title} & -\/ title of the film to add \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 159 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_aca8d7fc125c72592327df7936ca90ad3}\label{classclient_1_1controller_1_1_easy_film_controller_aca8d7fc125c72592327df7936ca90ad3}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!deleteUser@{deleteUser}}
+\index{deleteUser@{deleteUser}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{deleteUser()}{deleteUser()}}
+{\footnotesize\ttfamily void client.\+controller.\+Easy\+Film\+Controller.\+delete\+User (\begin{DoxyParamCaption}\item[{String}]{login }\end{DoxyParamCaption})}
+
+
+
+Definition at line 63 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a2f0a58de67f6a72424e402096a33372f}\label{classclient_1_1controller_1_1_easy_film_controller_a2f0a58de67f6a72424e402096a33372f}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!getAllLists@{getAllLists}}
+\index{getAllLists@{getAllLists}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{getAllLists()}{getAllLists()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classserialization_1_1_film_list_data}{Film\+List\+Data}}$>$ client.\+controller.\+Easy\+Film\+Controller.\+get\+All\+Lists (\begin{DoxyParamCaption}\item[{String}]{user\+Nick }\end{DoxyParamCaption})}
+
+R\+E\+T\+R\+I\+E\+V\+ES an Array\+List of all the lists for a given User (Film\+List\+Data) 
+\begin{DoxyParams}{Parameters}
+{\em user\+Nick} & -\/ user nick \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+lists -\/ all film lists from a given user 
+\end{DoxyReturn}
+
+
+Definition at line 120 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a3963460a63ee779c779963ec2ffb64f7}\label{classclient_1_1controller_1_1_easy_film_controller_a3963460a63ee779c779963ec2ffb64f7}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!getFilm@{getFilm}}
+\index{getFilm@{getFilm}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{getFilm()}{getFilm()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classserialization_1_1_film_data}{Film\+Data}} client.\+controller.\+Easy\+Film\+Controller.\+get\+Film (\begin{DoxyParamCaption}\item[{String}]{name }\end{DoxyParamCaption})}
+
+R\+E\+T\+R\+I\+E\+V\+ES a Film\+Data object from the server 
+\begin{DoxyParams}{Parameters}
+{\em name} & -\/ title of the film \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+film -\/ Film\+Data (serialized) 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a85334b4ff6aaeb79f6666f01bcc94494}\label{classclient_1_1controller_1_1_easy_film_controller_a85334b4ff6aaeb79f6666f01bcc94494}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!getFilmList@{getFilmList}}
+\index{getFilmList@{getFilmList}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{getFilmList()}{getFilmList()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classserialization_1_1_film_list_data}{Film\+List\+Data}} client.\+controller.\+Easy\+Film\+Controller.\+get\+Film\+List (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classserialization_1_1_user_data}{User\+Data}}}]{user\+Data,  }\item[{String}]{name }\end{DoxyParamCaption})}
+
+R\+E\+T\+R\+I\+E\+V\+ES a Film\+List\+Data object from the server 
+\begin{DoxyParams}{Parameters}
+{\em user\+Data} & -\/ serialized data of the user who stores the list \\
+\hline
+{\em name} & -\/ name of the film\+List \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+list -\/ list of films (serialized) Film\+List\+Data 
+\end{DoxyReturn}
+
+
+Definition at line 144 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a46d79ff4c127de4576daa10e1c39c960}\label{classclient_1_1controller_1_1_easy_film_controller_a46d79ff4c127de4576daa10e1c39c960}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!getUser@{getUser}}
+\index{getUser@{getUser}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{getUser()}{getUser()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classserialization_1_1_user_data}{User\+Data}} client.\+controller.\+Easy\+Film\+Controller.\+get\+User (\begin{DoxyParamCaption}\item[{String}]{nick }\end{DoxyParamCaption})}
+
+R\+E\+T\+R\+I\+E\+V\+ES an User\+Data Object from the server that is passed in the login 
+\begin{DoxyParams}{Parameters}
+{\em nick} & -\/ nick of user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+User\+Data -\/ User\+Data object from that user 
+\end{DoxyReturn}
+
+
+Definition at line 109 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a4669c97e2a84ad4576fc6ae5e2f08dd3}\label{classclient_1_1controller_1_1_easy_film_controller_a4669c97e2a84ad4576fc6ae5e2f08dd3}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!login@{login}}
+\index{login@{login}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{login()}{login()}}
+{\footnotesize\ttfamily boolean client.\+controller.\+Easy\+Film\+Controller.\+login (\begin{DoxyParamCaption}\item[{String}]{login,  }\item[{String}]{password }\end{DoxyParamCaption})}
+
+C\+H\+E\+C\+KS if the login is correct 
+\begin{DoxyParams}{Parameters}
+{\em login} & -\/ login of the user \\
+\hline
+{\em password} & -\/ pass of the user \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+boolean -\/ if correct true else false 
+\end{DoxyReturn}
+
+
+Definition at line 81 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a6c982ced9f769f77135484e59c0787e2}\label{classclient_1_1controller_1_1_easy_film_controller_a6c982ced9f769f77135484e59c0787e2}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!main@{main}}
+\index{main@{main}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily static void client.\+controller.\+Easy\+Film\+Controller.\+main (\begin{DoxyParamCaption}\item[{String\mbox{[}$\,$\mbox{]}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 171 of file Easy\+Film\+Controller.\+java.
+
+\mbox{\Hypertarget{classclient_1_1controller_1_1_easy_film_controller_a4f94d29f58763671024b66796c1bb5aa}\label{classclient_1_1controller_1_1_easy_film_controller_a4f94d29f58763671024b66796c1bb5aa}} 
+\index{client.controller.EasyFilmController@{client.controller.EasyFilmController}!registerUser@{registerUser}}
+\index{registerUser@{registerUser}!client.controller.EasyFilmController@{client.controller.EasyFilmController}}
+\doxysubsubsection{\texorpdfstring{registerUser()}{registerUser()}}
+{\footnotesize\ttfamily void client.\+controller.\+Easy\+Film\+Controller.\+register\+User (\begin{DoxyParamCaption}\item[{String}]{login,  }\item[{String}]{icon,  }\item[{String}]{email,  }\item[{String}]{password }\end{DoxyParamCaption})}
+
+R\+E\+G\+I\+S\+T\+E\+RS a new User in the db giving its parameters 
+\begin{DoxyParams}{Parameters}
+{\em login} & -\/ nick of the user \\
+\hline
+{\em icon} & -\/ icon of the user \\
+\hline
+{\em email} & -\/ email of the user \\
+\hline
+{\em password} & -\/ pass of the user \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 46 of file Easy\+Film\+Controller.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/client/controller/\mbox{\hyperlink{_easy_film_controller_8java}{Easy\+Film\+Controller.\+java}}\end{DoxyCompactItemize}
