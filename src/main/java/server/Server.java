@@ -143,18 +143,13 @@ public class Server {
 		
 		ArrayList<FilmListData> listsData = new ArrayList<FilmListData>();
 		int i = 0;
-		logger.info("Lists that will be passed to the client: ");
 		logger.error(user.getNickname());
-		logger.error(user.getWatched().getName());
-		logger.error(user.getLists().get(0).getName());
-		logger.error(lists.get(0).getName());
 		if(lists!=null) {
+			logger.error("Obteniendo listas:");
 			for(FilmList f : lists) {
-				logger.error("entre en el loop");
-				logger.error(f.getName());
-				//logger.error(f.getFilmList().isEmpty());
+				//logger.error(f.getName());
 				listsData.add(new FilmListData(f));
-				logger.info(lists.get(i).getName());
+				logger.error(listsData.get(i).getName());
 				i++;
 			}
 			
@@ -200,12 +195,17 @@ public class Server {
 		ArrayList<FilmList> arrFl =u.getLists();
 		int temp = -1;
 		for(int i = 0;i<arrFl.size();i++) {
+			logger.error("Nombre lista:");
+			logger.error(arrFl.get(i).getName());
+			logger.error("Nombre que pasamos:");
+			logger.error(name);
 			if(arrFl.get(i).getName().equals(name)) temp = i; 
 		}
-		if(temp>0) {
-			fl = u.getLists().get(temp);	
+		if(temp>=0) {
+			fl = arrFl.get(temp);
+			logger.error(fl.getName());
 		}else {
-			logger.info("NO HAY UNA LISTA CON EL MISMO NOMBRE");
+			logger.error("NO HAY UNA LISTA CON EL MISMO NOMBRE");
 		}
 		
 		FilmListData flData = new FilmListData(fl);
