@@ -13,6 +13,8 @@ import java.awt.Font;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 
 public class CreateList extends JFrame {
@@ -29,6 +31,8 @@ public class CreateList extends JFrame {
 	private JLabel newList;
 	private JTextField listName;
 	private JTextField textField;
+	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
 	
 	public CreateList(UserData user, EasyFilmController controller) {
 		
@@ -54,7 +58,7 @@ public class CreateList extends JFrame {
 		list.setBounds(40, 40, 200, 300);
 		getContentPane().add(list);
 		
-		available = new JLabel("Available Films");
+		available = new JLabel(resourceBundle.getString("available_films_label"));
 		available.setFont(new Font("Tahoma", Font.BOLD, 10));
 		available.setBounds(40, 10, 200, 20);
 		getContentPane().add(available);
@@ -67,7 +71,7 @@ public class CreateList extends JFrame {
 		filmList.setBounds(311, 40, 200, 300);
 		getContentPane().add(filmList);
 		
-		newList = new JLabel("Your New List");
+		newList = new JLabel(resourceBundle.getString("your_new_list_label"));
 		newList.setFont(new Font("Tahoma", Font.BOLD, 10));
 		newList.setBounds(311, 10, 200, 20);
 		getContentPane().add(newList);
@@ -90,7 +94,7 @@ public class CreateList extends JFrame {
 		 * 
 		 */
 		
-		save = new JButton("SAVE");
+		save = new JButton(resourceBundle.getString("save_buton"));
 		save.setFont(new Font("Tahoma", Font.BOLD, 10));
 		save.setBounds(245, 310, 60, 30);
 		getContentPane().add(save);

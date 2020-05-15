@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
@@ -38,7 +40,7 @@ import server.easyFilminData.Watched;
 public class EasyFilminJDO implements IEasyFilminDAO{
 	
 	private PersistenceManagerFactory pmf = null;
-
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
 	static Logger logger = Logger.getLogger(EasyFilminJDO.class.getName());
 
 	private ArrayList<Film>  allFilms;
@@ -47,7 +49,8 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 	 * It is necessary in order to execute all the operations related to a JDO Database.
 	 */
 	public EasyFilminJDO() {
-		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties"); 
+		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		//resourceBundle = ResourceBundle.getBundle("SystemMessages",	Locale.forLanguageTag("en"));
 	}
 
 	
@@ -58,7 +61,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		Transaction tx = null;
 		
 		try {
-			logger.info("Insert users in the DB");			
+			logger.info(resourceBundle.getString("persisting_users_msg"));			
 			//Get the Persistence Manager
 			pm = pmf.getPersistenceManager();
 			pm.getFetchPlan().setMaxFetchDepth(4);
@@ -72,10 +75,10 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 			
 			//End the transaction
 			tx.commit();
-			logger.debug("Changes committed");
+			logger.info(resourceBundle.getString("persisted_users_msg"));
 			
 		} catch (Exception ex) {
-			logger.error(" $ Error storing objects in the DB: " + ex.getMessage());
+			logger.error(resourceBundle.getString("persisting_users_error") + ex.getMessage());
 			ex.printStackTrace();
 		
 		}finally {
@@ -100,7 +103,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		Transaction tx = null;
 		
 		try {
-			logger.info("- Retrieving users");			
+			logger.info(resourceBundle.getString("retrieving_users_msg"));			
 			//Get the Persistence Manager
 			pm = pmf.getPersistenceManager();
 			pm.getFetchPlan().setMaxFetchDepth(4);
@@ -122,7 +125,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 			
 			return duser;
 		} catch (Exception ex) {
-			logger.error(" $ Error retrieving users using a 'Query': " + ex.getMessage());
+			logger.error(resourceBundle.getString("retrieving_exception_msg") + ex.getMessage());
 			
 		} finally {
 			if (tx != null && tx.isActive()) {
@@ -144,7 +147,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		Transaction tx = null;
 		
 		try {
-			logger.info("- Deleting users");			
+			logger.info(resourceBundle.getString("deleting_users_msg"));			
 			//Get the Persistence Manager
 			pm = pmf.getPersistenceManager();
 			//pm.getFetchPlan().setMaxFetchDepth(4);
