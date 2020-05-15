@@ -1,0 +1,42 @@
+Doxygen Comments
+----------------
+
+Funciona igual que JavaDoc.
+Únicamente tiene un par de MEJORAS que permiten comentar más cosas:
+
+-> Descripción de método + detalles FORMA1:
+/** Brief description which ends at this dot. Details follow * here. */
+
+-> Descripción de método + detalles FORMA2:
+/// Brief description.
+/** Detailed description. */ 
+
+-> Añadir documentación a atributos en la misma línea (esta puede ser interesante):
+int atributo1; /**< Descripción atributo1 */
+int atributo2; /**< Descripción atributo2 */ 
+
+-> Documentar parámetros de una función. [in] para params de entrada [out] para retorno [in,out] ambos:
+void func1(int param1 /**< [in] Documentamos parámetro param1. */);
+Objeto func2(int param1 /**< [out] Documentamos parámetro que devolvemos de tipo Objeto. */);
+
+-> Insertar bloques de comentarios en cualquier parte del código:
+[IMPORTANTE] '<etiqueta>' tiene que ser sustituido por una etiqueta válida que adjunto al final del .txt
+
+Basta con poner lo siguiente: 
+/*! @<etiqueta> Blablabla que tenga que ver con la etiqueta
+* @<etiqueta> Blablabla que tenga que ver con la etiqueta
+*
+* Detalles que no tengan que ver con ninguna etiqueta en particular
+*/
+
+ETIQUETAS VARIAS:
+• @enum to document an enumeration type.
+• @fn to document a function.
+• @var to document a variable or typedef or enum value.
+• @file to document a file.
+• @namespace to document a namespace.
+• @package to document a Java package.
+• @interface to document an IDL interface.
+.
+.
+... más en : http://www.stack.nl/~dimitri/doxygen/commands.html
