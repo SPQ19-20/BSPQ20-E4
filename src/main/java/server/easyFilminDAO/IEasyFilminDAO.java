@@ -12,6 +12,19 @@ import server.easyFilminData.User;
 import server.easyFilminData.WatchList;
 import server.easyFilminData.Watched;
 
+/**@package server.easyFilminDAO
+ * @brief This is the documentation for the Java package server.easyFilminDAO intended to work as a Data Access Layer for the EasyFilmin Project.
+ * This package is composed by 2 classes. IEasyFilminDAO and EasyFilminJDO. The first one is intended to work as a DAO interface from where all the DB methods can be accessed.
+ * The second class is for using the storage type JDO. Currently there is only 1 available but in the future there could be more ways to save the information (such as MongoDB).
+ * Any new way of storage would require a new class that implements the easyFilminDAO interface.
+ */
+
+/** 
+ * @author BSPQ20E4
+ * @version 2.1
+ * @since 2020-05-15
+ * <p> This interface serves to access the data storing, retrieving and deleting methods. Currently the only storage option is JDO. </p>
+ */
 public interface IEasyFilminDAO {
 	
 	/**
@@ -20,14 +33,14 @@ public interface IEasyFilminDAO {
 	 * @param user the user object whose data will be stored
 	 * @see User
 	 */
-	public void saveUser(User user);
+	public void saveUser(User user /**< [in] The user object whose data will be stored */);
 	
 	/**
 	 * Returns a user object after searching for it in the DB. 
 	 * @param username a string that matches the name of the returned user
 	 * @return         the user that matches the username.
 	 */
-	public User loadUser(String username);
+	public User loadUser(String username /**< [out] The user object retrieved that matches the username */);
 	
 	/**
 	 * Deletes a user from the DataBase
@@ -195,8 +208,6 @@ public interface IEasyFilminDAO {
 	 */
 	public void startBD();
 	
-	/**
-	 * Deletes all the data currently stored in the DB.
-	 */
+	/*Deletes all the data currently stored in the DB*/
 	public void cleanBD();
 }

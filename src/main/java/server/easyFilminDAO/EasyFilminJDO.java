@@ -39,8 +39,8 @@ import server.easyFilminData.Watched;
 
 public class EasyFilminJDO implements IEasyFilminDAO{
 	
-	private PersistenceManagerFactory pmf = null;
-	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
+	private PersistenceManagerFactory pmf = null; /** This variable declares a PMF, which is initialized by the constructor as soon as an instance of the class is created */
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault()); /** This variable sets the resourceBundle to the default language configured in the PC */
 	static Logger logger = Logger.getLogger(EasyFilminJDO.class.getName());
 
 	private ArrayList<Film>  allFilms;
@@ -49,7 +49,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 	 * It is necessary in order to execute all the operations related to a JDO Database.
 	 */
 	public EasyFilminJDO() {
-		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
+		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties"); 
 		//resourceBundle = ResourceBundle.getBundle("SystemMessages",	Locale.forLanguageTag("en"));
 	}
 
