@@ -1,4 +1,4 @@
-Doxygen Comments
+﻿Doxygen Comments
 ----------------
 
 Funciona igual que JavaDoc.
@@ -23,7 +23,7 @@ Objeto func2(int param1 /**< [out] Documentamos parámetro que devolvemos de tip
 [IMPORTANTE] '<etiqueta>' tiene que ser sustituido por una etiqueta válida que adjunto al final del .txt
 
 Basta con poner lo siguiente: 
-/*! @<etiqueta> Blablabla que tenga que ver con la etiqueta
+/** @<etiqueta> Blablabla que tenga que ver con la etiqueta
 * @<etiqueta> Blablabla que tenga que ver con la etiqueta
 *
 * Detalles que no tengan que ver con ninguna etiqueta en particular
