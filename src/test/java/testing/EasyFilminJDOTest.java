@@ -197,7 +197,7 @@ public class EasyFilminJDOTest {
 		BufferedReader bufferedReader;
 	    int count = 0;
 		try {
-			bufferedReader = new BufferedReader(new FileReader("src\\main\\resources\\filmsPRUEBA.csv"));
+			bufferedReader = new BufferedReader(new FileReader("src/main/resources/filmsPRUEBA.csv"));
 		    String input;
 		    while((input = bufferedReader.readLine()) != null)count++;
 		    logger.info("Count : "+count);
