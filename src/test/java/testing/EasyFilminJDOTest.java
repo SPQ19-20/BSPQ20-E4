@@ -24,6 +24,10 @@ import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.exceptions.CsvValidationException;
+
 import junit.framework.JUnit4TestAdapter;
 import serialization.FilmListData;
 import server.easyFilminDAO.EasyFilminJDO;
@@ -187,28 +191,38 @@ public class EasyFilminJDOTest {
 	
 	
 	@Test
-	@PerfTest(invocations = 20)
+	@PerfTest(invocations = 5)
 	@Required(average = 5000)
 	public void startBDgetAllFilmsTest() {
 		iDAO = new EasyFilminJDO();
 		iDAO.startBD();
 		List<Film> alFilms = iDAO.getAllFilms();
-		List<Film> alPrueba = null;
-		BufferedReader bufferedReader;
+		String[] values = null;
+		CSVReader readFilms = null;
+		try {
+			readFilms = new CSVReaderBuilder(new FileReader("src\\main\\resources\\filmsPRUEBA.csv")).withSkipLines(1).build();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
 	    int count = 0;
 		try {
 			System.out.println("Working directory = " + System.getProperty("user.dir"));
-			
-			bufferedReader = new BufferedReader(new FileReader("src/main/resources/filmsPRUEBA.csv"));
-		    String input;
-		    while((input = bufferedReader.readLine()) != null)count++;
-		    logger.info("Count : "+count);
-
+		
+			try {
+				while ((values = readFilms.readNext()) != null){
+				count = count + 1;
+				logger.error("Count : " + count);
+				}
+			} catch (CsvValidationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			logger.error("CSV FILE NOT FOUND");
 			e.printStackTrace();
 		}
-		assertEquals(alFilms.size(), count-2);
+		assertEquals(alFilms.size(), count - 1);
 		iDAO.cleanBD();
 		logger.debug("get All Films tested");
 	}
