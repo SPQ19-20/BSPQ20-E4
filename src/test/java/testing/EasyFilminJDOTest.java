@@ -197,6 +197,8 @@ public class EasyFilminJDOTest {
 		BufferedReader bufferedReader;
 	    int count = 0;
 		try {
+			System.out.println("Working directory = " + System.getProperty("user.dir"));
+			
 			bufferedReader = new BufferedReader(new FileReader("src/main/resources/filmsPRUEBA.csv"));
 		    String input;
 		    while((input = bufferedReader.readLine()) != null)count++;

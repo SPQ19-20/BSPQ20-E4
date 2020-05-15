@@ -1211,15 +1211,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		Transaction tx = pm.currentTransaction();
 try {		
 		tx.begin();	 
-		/*
-		Extent<Book> extentB = pm.getExtent(Book.class, true);
-		for (Book b : extentB) {
-			b.removeCopies();
-		}
-		// Updating the database so changes are considered before commit
-		pm.flush();				
-		*/
-		
+			
 		Query<Film> queryF = pm.newQuery(Film.class);
 		logger.info(" * '" + queryF.deletePersistentAll() + "' films deleted from the DB.");			
 		
