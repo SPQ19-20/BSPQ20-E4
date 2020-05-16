@@ -49,6 +49,12 @@ public interface IEasyFilminDAO {
 	public void deleteUser(String username);
 	
 	/**
+	 * Updates a user in the DB
+	 * @param user The user to be updated
+	 */
+	public void updateUser(User user);
+	
+	/**
 	 * Stores the actor received in a Database. 
 	 * The type of storage may differ depending on the instance of this interface created.
 	 * @param actor the actor object whose data will be stored.
