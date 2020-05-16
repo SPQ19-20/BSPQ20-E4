@@ -18,8 +18,10 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -52,12 +54,14 @@ public class CreateList extends JFrame {
 	private boolean editing;
 	
 	static Logger logger = Logger.getLogger(CreateList.class.getName());
-
-//	public CreateList(UserData user, EasyFilmController controller, String listName) {
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
 	
-	public CreateList(UserData user, EasyFilmController controller) {
-		
+	/** This class will be used to create an empty list and to edit an old one
+	 * @param user - UserData for the user that's logged
+	 * @param controller - controller 
+	 * @param listName - Name of the list to be edited / "null" if new
+	 */
+	public CreateList(UserData user, EasyFilmController controller, String listName) {		
 		/** This is the part that contains the info of the window
 		 * 
 		 */
@@ -74,7 +78,7 @@ public class CreateList extends JFrame {
 		
 		//Loading the data of the 2 lists
 		allFilms = new ArrayList<>();
-		allFilms = controller.getAllFilms();
+		//allFilms = controller.getAllFilms();
 		newList = null;
 		if(listName != null) { //Different process IF we are editing or creating 
 			editing = true;
@@ -82,57 +86,70 @@ public class CreateList extends JFrame {
 		}
 		
 		//NORTH PART
-//		JPanel pNorte = new JPanel();
-//		JLabel l1 = new JLabel("Available Films                                   ");
-//		JLabel l2 = new JLabel("                                	 Your New List");
-//		pNorte.add(l1, "West");
-//		pNorte.add(l2, "East");
-		available = new JLabel(resourceBundle.getString("available_films_label"));
-		available.setFont(new Font("Tahoma", Font.BOLD, 10));
-		available.setBounds(40, 10, 200, 20);
-		getContentPane().add(available);
 		
+		JPanel pNorte = new JPanel();
+		pNorte.setBackground(SystemColor.textHighlight);
+		logger.error("Mini problema de las indentaciones con AvailableFilms/your New List");
+		JLabel l1 = new JLabel("Available Films                                   ");
+		l1.setForeground(SystemColor.menu);
+		JLabel l2 = new JLabel("                                	 Your New List");
+		l2.setForeground(SystemColor.menu);
+//		JLabel l1 = new JLabel(resourceBundle.getString("available_films_label"));
+//		JLabel l2 = new JLabel(resourceBundle.getString("your_new_list_label"));
+		pNorte.add(l1, "West");
+		pNorte.add(l2, "East");
+		l1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		l2.setFont(new Font("Tahoma", Font.BOLD, 10));
+		logger.error("Put this strings directly from resourceBundler");
 		getContentPane().add(pNorte,"North");
 		
 		//SOUTH PART
 		JPanel pSur= new JPanel();
-		JButton bBack = new JButton("Back");
+		pSur.setBackground(SystemColor.textHighlight);
+		JButton bBack = new JButton("");
+		bBack.setOpaque(false);
+		bBack.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
+		bBack.setContentAreaFilled(false);
+		bBack.setBorderPainted(false);
 		JTextField newListName = new JTextField();
 		newListName.setPreferredSize(new Dimension(100 ,30));
-		JButton bSave = new JButton("Save");
+		JButton bSave = new JButton((""));
+		bSave.setOpaque(false);
+		bSave.setIcon(new ImageIcon("src\\main\\resources\\save.png"));
+		bSave.setContentAreaFilled(false);
+		bSave.setBorderPainted(false);
+		bSave.setFont(new Font("Tahoma", Font.BOLD, 10));
 		pSur.add(bBack);
 		pSur.add(newListName);
-		pSur.add(bSave);
-		
-//		getContentPane().add(pSur,"South");
-		newList = new JLabel(resourceBundle.getString("your_new_list_label"));
-		newList.setFont(new Font("Tahoma", Font.BOLD, 10));
-		newList.setBounds(311, 10, 200, 20);
-		getContentPane().add(newList);
+		pSur.add(bSave);		 
+
+		getContentPane().add(pSur,"South");
 		
 		/** This buttons allow to move films to one list to the other
 		 * 
 		 */
 		
-		
 		//CENTER PART
 		JPanel pCentro = new JPanel(new BorderLayout());
-		JButton bRemove = new JButton("<");
-		JLabel instructions = new JLabel("<html>Select a film and press '&gt' to send it to your list. Press '&lt' to send it back from the list</html>");
-		
+		pCentro.setBackground(SystemColor.textHighlight);
+		JButton bRemove = new JButton("");
+		bRemove.setOpaque(false);
+		bRemove.setIcon(new ImageIcon("src\\main\\resources\\remove.png"));
+		bRemove.setContentAreaFilled(false);
+		bRemove.setBorderPainted(false);
+		JLabel instructions = new JLabel("<html>Select a film and press '&gt' to send it to your list. Press '&lt' to send it back from the list</html>");		
 		instructions.setPreferredSize(new Dimension(50,50));
-		JButton bAdd = new JButton(">");
+		JButton bAdd = new JButton("");
+		bAdd.setOpaque(false);
+		bAdd.setContentAreaFilled(false);
+		bAdd.setIcon(new ImageIcon("src\\main\\resources\\add.png"));
+		bAdd.setBorderPainted(false);
 		pCentro.add(bRemove, "North");
 		pCentro.add(instructions, "Center");
 		pCentro.add(bAdd, "South");
 		
-//		getContentPane().add(pCentro,"Center");
+		getContentPane().add(pCentro,"Center");
 
-		save = new JButton(resourceBundle.getString("save_buton"));
-		save.setFont(new Font("Tahoma", Font.BOLD, 10));
-		save.setBounds(245, 310, 60, 30);
-		getContentPane().add(save);
-		
 		//WEST PART
 		dlmAllFilms = new DefaultListModel<>();
 		lAllFilms = new JList<String>(dlmAllFilms);
@@ -144,6 +161,7 @@ public class CreateList extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(lAllFilms);
 		scrollPane.setPreferredSize(new Dimension(150, 342));
 		JPanel pCentral = new JPanel();
+		pCentral.setBackground(SystemColor.textHighlight);
 		pCentral.add(scrollPane);
 		
 		getContentPane().add(pCentral, "West");
@@ -161,10 +179,10 @@ public class CreateList extends JFrame {
 		JScrollPane scrollPane1 = new JScrollPane(lNewList);
 		scrollPane1.setPreferredSize(new Dimension(150, 342));
 		JPanel pCentral1 = new JPanel();
+		pCentral1.setBackground(SystemColor.textHighlight);
 		pCentral1.add(scrollPane1);
 
 		getContentPane().add(pCentral1, "East");
-
 
 		bBack.addActionListener(new ActionListener() {
 			
@@ -192,7 +210,16 @@ public class CreateList extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				saveList(newListName.getText(), newList);
+				if(!editing) {
+					logger.error("Saving new list: "+newListName.getText()+" to user: "+user.getLogin());					
+				}else {
+					logger.error("Saving list: "+listName+" to user: "+user.getLogin());					
+				}
+				//controller.saveList(user, listName);
+				
 				logger.error("To UserUI, we can maybe do it to last window");
+				UserUI ui = new UserUI(user, controller);
+				ui.setVisible(true);					
 			}
 		});
 		
@@ -253,12 +280,16 @@ public class CreateList extends JFrame {
 			newList = new FilmListData();
 			newList.setFilmList(new ArrayList<>());
 		}
+		dlmNewList.addElement(dlmAllFilms.get(pos));
+		dlmAllFilms.remove(pos);
 		newList.getFilmList().add(allFilms.get(pos));
 		allFilms.remove(pos);
 		repaint();
 		revalidate();
 	}
 	void removeFromList(int pos) {
+		dlmAllFilms.addElement(dlmNewList.get(pos));
+		dlmNewList.remove(pos);
 		allFilms.add(newList.getFilmList().get(pos));
 		newList.getFilmList().remove(pos);
 		repaint();
