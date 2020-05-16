@@ -32,6 +32,11 @@ import org.apache.log4j.PropertyConfigurator;
 
 import static org.eclipse.jetty.servlet.ServletContextHandler.NO_SESSIONS;
 
+/**@package testing
+ * @brief This is the documentation for the Java package testing intended to work as a tester for the correctness and performance of the EasyFilmin project's methods.
+ * This package is composed by several classes, EasyFilmControllerTest, EasyFilminJDOTest, FilmListTest and SerializationTest. 
+ * Each one tests the methods for one part of the EasyFilmin project. ALl tests implement performance testing through Contiperf.
+ */
 public class EasyFilmControllerTest {
 	
 	private static String[] arg = {"127.0.0.1", "8080"};

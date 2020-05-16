@@ -5,6 +5,7 @@ import javax.swing.JLabel;import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.List;
 import java.awt.ScrollPane;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -52,10 +53,10 @@ public class FilmUI extends JFrame{
 	private JList<String> list;
 	private DefaultListModel<String> dlmComments;
 	private JButton addToList;
-	private JTextField textField;
+	private JTextField commentField;
 	private JButton upbtn;
 	private JButton downbtn;
-	private JLabel lblNewLabel;
+	private JLabel rating;
 	private JComboBox<FilmList> listSelection;
 	private FilmData film;
 
@@ -69,8 +70,9 @@ public class FilmUI extends JFrame{
 		 * 
 		 */
 		
+		getContentPane().setBackground(SystemColor.textHighlight);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución
-		setSize(650,450);
+		setSize(650,460);
 		setLocation(600,175);
 		setResizable(false);
 		
@@ -91,13 +93,13 @@ public class FilmUI extends JFrame{
 		 * 
 		 */
 		
-		backbtn = new JButton("<-");
-		backbtn.setBounds(10, 10, 45, 25);
+		backbtn = new JButton("");
+		backbtn.setBounds(10, 5, 70, 40);
 		getContentPane().add(backbtn);
-		
-		exitbtn = new JButton("x");
-		exitbtn.setBounds(585, 10, 45, 25);
-		getContentPane().add(exitbtn);
+		backbtn.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
+		backbtn.setOpaque(false);
+		backbtn.setContentAreaFilled(false);
+		backbtn.setBorderPainted(false);
 		
 		/** This part is where all the info related to the film is displayed
 		 * 
@@ -106,19 +108,23 @@ public class FilmUI extends JFrame{
 		titleLabel = new JLabel("Title:");
 		titleLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		titleLabel.setBounds(165, 50, 45, 13);
+		titleLabel.setForeground(SystemColor.menu);
 		getContentPane().add(titleLabel);
 		
 		titleName = new JLabel("Inglorious Basterds");
 		titleName.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		titleName.setBounds(220, 50, 285, 13);
+		titleName.setForeground(SystemColor.menu);
 		getContentPane().add(titleName);
 		
 		directorLabel = new JLabel("Director:");
 		directorLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		directorLabel.setBounds(165, 73, 54, 13);
+		directorLabel.setForeground(SystemColor.menu);
 		getContentPane().add(directorLabel);
 		
-		directorName = new JLabel("Quentin Tarantino"); //Example
+		directorName = new JLabel("Quentin Tarantino");
+		directorName.setForeground(SystemColor.menu);//Example
 		//Uncomment when FilmData is retrieved from server
 //		String directors ="";
 //		for(Director a : film.getDirector()) {
@@ -134,11 +140,13 @@ public class FilmUI extends JFrame{
 		getContentPane().add(directorName);
 		
 		actorLabel = new JLabel("Actors:");
+		actorLabel.setForeground(SystemColor.menu);
 		actorLabel.setFont(new Font("Tahoma", Font.BOLD, 10));
 		actorLabel.setBounds(165, 96, 45, 13);
 		getContentPane().add(actorLabel);
 		
-		actorName = new JLabel("Brad Pitt, Christoph Waltz"); //Example
+		actorName = new JLabel("Brad Pitt, Christoph Waltz");
+		actorName.setForeground(SystemColor.menu);//Example
 		//Uncomment when FilmData is retrieved from server
 //		String actors ="";
 //		for(Actor a : film.getActors()) {
@@ -161,22 +169,27 @@ public class FilmUI extends JFrame{
 		addWatched = new JButton("");
 		addWatched.setIcon(new ImageIcon("src\\main\\resources\\Watch.png")); 
 		addWatched.setBounds(220, 229, 35, 35);
+		addWatched.setOpaque(false);
+		addWatched.setContentAreaFilled(false);
+		addWatched.setBorderPainted(false);
 		getContentPane().add(addWatched);
 
 		addWatchlist = new JButton("");
 		addWatchlist.setIcon(new ImageIcon("src\\main\\resources\\Watchlist.png")); 
 		addWatchlist.setBounds(165, 229, 35, 35);
+		addWatchlist.setOpaque(false);
+		addWatchlist.setContentAreaFilled(false);
+		addWatchlist.setBorderPainted(false);
 		getContentPane().add(addWatchlist);
 				
 		/**This part implements a way to write, post and read comments
 		 * 
 		 */
 		
-		textField = new JTextField();
-		textField.setBounds(10, 300, 575, 30);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-		
+		commentField = new JTextField();
+		commentField.setBounds(10, 300, 575, 30);
+		getContentPane().add(commentField);
+		commentField.setColumns(10);
 		
 		/* COMMENTS - JList of comments that stores the comments 
 		 * 
@@ -185,29 +198,43 @@ public class FilmUI extends JFrame{
 		list = new JList(dlmComments);
 		JScrollPane spComments = new JScrollPane(list);
 		list.setBounds(10, 335, 615, 75);
+		spComments.setBounds(10, 335, 615, 75);
 		for(Comment c: film.getComments()) {
 			dlmComments.addElement(c.getText());	
 		}
 		getContentPane().add(spComments);
 		
 		post = new JButton("");
+		post.setOpaque(false);
+		post.setContentAreaFilled(false);
+		post.setBorderPainted(false);
 		post.setBounds(600, 300, 25, 25);
+		post.setIcon(new ImageIcon("src\\main\\resources\\Post.png")); 
 		getContentPane().add(post);
 		
 		/** This is the part that allows the user to rate films
 		 * 
 		 */
 		
-		upbtn = new JButton(">");
-		upbtn.setBounds(10, 270, 30, 25);
+		upbtn = new JButton("");
+		upbtn.setBounds(10, 270, 30, 30);
+		upbtn.setOpaque(false);
+		upbtn.setContentAreaFilled(false);
+		upbtn.setBorderPainted(false);
+		upbtn.setIcon(new ImageIcon("src\\main\\resources\\Up.png")); 
 		getContentPane().add(upbtn);
 		
-		lblNewLabel = new JLabel("5");
-		lblNewLabel.setBounds(40, 275, 20, 13);
-		getContentPane().add(lblNewLabel);
+		rating = new JLabel("5");
+		rating.setBounds(42, 275, 20, 13);
+		rating.setForeground(SystemColor.menu);
+		getContentPane().add(rating);
 		
-		downbtn = new JButton("<");
-		downbtn.setBounds(50, 270, 30, 25);
+		downbtn = new JButton("");
+		downbtn.setBounds(50, 270, 30, 30);
+		downbtn.setOpaque(false);
+		downbtn.setContentAreaFilled(false);
+		downbtn.setBorderPainted(false);
+		downbtn.setIcon(new ImageIcon("src\\main\\resources\\Down.png")); 
 		getContentPane().add(downbtn);
 		
 		
@@ -217,6 +244,10 @@ public class FilmUI extends JFrame{
 		
 		addToList = new JButton("");
 		addToList.setBounds(590, 230, 35, 35);
+		addToList.setIcon(new ImageIcon("src\\main\\resources\\NewFilmListSmall.png")); 
+		addToList.setOpaque(false);
+		addToList.setContentAreaFilled(false);
+		addToList.setBorderPainted(false);
 		getContentPane().add(addToList);
 		
 		listSelection = new JComboBox<FilmList>();
@@ -231,15 +262,6 @@ public class FilmUI extends JFrame{
 		 * exitbtn allows to close the application 
 		 * backbtn allows to go to the previous application
 		 * */
-		
-		exitbtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				
-			}
-		});
 		
 		backbtn.addActionListener(new ActionListener() {
 			
@@ -282,16 +304,16 @@ public class FilmUI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String s_number = lblNewLabel.getText();
+				String s_number = rating.getText();
 				int i_number = Integer.parseInt(s_number);
 				if (i_number < 5) {
 					int n_number = (i_number + 1);
 					String sn_number = String.valueOf(n_number);
-					lblNewLabel.setText(sn_number);
+					rating.setText(sn_number);
 				}
 				
 				else 
-					JOptionPane.showMessageDialog(null, "El numero es mayor que 5 no se puede aumentar mas la nota");
+					JOptionPane.showMessageDialog(null, "The rating cannot be higher than 5");
 	
 				}
 			});
@@ -300,15 +322,15 @@ public class FilmUI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String s_number1 = lblNewLabel.getText();
+				String s_number1 = rating.getText();
 				int i_number1 = Integer.parseInt(s_number1);
 			if(i_number1 > 1) {
-				int n_number1 = (i_number1 + 1);
+				int n_number1 = (i_number1 - 1);
 				String sn_number1 = String.valueOf(n_number1);
-				lblNewLabel.setText(sn_number1);
+				rating.setText(sn_number1);
 			}
 			else
-				JOptionPane.showMessageDialog(null, "El numero es menor que 1 no se puede disminuir mas la nota");
+				JOptionPane.showMessageDialog(null, "The rating cannot be lower than 1");
 			}
 		});
 		
@@ -320,7 +342,13 @@ public class FilmUI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String comment = textField.getText();
+				JOptionPane.showInternalMessageDialog(null, "Thank you for posting a comment");
+				String comment = commentField.getText();
+				int index = dlmComments.getSize() - 1;
+				dlmComments.add(index + 1, comment);
+				list.setModel(dlmComments);
+				commentField.setText("");
+				
 				
 			}
 		});

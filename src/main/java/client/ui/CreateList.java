@@ -18,8 +18,10 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -76,7 +78,7 @@ public class CreateList extends JFrame {
 		
 		//Loading the data of the 2 lists
 		allFilms = new ArrayList<>();
-		allFilms = controller.getAllFilms();
+		//allFilms = controller.getAllFilms();
 		newList = null;
 		if(listName != null) { //Different process IF we are editing or creating 
 			editing = true;
@@ -86,9 +88,13 @@ public class CreateList extends JFrame {
 		//NORTH PART
 		
 		JPanel pNorte = new JPanel();
+
+		pNorte.setBackground(SystemColor.textHighlight);
 		logger.error("Mini problema de las indentaciones con AvailableFilms/your New List");
 		JLabel l1 = new JLabel("Available Films                                   ");
+		l1.setForeground(SystemColor.menu);
 		JLabel l2 = new JLabel("                                	 Your New List");
+		l2.setForeground(SystemColor.menu);
 //		JLabel l1 = new JLabel(resourceBundle.getString("available_films_label"));
 //		JLabel l2 = new JLabel(resourceBundle.getString("your_new_list_label"));
 		pNorte.add(l1, "West");
@@ -100,10 +106,19 @@ public class CreateList extends JFrame {
 		
 		//SOUTH PART
 		JPanel pSur= new JPanel();
-		JButton bBack = new JButton("Back");
+		pSur.setBackground(SystemColor.textHighlight);
+		JButton bBack = new JButton("");
+		bBack.setOpaque(false);
+		bBack.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
+		bBack.setContentAreaFilled(false);
+		bBack.setBorderPainted(false);
 		JTextField newListName = new JTextField();
 		newListName.setPreferredSize(new Dimension(100 ,30));
-		JButton bSave = new JButton(resourceBundle.getString("save_buton"));
+		JButton bSave = new JButton((""));
+		bSave.setOpaque(false);
+		bSave.setIcon(new ImageIcon("src\\main\\resources\\save.png"));
+		bSave.setContentAreaFilled(false);
+		bSave.setBorderPainted(false);
 		bSave.setFont(new Font("Tahoma", Font.BOLD, 10));
 		pSur.add(bBack);
 		pSur.add(newListName);
@@ -117,10 +132,20 @@ public class CreateList extends JFrame {
 		
 		//CENTER PART
 		JPanel pCentro = new JPanel(new BorderLayout());
-		JButton bRemove = new JButton("<");
+
+		pCentro.setBackground(SystemColor.textHighlight);
+		JButton bRemove = new JButton("");
+		bRemove.setOpaque(false);
+		bRemove.setIcon(new ImageIcon("src\\main\\resources\\remove.png"));
+		bRemove.setContentAreaFilled(false);
+		bRemove.setBorderPainted(false);
 		JLabel instructions = new JLabel("<html>Select a film and press '&gt' to send it to your list. Press '&lt' to send it back from the list</html>");		
 		instructions.setPreferredSize(new Dimension(50,50));
-		JButton bAdd = new JButton(">");
+		JButton bAdd = new JButton("");
+		bAdd.setOpaque(false);
+		bAdd.setContentAreaFilled(false);
+		bAdd.setIcon(new ImageIcon("src\\main\\resources\\add.png"));
+		bAdd.setBorderPainted(false);
 		pCentro.add(bRemove, "North");
 		pCentro.add(instructions, "Center");
 		pCentro.add(bAdd, "South");
@@ -138,6 +163,7 @@ public class CreateList extends JFrame {
 		JScrollPane scrollPane = new JScrollPane(lAllFilms);
 		scrollPane.setPreferredSize(new Dimension(150, 342));
 		JPanel pCentral = new JPanel();
+		pCentral.setBackground(SystemColor.textHighlight);
 		pCentral.add(scrollPane);
 		
 		getContentPane().add(pCentral, "West");
@@ -155,10 +181,10 @@ public class CreateList extends JFrame {
 		JScrollPane scrollPane1 = new JScrollPane(lNewList);
 		scrollPane1.setPreferredSize(new Dimension(150, 342));
 		JPanel pCentral1 = new JPanel();
+		pCentral1.setBackground(SystemColor.textHighlight);
 		pCentral1.add(scrollPane1);
 
 		getContentPane().add(pCentral1, "East");
-
 
 		bBack.addActionListener(new ActionListener() {
 			
@@ -191,9 +217,10 @@ public class CreateList extends JFrame {
 				}else {
 					logger.error("Saving list: "+listName+" to user: "+user.getLogin());					
 				}
+				dispose();
+				//controller.saveList(user, listName);
 				
 				logger.error("To UserUI, we can maybe do it to last window");
-				dispose();
 				UserUI ui = new UserUI(user, controller);
 				ui.setVisible(true);					
 			}

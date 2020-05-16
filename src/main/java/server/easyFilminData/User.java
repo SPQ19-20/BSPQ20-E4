@@ -19,6 +19,13 @@ import org.apache.log4j.PropertyConfigurator;
 
 import client.ui.MyLists;
 
+/**@package server.easyFilminData
+ * @brief This is the documentation for the Java package server.easyFilminData intended to work as the Domain Object Model (DOM) for the EasyFilmin project.
+ * This package is composed by several classes, Actor, Comment, Director, Film, FilmList, Genre, Message, User, Watched and WatchList.
+ * All of them are related and will be used as base for the project.
+ * The classes do also have JDO annotations, in order to be able to store and work with them.
+ */
+
 @PersistenceCapable(detachable = "true")
 public class User {
 	@PrimaryKey
