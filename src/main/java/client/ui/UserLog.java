@@ -2,9 +2,14 @@ package client.ui;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -15,6 +20,7 @@ import serialization.UserData;
 import server.easyFilminData.User;
 
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class UserLog extends JFrame{
@@ -31,7 +37,7 @@ public class UserLog extends JFrame{
 	public UserLog(EasyFilmController controller) {
 		
 		this.control = controller;
-		
+		getContentPane().setBackground(SystemColor.textHighlight);
 		this.setTitle( "EasyFilmin Login");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución
 		
@@ -50,21 +56,25 @@ public class UserLog extends JFrame{
 		
 		lblUser = new JLabel(resourceBundle.getString("username_label_msg"));
 		lblUser.setFont(new Font("Tahoma", Font.BOLD, 10));
-		lblUser.setBounds(72, 73, 80, 23);
+		lblUser.setForeground(SystemColor.menu);
+		lblUser.setBounds(40, 75, 80, 23);
 		getContentPane().add(lblUser);
 		
 		lblpass = new JLabel(resourceBundle.getString("password_label_msg"));
+		lblpass.setForeground(SystemColor.menu);
 		lblpass.setFont(new Font("Tahoma", Font.BOLD, 10));
-		lblpass.setBounds(72, 139, 80, 23);
+		lblpass.setBounds(40, 120, 80, 23);
 		getContentPane().add(lblpass);
 		
 		textField = new JTextField();
-		textField.setBounds(162, 72, 267, 23);
+		textField.setBounds(110, 75, 325, 23);
+		textField.setBackground(new Color(255,255,0));
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(162, 139, 267, 22);
+		passwordField.setBounds(110, 120, 325, 23);
+		passwordField.setBackground(new Color(255,255,0));
 		getContentPane().add(passwordField);
 		
 		/** This button allows the user to login into his/her account 
@@ -72,9 +82,12 @@ public class UserLog extends JFrame{
 		 */
 		
 		btnLogin = new JButton();
-		btnLogin.setText(resourceBundle.getString("login_buton_msg"));
+		btnLogin.setOpaque(false);
+		btnLogin.setIcon(new ImageIcon("src\\main\\resources\\Login.png"));
+		btnLogin.setContentAreaFilled(false);
+		btnLogin.setBorderPainted(false);
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnLogin.setBounds(329, 247, 100, 30);
+		btnLogin.setBounds(400, 200, 50, 50);
 		getContentPane().add(btnLogin);
 		
 		/** If no account is owned, with this button the user will be redirected to the registration window 
@@ -82,9 +95,12 @@ public class UserLog extends JFrame{
 		 */
 		
 		btnCreate = new JButton();
-		btnCreate.setText(resourceBundle.getString("register_buton_msg"));
+		btnCreate.setOpaque(false);
+		btnCreate.setIcon(new ImageIcon("src\\main\\resources\\SignUp.png"));
+		btnCreate.setContentAreaFilled(false);
+		btnCreate.setBorderPainted(false);
 		btnCreate.setFont(new Font("Tahoma", Font.BOLD, 10));
-		btnCreate.setBounds(40, 247, 100, 30);
+		btnCreate.setBounds(30, 200, 50, 50);
 		getContentPane().add(btnCreate);
 		
 		/** This part is the one that implements the listeners of the different buttons
@@ -118,6 +134,50 @@ public class UserLog extends JFrame{
 				UserReg u = new UserReg(controller);
 				u.setVisible(true);
 				setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+			}
+		});
+		
+		textField.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				textField.setBackground(new Color(255,255,255));
+				textField.setForeground(new Color(0,0,0));
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		passwordField.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				passwordField.setBackground(new Color(255,255,255));
+				passwordField.setForeground(new Color(0,0,0));
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 		
