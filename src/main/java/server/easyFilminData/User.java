@@ -5,6 +5,7 @@ package server.easyFilminData;
 import java.util.Set;
 
 
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.FetchGroup;
@@ -45,6 +46,13 @@ public class User {
 	WatchList watchList;
 	
 	static Logger logger = Logger.getLogger(User.class.getName());
+	
+	public User() {
+		this.nickname = "";
+		this.icon = "";
+		this.email = "";
+		this.password = "";
+	}
 	
 	public User(String nickname, String password) {
 		this.nickname = nickname;
@@ -88,7 +96,9 @@ public class User {
 	public String getEmail() {
 		return this.email;
 	}
-	
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	public void setEmail(String email) {
 		this.email = email;
 	}

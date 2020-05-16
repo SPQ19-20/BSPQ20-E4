@@ -2,6 +2,7 @@ package testing;
 
 import static org.junit.Assert.assertEquals;
 
+
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
@@ -22,6 +23,7 @@ import server.easyFilminData.Genre;
 public class FilmTest {
 	
 	private static Film film1;
+	private static Genre g1;
 	private static ArrayList<Actor> actors1 = new ArrayList<Actor>();
 	private static ArrayList<Director> directors1 = new ArrayList<Director>();
 	
@@ -40,7 +42,7 @@ public class FilmTest {
 		Director director1 = new Director("Director1");
 		actors1.add(actor1);
 		directors1.add(director1);
-		
+		g1 = new Genre("Thriller");
 		film1 = new Film("Titulo1", "Poster1", "Release1", "Description1", 1, new Genre("Genre1"), 2, actors1, directors1);
 		logger.info("Set up before class finished");
 	}
@@ -79,5 +81,13 @@ public class FilmTest {
 		Film film2 = new Film();
 		film2.rateFilm(2);
 		assertEquals(film1.getRating(), film2.getRating(), 1);
+	}
+	@Test
+	@PerfTest(invocations = 5000)
+	@Required(average = 20)
+	public void testGenre() {
+		Genre g2= new Genre();
+		g2.setName("Thriller");
+		assertEquals(g1.getName(),g2.getName());
 	}
 }

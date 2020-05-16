@@ -21,7 +21,12 @@ public class Director {
 
 	    protected String bday=null;
 
-	   
+	    public Director()
+	    {
+	        this.name = "";
+	        this.pic="";
+	        this.bday="";
+	    }
 
 	    public Director(String name, String pic, String bday)
 	    {
@@ -58,7 +63,7 @@ public class Director {
 	        this.name = name;
 	    }
 
-	    public void setPrice(String pic)
+	    public void setPic(String pic)
 	    {
 	        this.pic = pic;
 	    }

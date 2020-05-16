@@ -12,7 +12,11 @@ package server.easyFilminData;
 
 public class Genre {
 	protected String name;
-		
+	
+	public Genre() {
+		this.name="";
+	}	
+	
 	public Genre(String name) {
 		this.name=name;
 	}

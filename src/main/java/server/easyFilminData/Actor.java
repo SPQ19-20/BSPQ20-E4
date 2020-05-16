@@ -19,7 +19,12 @@ public class Actor {
 
 	    protected String bday=null;
 
-	   
+	    public Actor()
+	    {
+	        this.name = "";
+	        this.pic="";
+	        this.bday="";
+	    }
 
 	    public Actor(String name, String pic, String bday)
 	    {
@@ -62,7 +67,7 @@ public class Actor {
 	        this.name = name;
 	    }
 
-	    public void setPrice(String pic)
+	    public void setPic(String pic)
 	    {
 	        this.pic = pic;
 	    }
