@@ -2,6 +2,7 @@ package server.easyFilminData;
 
 
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 
 import org.apache.log4j.Logger;
 
@@ -13,6 +14,7 @@ import org.apache.log4j.PropertyConfigurator;
 import java.util.ArrayList;
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
 
 
 
@@ -49,6 +51,7 @@ public class Film implements Comparable<Film> {
 	/**
 	 * This variable represents the genre to which a film belongs
 	 */
+	@Persistent(defaultFetchGroup="true")
 	protected Genre genre;
 	
 	/**
@@ -59,11 +62,15 @@ public class Film implements Comparable<Film> {
 	/**
 	 * This variable represents the actors that have starred in a film
 	 */
+	@Persistent(defaultFetchGroup="true")
+	@Join
 	protected ArrayList<Actor> actors;
 	
 	/**
 	 * This variable represents the directors that have taken part in a film
 	 */
+	@Persistent(defaultFetchGroup="true")
+	@Join
 	protected ArrayList<Director> director;
 	
 	/**

@@ -118,6 +118,7 @@ public class FilmListUI extends JFrame{
 				if (e.getClickCount()==2){
 					if (liFilms.getSelectedIndex()!= -1) {
 						selectPos = liFilms.locationToIndex(e.getPoint());
+						dispose();
 						toFilmUI(us);			
 					}
 				}
