@@ -52,12 +52,14 @@ public class CreateList extends JFrame {
 	private boolean editing;
 	
 	static Logger logger = Logger.getLogger(CreateList.class.getName());
-
-//	public CreateList(UserData user, EasyFilmController controller, String listName) {
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
 	
-	public CreateList(UserData user, EasyFilmController controller) {
-		
+	/** This class will be used to create an empty list and to edit an old one
+	 * @param user - UserData for the user that's logged
+	 * @param controller - controller 
+	 * @param listName - Name of the list to be edited / "null" if new
+	 */
+	public CreateList(UserData user, EasyFilmController controller, String listName) {		
 		/** This is the part that contains the info of the window
 		 * 
 		 */
@@ -82,16 +84,18 @@ public class CreateList extends JFrame {
 		}
 		
 		//NORTH PART
-//		JPanel pNorte = new JPanel();
-//		JLabel l1 = new JLabel("Available Films                                   ");
-//		JLabel l2 = new JLabel("                                	 Your New List");
-//		pNorte.add(l1, "West");
-//		pNorte.add(l2, "East");
-		available = new JLabel(resourceBundle.getString("available_films_label"));
-		available.setFont(new Font("Tahoma", Font.BOLD, 10));
-		available.setBounds(40, 10, 200, 20);
-		getContentPane().add(available);
 		
+		JPanel pNorte = new JPanel();
+		logger.error("Mini problema de las indentaciones con AvailableFilms/your New List");
+		JLabel l1 = new JLabel("Available Films                                   ");
+		JLabel l2 = new JLabel("                                	 Your New List");
+//		JLabel l1 = new JLabel(resourceBundle.getString("available_films_label"));
+//		JLabel l2 = new JLabel(resourceBundle.getString("your_new_list_label"));
+		pNorte.add(l1, "West");
+		pNorte.add(l2, "East");
+		l1.setFont(new Font("Tahoma", Font.BOLD, 10));
+		l2.setFont(new Font("Tahoma", Font.BOLD, 10));
+		logger.error("Put this strings directly from resourceBundler");
 		getContentPane().add(pNorte,"North");
 		
 		//SOUTH PART
@@ -99,40 +103,30 @@ public class CreateList extends JFrame {
 		JButton bBack = new JButton("Back");
 		JTextField newListName = new JTextField();
 		newListName.setPreferredSize(new Dimension(100 ,30));
-		JButton bSave = new JButton("Save");
+		JButton bSave = new JButton(resourceBundle.getString("save_buton"));
+		bSave.setFont(new Font("Tahoma", Font.BOLD, 10));
 		pSur.add(bBack);
 		pSur.add(newListName);
-		pSur.add(bSave);
-		
-//		getContentPane().add(pSur,"South");
-		newList = new JLabel(resourceBundle.getString("your_new_list_label"));
-		newList.setFont(new Font("Tahoma", Font.BOLD, 10));
-		newList.setBounds(311, 10, 200, 20);
-		getContentPane().add(newList);
+		pSur.add(bSave);		 
+
+		getContentPane().add(pSur,"South");
 		
 		/** This buttons allow to move films to one list to the other
 		 * 
 		 */
 		
-		
 		//CENTER PART
 		JPanel pCentro = new JPanel(new BorderLayout());
 		JButton bRemove = new JButton("<");
-		JLabel instructions = new JLabel("<html>Select a film and press '&gt' to send it to your list. Press '&lt' to send it back from the list</html>");
-		
+		JLabel instructions = new JLabel("<html>Select a film and press '&gt' to send it to your list. Press '&lt' to send it back from the list</html>");		
 		instructions.setPreferredSize(new Dimension(50,50));
 		JButton bAdd = new JButton(">");
 		pCentro.add(bRemove, "North");
 		pCentro.add(instructions, "Center");
 		pCentro.add(bAdd, "South");
 		
-//		getContentPane().add(pCentro,"Center");
+		getContentPane().add(pCentro,"Center");
 
-		save = new JButton(resourceBundle.getString("save_buton"));
-		save.setFont(new Font("Tahoma", Font.BOLD, 10));
-		save.setBounds(245, 310, 60, 30);
-		getContentPane().add(save);
-		
 		//WEST PART
 		dlmAllFilms = new DefaultListModel<>();
 		lAllFilms = new JList<String>(dlmAllFilms);
@@ -173,12 +167,12 @@ public class CreateList extends JFrame {
 				dispose();
 				if(editing) {
 					logger.error("Change MyLists constructor from Al<String> to Al<FilmListData> and make the conversion inside");
-					ArrayList<String> flists = new ArrayList<>();
+//					ArrayList<String> flists = new ArrayList<>();
 					ArrayList<FilmListData> lists = controller.getAllLists(user.getLogin());
-					for(int i=0; i<lists.size();i++) {
-						flists.add(lists.get(i).getName());
-					}
-					MyLists mui = new MyLists(user, flists, controller);
+//					for(int i=0; i<lists.size();i++) {
+//						flists.add(lists.get(i).getName());
+//					}
+					MyLists mui = new MyLists(user, lists, controller);
 					mui.setVisible(true);
 				}else {
 					UserUI ui = new UserUI(user, controller);
@@ -192,7 +186,16 @@ public class CreateList extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				saveList(newListName.getText(), newList);
+				if(!editing) {
+					logger.error("Saving new list: "+newListName.getText()+" to user: "+user.getLogin());					
+				}else {
+					logger.error("Saving list: "+listName+" to user: "+user.getLogin());					
+				}
+				
 				logger.error("To UserUI, we can maybe do it to last window");
+				dispose();
+				UserUI ui = new UserUI(user, controller);
+				ui.setVisible(true);					
 			}
 		});
 		
@@ -253,12 +256,16 @@ public class CreateList extends JFrame {
 			newList = new FilmListData();
 			newList.setFilmList(new ArrayList<>());
 		}
+		dlmNewList.addElement(dlmAllFilms.get(pos));
+		dlmAllFilms.remove(pos);
 		newList.getFilmList().add(allFilms.get(pos));
 		allFilms.remove(pos);
 		repaint();
 		revalidate();
 	}
 	void removeFromList(int pos) {
+		dlmAllFilms.addElement(dlmNewList.get(pos));
+		dlmNewList.remove(pos);
 		allFilms.add(newList.getFilmList().get(pos));
 		newList.getFilmList().remove(pos);
 		repaint();
@@ -274,6 +281,13 @@ public class CreateList extends JFrame {
 			newList.setName(name);
 		}
 		newList.setFilmList(list.getFilmList());
+		try {
+			controller.saveFilmList(user, newList);
+		}catch(Exception e) {
+			e.getStackTrace();
+		}
+
+
 	}
 
 	public static void main(String[] args) {

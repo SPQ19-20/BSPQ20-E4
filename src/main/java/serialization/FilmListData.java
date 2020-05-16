@@ -21,8 +21,8 @@ public class FilmListData {
 	public FilmListData(FilmList fl) {
 		this.name = fl.getName();
 		this.filmList = new ArrayList<>();
-		for(Film f: fl.getFilmList()) {
-			filmList.add(f.getTitle());
+		if(fl.getFilmList()!=null) {
+			for(Film f: fl.getFilmList())filmList.add(f.getTitle());
 		}
 	}
 

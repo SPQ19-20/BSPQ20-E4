@@ -47,13 +47,12 @@ public class MyLists extends JFrame{
 	 * @param lists - lists of that user
 	 * @param cont - controller 
 	 */
-	public MyLists(UserData usData, ArrayList<String> lists, EasyFilmController cont) {
+	public MyLists(UserData usData, ArrayList<FilmListData> lists, EasyFilmController cont) {
 		this.controller = cont;
 		
 		/** This is the part that contains the info of the window
 		 * 
-		 */
-		
+		 */		
 		logger.warn("This lists parameter should be a ArrayList<FilmListData>, but we are now simplifying things");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(500,450);
@@ -69,7 +68,7 @@ public class MyLists extends JFrame{
 		dlmLists = new DefaultListModel<>();
 		list = new JList<String>(dlmLists);
 		if(lists != null && !lists.isEmpty()) {
-			for(int i=0; i<lists.size();i++) dlmLists.addElement(lists.get(i));		
+			for(int i=0; i<lists.size();i++) dlmLists.addElement(lists.get(i).getName());		
 			logger.info("Displaying Lists of User "+usData.getLogin() );
 			logger.info("Lists of User: ");
 			for(int i=0; i<lists.size();i++)logger.info(lists.get(i));	
@@ -150,8 +149,8 @@ public class MyLists extends JFrame{
 		for(int i = 0; i<5;i++) {
 			a.add("Lista"+i);	
 		}
-		MyLists ui = new MyLists(u,a,e);
-		ui.setVisible(true);
+//		MyLists ui = new MyLists(u,a,e);
+//		ui.setVisible(true);
 	}
 
 }

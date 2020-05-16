@@ -164,8 +164,8 @@ public class User {
 		this.lists = lists;
 	}
 	
-	public void createFilmList(String listName) {
-		FilmList f = new FilmList(listName);
+	public void addFilmList(FilmList f) {
+		this.lists.add(f);
 	}
 	
 	public Set<Message> getMessages() {return this.messages;}

@@ -211,6 +211,56 @@ public class Server {
 		return flData;
 	}
 
+	@POST
+	@Path("/saveFilmList/{nick}")
+	public Response saveFilmList(FilmListData flData, @PathParam("nick") String nick) {
+		boolean editing = false;
+		FilmList newFL = null;
+		User u = iDAO.loadUser(nick);
+		ArrayList<FilmList> fl = u.getLists();
+		logger.error("Here arrives !: ");
+		for(FilmList list: fl) {
+			if(flData.getName().equals(list.getName())) { /**< We see if it is a new or a already created filmList */
+				newFL = list;
+				fl.remove(list);
+				editing = true;
+			}else {
+				newFL = new FilmList(flData);				
+				logger.error("NEW FL : "+newFL.getName());
+			}
+		}
+		for(int i = 0;i<flData.getFilmList().size(); i++) {
+			Film film = iDAO.loadFilm(flData.getFilmList().get(i));
+			if(editing){
+				for(Film ff : newFL.getFilmList()) {
+					if(!ff.getTitle().equals(film.getTitle())) {						
+						newFL.addFilm(film);
+						logger.error("Adding film :"+film.getTitle());
+					}
+				}			
+			}else {
+				newFL.addFilm(film);				
+				logger.error("Adding film :"+film.getTitle());
+			}
+		}
+		if(editing) {
+			fl.add(newFL);
+			u.setLists(fl);
+		}else {
+			u.addFilmList(newFL);			
+		}
+
+		logger.error("LISTS UPDATED--> new list is :"+newFL.getName());
+		iDAO.saveUser(u);
+		return Response.ok().build();			
+//		try {
+//			iDAO.saveUser(u);
+//			return Response.ok().build();			
+//		}catch(Exception e) {
+//			return Response.status(Status.BAD_REQUEST).entity("NOPE").build();			
+//		}
+	}
+
 
 	/** Adds a given film to a particular list (REGULAR LIST NOT IMPLEMENTED YET) 
 	 * @param listName - the name of the list is passed implicitly as a String

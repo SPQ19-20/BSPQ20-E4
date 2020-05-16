@@ -26,6 +26,7 @@ public class UserData {
 		lists = new ArrayList<>();
 		if(u.getLists()!= null){
 			for(FilmList f : u.getLists()) {
+				//FilmListData fl = new FilmListData(f);
 				this.lists.add(f.getName()); 
 			}
 		}

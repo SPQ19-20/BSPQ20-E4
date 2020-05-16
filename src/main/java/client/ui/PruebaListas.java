@@ -163,7 +163,7 @@ public class PruebaListas extends JFrame {
 					for(int i=0; i<lists.size();i++) {
 						flists.add(lists.get(i).getName());
 					}
-					MyLists mui = new MyLists(user, flists, controller);
+					MyLists mui = new MyLists(user, lists, controller);
 					mui.setVisible(true);
 				}else {
 					UserUI ui = new UserUI(user, controller);
@@ -239,6 +239,7 @@ public class PruebaListas extends JFrame {
 		repaint();
 		revalidate();
 	}
+	
 	void removeFromList(int pos) {
 		allFilms.add(newList.getFilmList().get(pos));
 		newList.getFilmList().remove(pos);

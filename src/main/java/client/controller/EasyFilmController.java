@@ -123,7 +123,6 @@ public class EasyFilmController {
 		ArrayList<FilmListData> lists = getAllListsTarget.request(MediaType.APPLICATION_JSON).get(genericType);
 		return lists;
 		}
-
 	
 	/** RETRIEVES a FilmData object from the server
 	 * @param name - title of the film
@@ -136,6 +135,9 @@ public class EasyFilmController {
 		return film;
 	}
 
+	/** RETRIEVES all films in the DB
+	 * @return ArrayList<String> with all films
+	 */
 	public ArrayList<String> getAllFilms() {
 		WebTarget getAllFilmsWebTarget = webTarget.path("server/getAllFilms"); 
 		GenericType<ArrayList<String>> genericType = new GenericType<ArrayList<String>>() {};
@@ -157,6 +159,24 @@ public class EasyFilmController {
 		return film;
 	}
 
+	/** Saves a given list for a particular user in the DB 
+	 * @param userData - user 
+	 * @param listName - listName FilmListData
+	 */
+	public void saveFilmList(UserData userData, FilmListData list) {
+		WebTarget saveFilmListWebTarget = webTarget.path("server/saveFilmList"+"/"+userData.getLogin());
+		Invocation.Builder invocationBuilder = saveFilmListWebTarget.request(MediaType.APPLICATION_JSON);
+		logger.error("There is nothing happening after this: ");
+		
+		Response response = invocationBuilder.post(Entity.entity(list, MediaType.APPLICATION_JSON));
+		if (response.getStatus() != Status.OK.getStatusCode()) {
+			logger.error("saveFilmList operation failed");
+		} else {
+			logger.error("saveFilmList operation succeeded");
+		}
+	}
+	
+	
 	/** This methods adds a given film to a list unless this list is already in the list
 	 * or if that film is in watchList and we are adding to watched, this will delete the movie from
 	 * watchList

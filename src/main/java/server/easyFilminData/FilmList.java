@@ -5,6 +5,8 @@ import javax.jdo.annotations.Persistent;
 
 import org.apache.log4j.Logger;
 
+import serialization.FilmListData;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -43,6 +45,14 @@ public class FilmList {
 	 */
 	public FilmList(String name) {
 		this.name = name;
+		this.filmList = new ArrayList<Film>();
+	}
+
+	/** We create a FilmList out of a FLData, but we dont initialize the filmList here. We do it in Server.java
+	 * @param fl
+	 */
+	public FilmList(FilmListData fl) {
+		this.name = fl.getName();
 		this.filmList = new ArrayList<Film>();
 	}
 	
