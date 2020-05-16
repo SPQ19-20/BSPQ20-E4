@@ -5,6 +5,12 @@ import client.ui.UserLog;
 import server.easyFilminDAO.EasyFilminJDO;
 import server.easyFilminData.User;
 
+/**@package client.main
+ * @brief This is the documentation for the Java package client.main intended to work as a wrapper for the Domain Object Model (DOM) of the EasyFilmin Project.
+ * This package is composed by 2 classes, EasyFilmin and EasyFilminAdmin.
+ * The purpose of this classes is to run the User interface or the Admin interface.
+ */
+
 /** This class is the main class of our project, gets the arguments of the 
  * @author BSPQ-E4
  *

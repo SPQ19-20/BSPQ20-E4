@@ -38,6 +38,12 @@ import org.apache.log4j.PropertyConfigurator;
 
 import client.controller.EasyFilmController;
 
+/**@package server
+ * @brief This is the documentation for the Java package server intended to work as the server side for the EasyFilmin Project.
+ * This package is composed by 1 class, Server. 
+ * The purpose of server is to offer a series of methods that communicate with the DAO layer and respond to any requests sent by the client.
+ * Mainly consists on methods to handle login/register requests and film manipulation.
+ */
 
 /**
  * This class is in charge of handling the calls from the controller and cast them to the Data Access Layer

@@ -23,6 +23,13 @@ import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**@package client.ui
+ * @brief This is the documentation for the Java package client.ui intended to work as an user interface for the EasyFilmin Project client side.
+ * This package is composed by several classes, AdminUI, CreateList, FilmListUI, MyLists, UserLog, UserReg and UserUI.
+ * Each class represents one different window. The user will be able to navigate through these with the interface
+ * There is one class (AdminUI) only for the administrator. Ordinary users will not see it.
+ */
+
 public class UserLog extends JFrame{
 	private EasyFilmController control;
 	private JTextField textField;

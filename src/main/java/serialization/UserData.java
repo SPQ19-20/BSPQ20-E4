@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import server.easyFilminData.FilmList;
 import server.easyFilminData.User;
 
+/**@package serialization
+ * @brief This is the documentation for the Java package serialization intended to work as a wrapper for the Domain Object Model (DOM) of the EasyFilmin Project.
+ * This package is composed by several classes, ActorData, CommentData, DirectorData, FilmData, FilmListData, MessageData and UserData.
+ * The purpose of this classes is to be able to send them from client to server or server to client.
+ */
+
 public class UserData {
 
     private String login;

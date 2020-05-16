@@ -52,7 +52,7 @@ public interface IEasyFilminDAO {
 	 * Updates a user in the DB
 	 * @param user The user to be updated
 	 */
-	public void updateUser(User user);
+	public void updateUser(User user /**< [in] The user object, whose data will be used to update the same user in the DB */);
 	
 	/**
 	 * Stores the actor received in a Database. 

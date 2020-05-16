@@ -26,6 +26,12 @@ import org.apache.log4j.PropertyConfigurator;
 import client.ui.FilmListUI;
 import client.ui.UserUI;
 
+/**@package client.controller
+ * @brief This is the documentation for the Java package client.controller intended to work as a layer for all the client side methods that communicate with the server.
+ * This package is composed by 1 class EasyFilmController.
+ * The purpose of this classes is to be centralize all the methods that require the server side to work.
+ */
+
 public class EasyFilmController {
 
 	private Client client; 
