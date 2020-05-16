@@ -74,13 +74,13 @@ public class UserLog extends JFrame{
 		getContentPane().add(lblpass);
 		
 		textField = new JTextField();
-		textField.setBounds(110, 75, 325, 23);
+		textField.setBounds(150, 75, 325, 23);
 		textField.setBackground(new Color(255,255,0));
 		getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(110, 120, 325, 23);
+		passwordField.setBounds(150, 120, 325, 23);
 		passwordField.setBackground(new Color(255,255,0));
 		getContentPane().add(passwordField);
 		

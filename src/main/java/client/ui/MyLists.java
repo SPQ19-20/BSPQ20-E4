@@ -99,7 +99,7 @@ public class MyLists extends JFrame{
 		 */
 
 		back = new JButton("");
-		back.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
+		back.setIcon(new ImageIcon("src\\main\\resources\\BackSmall.png"));
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
 

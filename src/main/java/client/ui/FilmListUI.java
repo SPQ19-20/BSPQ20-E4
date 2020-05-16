@@ -59,7 +59,7 @@ public class FilmListUI extends JFrame{
 		
 		//Buttons
 		backbtn = new JButton("");
-		backbtn.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
+		backbtn.setIcon(new ImageIcon("src\\main\\resources\\BackSmall.png"));
 		backbtn.setOpaque(false);
 		backbtn.setContentAreaFilled(false);
 		backbtn.setBorderPainted(false);
