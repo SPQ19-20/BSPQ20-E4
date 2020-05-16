@@ -25,6 +25,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.awt.event.ActionEvent;
 
 public class CreateList extends JFrame {
@@ -50,7 +53,10 @@ public class CreateList extends JFrame {
 	
 	static Logger logger = Logger.getLogger(CreateList.class.getName());
 
-	public CreateList(UserData user, EasyFilmController controller, String listName) {
+//	public CreateList(UserData user, EasyFilmController controller, String listName) {
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
+	
+	public CreateList(UserData user, EasyFilmController controller) {
 		
 		/** This is the part that contains the info of the window
 		 * 
@@ -76,11 +82,15 @@ public class CreateList extends JFrame {
 		}
 		
 		//NORTH PART
-		JPanel pNorte = new JPanel();
-		JLabel l1 = new JLabel("Available Films                                   ");
-		JLabel l2 = new JLabel("                                	 Your New List");
-		pNorte.add(l1, "West");
-		pNorte.add(l2, "East");
+//		JPanel pNorte = new JPanel();
+//		JLabel l1 = new JLabel("Available Films                                   ");
+//		JLabel l2 = new JLabel("                                	 Your New List");
+//		pNorte.add(l1, "West");
+//		pNorte.add(l2, "East");
+		available = new JLabel(resourceBundle.getString("available_films_label"));
+		available.setFont(new Font("Tahoma", Font.BOLD, 10));
+		available.setBounds(40, 10, 200, 20);
+		getContentPane().add(available);
 		
 		getContentPane().add(pNorte,"North");
 		
@@ -94,7 +104,15 @@ public class CreateList extends JFrame {
 		pSur.add(newListName);
 		pSur.add(bSave);
 		
-		getContentPane().add(pSur,"South");
+//		getContentPane().add(pSur,"South");
+		newList = new JLabel(resourceBundle.getString("your_new_list_label"));
+		newList.setFont(new Font("Tahoma", Font.BOLD, 10));
+		newList.setBounds(311, 10, 200, 20);
+		getContentPane().add(newList);
+		
+		/** This buttons allow to move films to one list to the other
+		 * 
+		 */
 		
 		
 		//CENTER PART
@@ -108,7 +126,12 @@ public class CreateList extends JFrame {
 		pCentro.add(instructions, "Center");
 		pCentro.add(bAdd, "South");
 		
-		getContentPane().add(pCentro,"Center");
+//		getContentPane().add(pCentro,"Center");
+
+		save = new JButton(resourceBundle.getString("save_buton"));
+		save.setFont(new Font("Tahoma", Font.BOLD, 10));
+		save.setBounds(245, 310, 60, 30);
+		getContentPane().add(save);
 		
 		//WEST PART
 		dlmAllFilms = new DefaultListModel<>();

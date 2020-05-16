@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JTextField;
 
@@ -23,6 +25,9 @@ public class UserLog extends JFrame{
 	private JButton btnCreate;
 	private JLabel lblUser;
 	private JLabel lblpass;
+	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
+	
 	public UserLog(EasyFilmController controller) {
 		
 		this.control = controller;
@@ -43,12 +48,12 @@ public class UserLog extends JFrame{
 		 * 
 		 */
 		
-		lblUser = new JLabel("Username");
+		lblUser = new JLabel(resourceBundle.getString("username_label_msg"));
 		lblUser.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblUser.setBounds(72, 73, 80, 23);
 		getContentPane().add(lblUser);
 		
-		lblpass = new JLabel("Password");
+		lblpass = new JLabel(resourceBundle.getString("password_label_msg"));
 		lblpass.setFont(new Font("Tahoma", Font.BOLD, 10));
 		lblpass.setBounds(72, 139, 80, 23);
 		getContentPane().add(lblpass);
@@ -67,7 +72,7 @@ public class UserLog extends JFrame{
 		 */
 		
 		btnLogin = new JButton();
-		btnLogin.setText("Login");
+		btnLogin.setText(resourceBundle.getString("login_buton_msg"));
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnLogin.setBounds(329, 247, 100, 30);
 		getContentPane().add(btnLogin);
@@ -77,7 +82,7 @@ public class UserLog extends JFrame{
 		 */
 		
 		btnCreate = new JButton();
-		btnCreate.setText("Register");
+		btnCreate.setText(resourceBundle.getString("register_buton_msg"));
 		btnCreate.setFont(new Font("Tahoma", Font.BOLD, 10));
 		btnCreate.setBounds(40, 247, 100, 30);
 		getContentPane().add(btnCreate);

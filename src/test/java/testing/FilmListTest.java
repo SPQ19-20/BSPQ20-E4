@@ -3,6 +3,8 @@ package testing;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import junit.framework.JUnit4TestAdapter;
 import server.easyFilminData.Film;
@@ -29,6 +31,8 @@ public class FilmListTest {
 	private static FilmList list1;
 	private FilmList list2;
 	private static FilmList list3;
+	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
 	
 	static Logger logger = Logger.getLogger(FilmListTest.class.getName());
 	@Rule

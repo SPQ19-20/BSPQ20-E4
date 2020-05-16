@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
@@ -37,8 +39,8 @@ import server.easyFilminData.Watched;
 
 public class EasyFilminJDO implements IEasyFilminDAO{
 	
-	private PersistenceManagerFactory pmf = null;
-
+	private PersistenceManagerFactory pmf = null; /** This variable declares a PMF, which is initialized by the constructor as soon as an instance of the class is created */
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault()); /** This variable sets the resourceBundle to the default language configured in the PC */
 	static Logger logger = Logger.getLogger(EasyFilminJDO.class.getName());
 
 	private ArrayList<Film>  allFilms;
@@ -48,6 +50,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 	 */
 	public EasyFilminJDO() {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties"); 
+		//resourceBundle = ResourceBundle.getBundle("SystemMessages",	Locale.forLanguageTag("en"));
 	}
 
 	
@@ -58,7 +61,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		Transaction tx = null;
 		
 		try {
-			logger.info("Insert users in the DB");			
+			logger.info(resourceBundle.getString("persisting_users_msg"));			
 			//Get the Persistence Manager
 			pm = pmf.getPersistenceManager();
 			pm.getFetchPlan().setMaxFetchDepth(4);
@@ -72,10 +75,10 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 			
 			//End the transaction
 			tx.commit();
-			logger.debug("Changes committed");
+			logger.info(resourceBundle.getString("persisted_users_msg"));
 			
 		} catch (Exception ex) {
-			logger.error(" $ Error storing objects in the DB: " + ex.getMessage());
+			logger.error(resourceBundle.getString("persisting_users_error") + ex.getMessage());
 			ex.printStackTrace();
 		
 		}finally {
@@ -100,7 +103,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		Transaction tx = null;
 		
 		try {
-			logger.info("- Retrieving users");			
+			logger.info(resourceBundle.getString("retrieving_users_msg"));			
 			//Get the Persistence Manager
 			pm = pmf.getPersistenceManager();
 			pm.getFetchPlan().setMaxFetchDepth(4);
@@ -122,7 +125,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 			
 			return duser;
 		} catch (Exception ex) {
-			logger.error(" $ Error retrieving users using a 'Query': " + ex.getMessage());
+			logger.error(resourceBundle.getString("retrieving_exception_msg") + ex.getMessage());
 			
 		} finally {
 			if (tx != null && tx.isActive()) {
@@ -144,7 +147,7 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		Transaction tx = null;
 		
 		try {
-			logger.info("- Deleting users");			
+			logger.info(resourceBundle.getString("deleting_users_msg"));			
 			//Get the Persistence Manager
 			pm = pmf.getPersistenceManager();
 			//pm.getFetchPlan().setMaxFetchDepth(4);
@@ -1244,6 +1247,51 @@ try {
 			pm.close();
 		}
 	}
+		
+	}
+
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = null;
+		Transaction tx = null;
+		
+		try {
+			logger.info(resourceBundle.getString("retrieving_users_msg"));			
+			//Get the Persistence Manager
+			pm = pmf.getPersistenceManager();
+			pm.getFetchPlan().setMaxFetchDepth(4);
+			//Obtain the current transaction
+			tx = pm.currentTransaction();		
+			//Start the transaction
+			tx.begin();
+			
+			Query<User> query = pm.newQuery(User.class);
+			query.setFilter("nickname == '" + user.getNickname() + "'"); //we find the same user in the DB to update him
+			query.setUnique(true);
+			@SuppressWarnings("unchecked")
+			User userLoaded = (User) query.execute();
+
+			//Aquí haz los cambios que quieras a userLoaded (getters y setters o add, lo que sea)
+			//Si necesitas aádir algún parametro más pues lo pasas y ya, lo que necesites
+			
+			
+			//Todos los cambios que quieras que se guarden se deben hacer antes del tx.commit()
+			tx.commit();
+			
+		} catch (Exception ex) {
+			logger.error(resourceBundle.getString("retrieving_exception_msg") + ex.getMessage());
+			
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
 		
 	}
 	

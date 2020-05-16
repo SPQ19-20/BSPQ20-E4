@@ -31,6 +31,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 
 public class UserUI extends JFrame{
@@ -43,6 +45,7 @@ public class UserUI extends JFrame{
 	private JButton misListas;
 	private EasyFilmController controller;
 	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
 	static Logger logger = Logger.getLogger(UserUI.class.getName());
 	
 	public UserUI(UserData user, EasyFilmController controller) {
@@ -51,7 +54,7 @@ public class UserUI extends JFrame{
 		 * 
 		 */
 		
-		this.setTitle( "EasyFilmin User");
+		this.setTitle(resourceBundle.getString("title_userUI"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución	
 		setSize(740,480);
 		setLocation(600,175);
@@ -73,12 +76,12 @@ public class UserUI extends JFrame{
 		pSuperior.add(pBusqueda, BorderLayout.EAST);
 		getContentPane().add(pSuperior, BorderLayout.NORTH);		
 		
-		nuevaLista = new JButton("New List");
+		nuevaLista = new JButton(resourceBundle.getString("newList_buton_msg"));
 		nuevaLista.setFont(new Font("Arial", Font.PLAIN, 15));
 		getContentPane().add(nuevaLista);
 		
 		
-		misListas = new JButton("My Lists");
+		misListas = new JButton(resourceBundle.getString("myList_buton_msg"));
 		misListas.setBounds(100, 242, 150, 30);
 		getContentPane().add(misListas);
 		

@@ -3,6 +3,8 @@ package client.ui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -35,6 +37,9 @@ public class UserReg extends JFrame {
 	private JLabel lblUser;
 	private JLabel lblpass;
 	private JLabel lblEmail;
+	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
+	
 	public UserReg(EasyFilmController controller) {
 		this.controller = controller;
 		
@@ -53,17 +58,17 @@ public class UserReg extends JFrame {
 		 * 
 		 */
 		
-		lblUser = new JLabel("Username");
+		lblUser = new JLabel(resourceBundle.getString("username_label_msg"));
 		lblUser.setFont(new Font("Verdana", Font.BOLD, 12));
 		lblUser.setBounds(72, 73, 80, 23);
 		getContentPane().add(lblUser);
 		
-		lblpass = new JLabel("Password");
+		lblpass = new JLabel(resourceBundle.getString("password_label_msg"));
 		lblpass.setFont(new Font("Verdana", Font.BOLD, 12));
 		lblpass.setBounds(72, 106, 80, 23);
 		getContentPane().add(lblpass);
 		
-		lblEmail = new JLabel("Email");
+		lblEmail = new JLabel(resourceBundle.getString("email_label_msg"));
 		lblEmail.setFont(new Font("Verdana", Font.BOLD, 12));
 		lblEmail.setBounds(72, 141, 80, 23);
 		getContentPane().add(lblEmail);
@@ -102,7 +107,7 @@ public class UserReg extends JFrame {
 		 */
 		
 		bRegister = new JButton();
-		bRegister.setText("Create");
+		bRegister.setText(resourceBundle.getString("create_buton_msg"));
 		bRegister.setFont(new Font("Verdana", Font.BOLD, 12));
 		bRegister.setBounds(300, 208, 100, 30);
 		getContentPane().add(bRegister);

@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class AdminUI extends JFrame {
 	/**
@@ -18,6 +20,9 @@ public class AdminUI extends JFrame {
 	private JTextField fileName;
 	private JButton addArchive;
 	private EasyFilmController controller;
+	
+	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
+	
 	public AdminUI(EasyFilmController e) {
 		this.controller = e;
 		
@@ -25,7 +30,7 @@ public class AdminUI extends JFrame {
 		 * 
 		 */
 		
-		this.setTitle( "EasyFilmin Login");
+		this.setTitle(resourceBundle.getString("admin_title"));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución
 		setSize(600,250);
 		setLocation(600,175);
@@ -38,7 +43,7 @@ public class AdminUI extends JFrame {
 		getContentPane().add(fileName);
 		fileName.setColumns(10);
 		
-		addArchive = new JButton("Add File");
+		addArchive = new JButton(resourceBundle.getString("add_file_buton_msg"));
 		addArchive.setFont(new Font("Tahoma", Font.BOLD, 10));
 		addArchive.setBounds(50, 75, 150, 30);
 		getContentPane().add(addArchive);

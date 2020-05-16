@@ -191,38 +191,14 @@ public class EasyFilminJDOTest {
 	
 	
 	@Test
-	@PerfTest(invocations = 5)
+	@PerfTest(invocations = 10)
 	@Required(average = 5000)
 	public void startBDgetAllFilmsTest() {
 		iDAO = new EasyFilminJDO();
 		iDAO.startBD();
 		List<Film> alFilms = iDAO.getAllFilms();
-		String[] values = null;
-		CSVReader readFilms = null;
-		try {
-			readFilms = new CSVReaderBuilder(new FileReader("src\\main\\resources\\filmsPRUEBA.csv")).withSkipLines(1).build();
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} 
-	    int count = 0;
-		try {
-			System.out.println("Working directory = " + System.getProperty("user.dir"));
 		
-			try {
-				while ((values = readFilms.readNext()) != null){
-				count = count + 1;
-				logger.error("Count : " + count);
-				}
-			} catch (CsvValidationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} catch (IOException e) {
-			logger.error("CSV FILE NOT FOUND");
-			e.printStackTrace();
-		}
-		assertEquals(alFilms.size(), count - 1);
+		assertEquals(alFilms.size(), 3);
 		iDAO.cleanBD();
 		logger.debug("get All Films tested");
 	}
