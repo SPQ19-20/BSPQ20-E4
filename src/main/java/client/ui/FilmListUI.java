@@ -83,13 +83,13 @@ public class FilmListUI extends JFrame{
 		
 		dlmFilms = new DefaultListModel<>();
 		liFilms = new JList<String>(dlmFilms);
-		/*if(!filmList.getFilmList().isEmpty()) {
+		if(!filmList.getFilmList().isEmpty()) {
 			for(String f: filmList.getFilmList()) dlmFilms.addElement(f);		
 			logger.info("Displaying FILMS of FilmList "+filmList.getName() );
 		}else {
 			//This logger doesnt work yet
 			logger.info("No Films in this FilmList yet");
-		}*/
+		}
 		liFilms.setModel(dlmFilms);
 		JPanel pCentral = new JPanel();
 		pCentral.setBackground(SystemColor.textHighlight);

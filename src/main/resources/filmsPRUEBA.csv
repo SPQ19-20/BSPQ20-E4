@@ -1,5 +1,4 @@
 ﻿Title,Poster,Release Year,Description,Duration,Genre,Rating,Actors,Director
-Ad Astra,-,2019,An incredible journey through humanity,120,Drama,2.5,Brad Pitt|Omar Montes,James Gray
-La La Land,-,2016,A sweet musical,140,Drama,2.5,Ryan Gosling|Emma Stone,Demien Chazelle
-Whiplash,-,2015,A tough professor wants to teach badly,160,Drama,2.5,J.K. Simmons|Caperucita Roja,Demien Chazelle
-
+Ad Astra,src\\main\\resources\\Ad_Astra.png,2019,An incredible journey through humanity,120,Drama,2.5,Brad Pitt|Omar Montes,James Gray
+La La Land,src\\main\\resources\\La_La_Land.png,2016,A sweet musical,140,Drama,2.5,Ryan Gosling|Emma Stone,Demien Chazelle
+Whiplash,src\\main\\resources\\Whiplash.png,2015,A tough professor wants to teach badly,160,Drama,2.5,J.K. Simmons|Caperucita Roja,Demien Chazelle
