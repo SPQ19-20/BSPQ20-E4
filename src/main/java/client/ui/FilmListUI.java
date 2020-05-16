@@ -1,6 +1,7 @@
 package client.ui;
 
 import java.awt.BorderLayout;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -9,6 +10,7 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
@@ -49,18 +51,31 @@ public class FilmListUI extends JFrame{
 		 * 
 		 */
 		
+		getContentPane().setBackground(SystemColor.textHighlight);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución
 		setSize(640,380);
 		setLocation(600,175);
 		setResizable(false);
 		
 		//Buttons
-		backbtn = new JButton("<<");
-		backbtn.setBounds(10, 10, 50, 25);
-		addFilm = new JButton("ADD new");
-		addFilm.setBounds(440, 280, 100, 25);
-		deleteFilm = new JButton("DELETE");
-		deleteFilm.setBounds(100, 280, 100, 25);
+		backbtn = new JButton("");
+		backbtn.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
+		backbtn.setOpaque(false);
+		backbtn.setContentAreaFilled(false);
+		backbtn.setBorderPainted(false);
+		backbtn.setBounds(10, 10, 70, 40);
+		addFilm = new JButton("");
+		addFilm.setBounds(525, 260, 50, 50);
+		addFilm.setOpaque(false);
+		addFilm.setIcon(new ImageIcon("src\\main\\resources\\addNew.png"));
+		addFilm.setContentAreaFilled(false);
+		addFilm.setBorderPainted(false);
+		deleteFilm = new JButton("");
+		deleteFilm.setBounds(50, 260, 50, 55);
+		deleteFilm.setOpaque(false);
+		deleteFilm.setIcon(new ImageIcon("src\\main\\resources\\Bin.png"));
+		deleteFilm.setContentAreaFilled(false);
+		deleteFilm.setBorderPainted(false);
 		getContentPane().add(backbtn);
 		getContentPane().add(addFilm);
 		getContentPane().add(deleteFilm);
@@ -68,16 +83,16 @@ public class FilmListUI extends JFrame{
 		
 		dlmFilms = new DefaultListModel<>();
 		liFilms = new JList<String>(dlmFilms);
-		if(!filmList.getFilmList().isEmpty()) {
+		/*if(!filmList.getFilmList().isEmpty()) {
 			for(String f: filmList.getFilmList()) dlmFilms.addElement(f);		
 			logger.info("Displaying FILMS of FilmList "+filmList.getName() );
 		}else {
 			//This logger doesnt work yet
 			logger.info("No Films in this FilmList yet");
-		}
-
-		liFilms.setBounds(220,200,100,100);
+		}*/
+		liFilms.setModel(dlmFilms);
 		JPanel pCentral = new JPanel();
+		pCentral.setBackground(SystemColor.textHighlight);
 		pCentral.add(liFilms);
 		
 		getContentPane().add(pCentral);

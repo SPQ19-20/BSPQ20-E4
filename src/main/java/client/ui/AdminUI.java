@@ -5,8 +5,10 @@ import javax.swing.JTextField;
 
 import client.controller.EasyFilmController;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Locale;
@@ -31,22 +33,28 @@ public class AdminUI extends JFrame {
 		 */
 		
 		this.setTitle(resourceBundle.getString("admin_title"));
+		getContentPane().setBackground(SystemColor.textHighlight);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución
-		setSize(600,250);
+		setSize(600,150);
 		setLocation(600,175);
 		setResizable(false);
 
 		getContentPane().setLayout(null);
 		
 		fileName = new JTextField();
-		fileName.setBounds(305, 75, 250, 25);
+		fileName.setBounds(125, 40, 400, 25);
 		getContentPane().add(fileName);
 		fileName.setColumns(10);
 		
-		addArchive = new JButton(resourceBundle.getString("add_file_buton_msg"));
+		addArchive = new JButton("");
 		addArchive.setFont(new Font("Tahoma", Font.BOLD, 10));
-		addArchive.setBounds(50, 75, 150, 30);
+		addArchive.setBounds(50, 30, 50, 50);
+		addArchive.setIcon(new ImageIcon("src\\main\\resources\\Archive.png"));
+		addArchive.setOpaque(false);
+		addArchive.setContentAreaFilled(false);
+		addArchive.setBorderPainted(false);
 		getContentPane().add(addArchive);
+		
 		
 
 	}

@@ -12,6 +12,8 @@ import server.easyFilminData.User;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -19,6 +21,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
@@ -52,10 +55,12 @@ public class MyLists extends JFrame{
 		
 		/** This is the part that contains the info of the window
 		 * 
-		 */		
+		 */
+		
+		getContentPane().setBackground(SystemColor.textHighlight);
 		logger.warn("This lists parameter should be a ArrayList<FilmListData>, but we are now simplifying things");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(500,450);
+		setSize(500,250);
 		setLocation(600,175);
 		setResizable(false);
 		//getContentPane().setLayout(null);
@@ -80,22 +85,27 @@ public class MyLists extends JFrame{
 		list.setBounds(220,200,100,100);
 		JScrollPane scrollPane = new JScrollPane(list);
 		JPanel pCentral = new JPanel();
+		pCentral.setBackground(SystemColor.textHighlight);
 		pCentral.add(scrollPane);
 		
 		getContentPane().add(pCentral, "Center");
 		
 		info = new JLabel("My Lists:");
 		info.setFont(new Font("Tahoma", Font.BOLD, 10));
-		info.setBounds(40, 52, 70, 13);
+		info.setForeground(SystemColor.menu);
 		
 		/** This button allows the user to go to the previous window
 		 * 
 		 */
 
-		back = new JButton("<-");
-		back.setBounds(10, 10, 45, 25);
+		back = new JButton("");
+		back.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
+		back.setContentAreaFilled(false);
+		back.setBorderPainted(false);
 
 		JPanel pSuperior = new JPanel();
+		pSuperior.setBackground(SystemColor.textHighlight);
+		pSuperior.setLayout(new GridLayout(0, 2, 0, 0));
 		pSuperior.add(back);
 		pSuperior.add(info);
 		
