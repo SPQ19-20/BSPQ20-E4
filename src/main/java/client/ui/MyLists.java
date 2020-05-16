@@ -31,6 +31,7 @@ import client.controller.EasyFilmController;
 public class MyLists extends JFrame{
 	private EasyFilmController controller;
 	private JButton back;
+	private JButton bEdit;
 	
 	private JLabel info;
 	private JList<String> list;

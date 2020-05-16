@@ -115,7 +115,7 @@ public class UserUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				CreateList u = new CreateList(user, controller);
+				CreateList u = new CreateList(user, controller, null);
 				u.setVisible(true);
 			}
 		});

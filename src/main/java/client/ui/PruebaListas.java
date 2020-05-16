@@ -6,28 +6,33 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
-import client.controller.EasyFilmController;
+import serialization.FilmData;
 import serialization.FilmListData;
 import serialization.UserData;
-
-import javax.swing.JLabel;
+import server.easyFilminData.FilmList;
+import server.easyFilminData.User;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.awt.event.ActionEvent;
 
-public class CreateList extends JFrame {
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import client.controller.EasyFilmController;
+
+
+public class PruebaListas extends JFrame {
 
 	private EasyFilmController controller;
 	private UserData user;
@@ -49,13 +54,18 @@ public class CreateList extends JFrame {
 	private boolean editing;
 	
 	static Logger logger = Logger.getLogger(CreateList.class.getName());
-
-	public CreateList(UserData user, EasyFilmController controller, String listName) {
+	
+	/** This ui class displays all the different lists of a user
+	 * @param usData - user
+	 * @param lists - lists of that user
+	 * @param cont - controller 
+	 */
+	public PruebaListas(UserData us, EasyFilmController controller, String listName) {
 		
 		/** This is the part that contains the info of the window
 		 * 
 		 */
-		this.user = user;
+		this.user = us;
 		this.listName = listName;
 		this.controller = controller;
 		editing = false;
@@ -69,10 +79,10 @@ public class CreateList extends JFrame {
 		//Loading the data of the 2 lists
 		allFilms = new ArrayList<>();
 		allFilms = controller.getAllFilms();
-		newList = null;
+		newList = new FilmListData();
 		if(listName != null) { //Different process IF we are editing or creating 
 			editing = true;
-			newList = controller.getFilmList(user, listName); // EDITING
+			newList = controller.getFilmList(us, listName); // EDITING
 		}
 		
 		//NORTH PART
@@ -128,12 +138,10 @@ public class CreateList extends JFrame {
 		//EAST PART
 		dlmNewList = new DefaultListModel<>();
 		lNewList = new JList<String>(dlmNewList);
-		if(newList != null) {
-			if(!newList.getFilmList().isEmpty()) {
-				for(String s: newList.getFilmList()) dlmNewList.addElement(s);
-			}else {
-				logger.error("No FILMS in the list");
-			}
+		if(newList != null && !newList.getFilmList().isEmpty()) {
+			for(String s: newList.getFilmList()) dlmNewList.addElement(s);			
+		}else {
+			logger.error("No FILMS in the list");
 		}
 		JScrollPane scrollPane1 = new JScrollPane(lNewList);
 		scrollPane1.setPreferredSize(new Dimension(150, 342));
@@ -226,10 +234,6 @@ public class CreateList extends JFrame {
 	}
 	
 	void moveToList(int pos) {
-		if(newList == null) {
-			newList = new FilmListData();
-			newList.setFilmList(new ArrayList<>());
-		}
 		newList.getFilmList().add(allFilms.get(pos));
 		allFilms.remove(pos);
 		repaint();

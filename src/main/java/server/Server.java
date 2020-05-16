@@ -5,6 +5,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.Transaction;
@@ -195,9 +196,6 @@ public class Server {
 		ArrayList<FilmList> arrFl =u.getLists();
 		int temp = -1;
 		for(int i = 0;i<arrFl.size();i++) {
-			logger.error("Nombre lista:");
-			logger.error(arrFl.get(i).getName());
-			logger.error("Nombre que pasamos:");
 			logger.error(name);
 			if(arrFl.get(i).getName().equals(name)) temp = i; 
 		}
@@ -265,8 +263,25 @@ public class Server {
 		if(!repeated) return Response.ok().build();
 		else return Response.status(Status.BAD_REQUEST).entity("This film is already on your filmList").build();
 	}
-	// Example method
 	
+	@GET
+	@Path("/getAllFilms")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ArrayList<String> getAllFilms() {
+		List<Film> list = null;
+		try {
+			list = iDAO.getAllFilms();
+		}catch(Exception e) {
+			logger.debug("Exception retrieving films ");
+		}
+		ArrayList<String> allFilms = new ArrayList<>();
+		for(Film f: list) {
+			allFilms.add(f.getTitle());
+		}
+		return allFilms;
+	}
+
+	// Example method
 	@GET
 	@Path("/hello")
 	@Produces(MediaType.TEXT_PLAIN)
