@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import server.easyFilminData.Actor;
-import server.easyFilminData.Comment;
 import server.easyFilminData.Director;
 import server.easyFilminData.Film;
 import server.easyFilminData.FilmList;
@@ -159,22 +158,7 @@ public interface IEasyFilminDAO {
 	 * @param name name of the  film list to be deleted.
 	 */
 	public void deleteFilmList(String name);
-	
-	/**
-	 * Stores the comment received in a Database. 
-	 * The type of storage may differ depending on the instance of this interface created.
-	 * @param comment the comment object whose data will be stored.
-	 * @see Comment
-	 */
-	public void saveComment(Comment comment);
-	
-	/**
-	 * Returns all the comments associated with a film 
-	 * @param filmTitle String with the title of the film whose comments will be returned
-	 * @return ArrayList of comments from the selected film
-	 */
-	public List<Comment> loadComments(String filmTitle);
-	
+			
 	/**
 	 *
 	 * @return all films stored in the DB

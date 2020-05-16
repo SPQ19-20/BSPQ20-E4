@@ -89,160 +89,335 @@ $(document).ready(function(){initNavTree('_create_list_8java_source.html',''); i
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="keyword">import</span> javax.swing.JFrame;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">import</span> javax.swing.JList;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> javax.swing.JTextField;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceclient.html">client</a>.<a class="code" href="namespaceclient_1_1controller.html">controller</a>.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceserialization.html">serialization</a>.<a class="code" href="classserialization_1_1_user_data.html">UserData</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> javax.swing.JLabel;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> java.awt.Font;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> javax.swing.DefaultListModel;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> javax.swing.JButton;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> java.awt.event.ActionListener;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">import</span> javax.swing.JPanel;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> javax.swing.JScrollPane;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> javax.swing.JTextField;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> org.apache.log4j.Logger;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> org.apache.log4j.PropertyConfigurator;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceclient.html">client</a>.<a class="code" href="namespaceclient_1_1controller.html">controller</a>.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceserialization.html">serialization</a>.<a class="code" href="classserialization_1_1_film_list_data.html">FilmListData</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceserialization.html">serialization</a>.<a class="code" href="classserialization_1_1_user_data.html">UserData</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">import</span> javax.swing.JLabel;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_create_list.html">   18</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classclient_1_1ui_1_1_create_list.html">CreateList</a> <span class="keyword">extends</span> JFrame {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">private</span> JButton addFilm;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">private</span> JButton exit;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">private</span> JButton removeFilm;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">private</span> JButton back;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">private</span> JButton save;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">private</span> JList&lt;String&gt; list;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">private</span> JList&lt;String&gt; filmList;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">private</span> DefaultListModel&lt;String&gt; dlmList;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">private</span> DefaultListModel&lt;String&gt; dlmFilms;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">private</span> JLabel available;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">private</span> JLabel newList;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span> JTextField listName;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">private</span> JTextField textField;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_create_list.html#acf50469a101db2ce3c943c551d559e55">   33</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classclient_1_1ui_1_1_create_list.html#acf50469a101db2ce3c943c551d559e55">CreateList</a>(<a class="code" href="classserialization_1_1_user_data.html">UserData</a> user, <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> controller) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        setDefaultCloseOperation(DISPOSE_ON_CLOSE);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        setSize(550,430);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        setLocation(600,175);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        setResizable(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        getContentPane().setLayout(<span class="keyword">null</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        list = <span class="keyword">new</span> JList();</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        list.setBounds(40, 40, 200, 300);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        getContentPane().add(list);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        available = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Available Films&quot;</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        available.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        available.setBounds(40, 10, 200, 20);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        getContentPane().add(available);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        filmList = <span class="keyword">new</span> JList();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        filmList.setBounds(311, 40, 200, 300);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        getContentPane().add(filmList);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        newList = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Your New List&quot;</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        newList.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        newList.setBounds(311, 10, 200, 20);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        getContentPane().add(newList);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        addFilm = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&gt;&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        addFilm.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        addFilm.setBounds(255, 130, 39, 39);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        getContentPane().add(addFilm);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        removeFilm = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&lt;&quot;</span>);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        removeFilm.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        removeFilm.setBounds(255, 179, 39, 39);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        getContentPane().add(removeFilm);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        save = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;SAVE&quot;</span>);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        save.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        save.setBounds(245, 310, 60, 30);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        getContentPane().add(save);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        back = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&lt;-&quot;</span>);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        back.setBounds(10, 10, 45, 25);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        getContentPane().add(back);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        exit = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        exit.setBounds(500, 11, 25, 25);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        getContentPane().add(exit);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        textField = <span class="keyword">new</span> JTextField();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        textField.setBounds(40, 362, 473, 30);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        getContentPane().add(textField);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        textField.setColumns(10);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="comment">/* This buttons allows to control the app </span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">         * exitbtn allows to close the application </span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">         * backbtn allows to go to the previous application</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">         * */</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        </div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        exit.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            @Override</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                dispose();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        });</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        back.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            @Override</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                dispose();</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a> ui = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a>(user, controller);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                ui.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        });</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        </div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="comment">/* This buttons allows to control the app </span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">         * saves the list with the selected name</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">         * */</span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        save.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            @Override</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                String listname = textField.getName();</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                </div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        });</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">/* This buttons move films to one side to the other</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">         * addFilm allows move a film from the full list of films to the one of the list </span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">         * removeFilm allows to remove a film from the list</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">         * */</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        addFilm.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            @Override</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                <span class="comment">// TODO Auto-generated method stub</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        });</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        removeFilm.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            @Override</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="comment">// TODO Auto-generated method stub</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        });</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">import</span> java.awt.BorderLayout;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">import</span> java.awt.Dimension;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">import</span> java.awt.Font;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">import</span> java.awt.SystemColor;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">import</span> javax.swing.DefaultListModel;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">import</span> javax.swing.ImageIcon;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">import</span> javax.swing.JButton;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">import</span> java.awt.event.ActionListener;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> java.awt.event.MouseAdapter;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">import</span> java.awt.event.MouseEvent;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">import</span> java.util.Locale;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">import</span> java.util.ResourceBundle;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_create_list.html">   35</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classclient_1_1ui_1_1_create_list.html">CreateList</a> <span class="keyword">extends</span> JFrame {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">private</span> <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> controller;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">private</span> <a class="code" href="classserialization_1_1_user_data.html">UserData</a> user;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">private</span> String listName;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">private</span> ArrayList&lt;String&gt; allFilms;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">private</span> <a class="code" href="classserialization_1_1_film_list_data.html">FilmListData</a> newList;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">private</span> JList&lt;String&gt; lAllFilms;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">   45</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> DefaultListModel&lt;String&gt; <a class="code" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">private</span> JList&lt;String&gt; lNewList;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">   47</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> DefaultListModel&lt;String&gt; <a class="code" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> allEditionPos;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> allSelectPos;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> newEditionPos;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> newSelectPos;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">boolean</span> editing;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> Logger logger = Logger.getLogger(<a class="code" href="classclient_1_1ui_1_1_create_list.html">CreateList</a>.class.getName());</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    ResourceBundle resourceBundle = ResourceBundle.getBundle(<span class="stringliteral">&quot;SystemMessages&quot;</span>, Locale.getDefault());</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_create_list.html#ae99854b4009706ab258a6fe61bd38f2d">   64</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classclient_1_1ui_1_1_create_list.html#ae99854b4009706ab258a6fe61bd38f2d">CreateList</a>(<a class="code" href="classserialization_1_1_user_data.html">UserData</a> user, <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> controller, String listName) {      </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        this.user = user;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        this.listName = listName;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        this.controller = controller;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        editing = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        setDefaultCloseOperation(DISPOSE_ON_CLOSE);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        setSize(500,450);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        setLocation(600,175);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        setResizable(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        getContentPane().setLayout(<span class="keyword">new</span> BorderLayout());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">//Loading the data of the 2 lists</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        allFilms = <span class="keyword">new</span> ArrayList&lt;&gt;();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        allFilms = controller.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html#a1a5611d255d9b2d26c9a54ddba5af28e">getAllFilms</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        newList = <span class="keyword">null</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span>(listName != <span class="keyword">null</span>) { <span class="comment">//Different process IF we are editing or creating </span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            editing = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            newList = controller.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html#a85334b4ff6aaeb79f6666f01bcc94494">getFilmList</a>(user, listName); <span class="comment">// EDITING</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">//NORTH PART</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        JPanel pNorte = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        pNorte.setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        logger.error(<span class="stringliteral">&quot;Mini problema de las indentaciones con AvailableFilms/your New List&quot;</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        JLabel l1 = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;Available Films                                   &quot;</span>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        l1.setForeground(SystemColor.menu);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        JLabel l2 = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;                                     Your New List&quot;</span>);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        l2.setForeground(SystemColor.menu);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">//      JLabel l1 = new JLabel(resourceBundle.getString(&quot;available_films_label&quot;));</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">//      JLabel l2 = new JLabel(resourceBundle.getString(&quot;your_new_list_label&quot;));</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        pNorte.add(l1, <span class="stringliteral">&quot;West&quot;</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        pNorte.add(l2, <span class="stringliteral">&quot;East&quot;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        l1.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        l2.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        logger.error(<span class="stringliteral">&quot;Put this strings directly from resourceBundler&quot;</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        getContentPane().add(pNorte,<span class="stringliteral">&quot;North&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="comment">//SOUTH PART</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        JPanel pSur= <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        pSur.setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        JButton bBack = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        bBack.setOpaque(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        bBack.setIcon(<span class="keyword">new</span> ImageIcon(<span class="stringliteral">&quot;src\\main\\resources\\Back.png&quot;</span>));</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        bBack.setContentAreaFilled(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        bBack.setBorderPainted(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        JTextField newListName = <span class="keyword">new</span> JTextField();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        newListName.setPreferredSize(<span class="keyword">new</span> Dimension(100 ,30));</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        JButton bSave = <span class="keyword">new</span> JButton((<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        bSave.setOpaque(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        bSave.setIcon(<span class="keyword">new</span> ImageIcon(<span class="stringliteral">&quot;src\\main\\resources\\save.png&quot;</span>));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        bSave.setContentAreaFilled(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        bSave.setBorderPainted(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        bSave.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        pSur.add(bBack);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        pSur.add(newListName);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        pSur.add(bSave);         </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        getContentPane().add(pSur,<span class="stringliteral">&quot;South&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">//CENTER PART</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        JPanel pCentro = <span class="keyword">new</span> JPanel(<span class="keyword">new</span> BorderLayout());</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        pCentro.setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        JButton bRemove = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        bRemove.setOpaque(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        bRemove.setIcon(<span class="keyword">new</span> ImageIcon(<span class="stringliteral">&quot;src\\main\\resources\\remove.png&quot;</span>));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        bRemove.setContentAreaFilled(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        bRemove.setBorderPainted(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        JLabel instructions = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;&lt;html&gt;Select a film and press &#39;&amp;gt&#39; to send it to your list. Press &#39;&amp;lt&#39; to send it back from the list&lt;/html&gt;&quot;</span>);      </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        instructions.setPreferredSize(<span class="keyword">new</span> Dimension(50,50));</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        JButton bAdd = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        bAdd.setOpaque(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        bAdd.setContentAreaFilled(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        bAdd.setIcon(<span class="keyword">new</span> ImageIcon(<span class="stringliteral">&quot;src\\main\\resources\\add.png&quot;</span>));</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        bAdd.setBorderPainted(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        pCentro.add(bRemove, <span class="stringliteral">&quot;North&quot;</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        pCentro.add(instructions, <span class="stringliteral">&quot;Center&quot;</span>);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        pCentro.add(bAdd, <span class="stringliteral">&quot;South&quot;</span>);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        getContentPane().add(pCentro,<span class="stringliteral">&quot;Center&quot;</span>);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="comment">//WEST PART</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a> = <span class="keyword">new</span> DefaultListModel&lt;&gt;();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        lAllFilms = <span class="keyword">new</span> JList&lt;String&gt;(<a class="code" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">if</span>(allFilms != <span class="keyword">null</span> &amp;&amp; !allFilms.isEmpty()) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">for</span>(String s: allFilms) <a class="code" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a>.addElement(s);          </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            logger.error(<span class="stringliteral">&quot;No FILMS in the DB&quot;</span>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        JScrollPane scrollPane = <span class="keyword">new</span> JScrollPane(lAllFilms);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        scrollPane.setPreferredSize(<span class="keyword">new</span> Dimension(150, 342));</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        JPanel pCentral = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        pCentral.setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        pCentral.add(scrollPane);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        getContentPane().add(pCentral, <span class="stringliteral">&quot;West&quot;</span>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="comment">//EAST PART</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a> = <span class="keyword">new</span> DefaultListModel&lt;&gt;();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        lNewList = <span class="keyword">new</span> JList&lt;String&gt;(<a class="code" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span>(newList != <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">if</span>(!newList.<a class="code" href="classserialization_1_1_film_list_data.html#a4298fcb5af42c5c57aa06f3790de7c16">getFilmList</a>().isEmpty()) {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                <span class="keywordflow">for</span>(String s: newList.<a class="code" href="classserialization_1_1_film_list_data.html#a4298fcb5af42c5c57aa06f3790de7c16">getFilmList</a>()) <a class="code" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a>.addElement(s);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            }<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                logger.error(<span class="stringliteral">&quot;No FILMS in the list&quot;</span>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            }</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        JScrollPane scrollPane1 = <span class="keyword">new</span> JScrollPane(lNewList);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        scrollPane1.setPreferredSize(<span class="keyword">new</span> Dimension(150, 342));</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        JPanel pCentral1 = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        pCentral1.setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        pCentral1.add(scrollPane1);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        getContentPane().add(pCentral1, <span class="stringliteral">&quot;East&quot;</span>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        bBack.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            @Override</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                dispose();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">if</span>(editing) {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    logger.error(<span class="stringliteral">&quot;Change MyLists constructor from Al&lt;String&gt; to Al&lt;FilmListData&gt; and make the conversion inside&quot;</span>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">//                  ArrayList&lt;String&gt; flists = new ArrayList&lt;&gt;();</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    ArrayList&lt;FilmListData&gt; lists = controller.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html#a2f0a58de67f6a72424e402096a33372f">getAllLists</a>(user.<a class="code" href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">getLogin</a>());</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">//                  for(int i=0; i&lt;lists.size();i++) {</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">//                      flists.add(lists.get(i).getName());</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">//                  }</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    <a class="code" href="classclient_1_1ui_1_1_my_lists.html">MyLists</a> mui = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_my_lists.html">MyLists</a>(user, lists, controller);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    mui.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                }<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                    <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a> ui = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a>(user, controller);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                    ui.setVisible(<span class="keyword">true</span>);                    </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        });</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        bSave.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            @Override</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                saveList(newListName.getText(), newList);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                <span class="keywordflow">if</span>(!editing) {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    logger.error(<span class="stringliteral">&quot;Saving new list: &quot;</span>+newListName.getText()+<span class="stringliteral">&quot; to user: &quot;</span>+user.<a class="code" href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">getLogin</a>());                   </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    logger.error(<span class="stringliteral">&quot;Saving list: &quot;</span>+listName+<span class="stringliteral">&quot; to user: &quot;</span>+user.<a class="code" href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">getLogin</a>());                    </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                dispose();</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="comment">//controller.saveList(user, listName);</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                logger.error(<span class="stringliteral">&quot;To UserUI, we can maybe do it to last window&quot;</span>);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a> ui = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a>(user, controller);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                ui.setVisible(<span class="keyword">true</span>);                    </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        });</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        bAdd.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            @Override</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                moveToList(allEditionPos);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        });</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        bRemove.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            @Override</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                removeFromList(newEditionPos);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        });</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        lAllFilms.addMouseListener(<span class="keyword">new</span> MouseAdapter() {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> mouseClicked(MouseEvent e) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==1){</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                    allEditionPos = lAllFilms.locationToIndex(e.getPoint());</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==2){</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                    <span class="keywordflow">if</span> (lAllFilms.getSelectedIndex()!= -1) {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        allSelectPos = lAllFilms.locationToIndex(e.getPoint());</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        moveToList(allSelectPos);           </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        });</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        lNewList.addMouseListener(<span class="keyword">new</span> MouseAdapter() {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> mouseClicked(MouseEvent e) {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==1){</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                    newEditionPos = lNewList.locationToIndex(e.getPoint());</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==2){</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    <span class="keywordflow">if</span> (lNewList.getSelectedIndex()!= -1) {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                        newSelectPos = lNewList.locationToIndex(e.getPoint());</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                        moveToList(newSelectPos);           </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                    }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        });</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordtype">void</span> moveToList(<span class="keywordtype">int</span> pos) {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <span class="keywordflow">if</span>(newList == <span class="keyword">null</span>) {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            newList = <span class="keyword">new</span> <a class="code" href="classserialization_1_1_film_list_data.html">FilmListData</a>();</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            newList.<a class="code" href="classserialization_1_1_film_list_data.html#ad7fd189426fa0cde26a37d0e38903dd8">setFilmList</a>(<span class="keyword">new</span> ArrayList&lt;&gt;());</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a>.addElement(<a class="code" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a>.get(pos));</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a>.remove(pos);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        newList.<a class="code" href="classserialization_1_1_film_list_data.html#a4298fcb5af42c5c57aa06f3790de7c16">getFilmList</a>().add(allFilms.get(pos));</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        allFilms.remove(pos);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        repaint();</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        revalidate();</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordtype">void</span> removeFromList(<span class="keywordtype">int</span> pos) {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a>.addElement(<a class="code" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a>.get(pos));</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a>.remove(pos);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        allFilms.add(newList.<a class="code" href="classserialization_1_1_film_list_data.html#a4298fcb5af42c5c57aa06f3790de7c16">getFilmList</a>().get(pos));</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        newList.<a class="code" href="classserialization_1_1_film_list_data.html#a4298fcb5af42c5c57aa06f3790de7c16">getFilmList</a>().remove(pos);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        repaint();</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        revalidate();</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordtype">void</span> saveList(String name, FilmListData list) {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">//TODO guardar lista en DB relacionándola con User</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span>(!editing){</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            newList.<a class="code" href="classserialization_1_1_film_list_data.html#ada4268da9602b4a1ac3275ce38030774">setName</a>(name);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        newList.<a class="code" href="classserialization_1_1_film_list_data.html#ad7fd189426fa0cde26a37d0e38903dd8">setFilmList</a>(list.getFilmList());</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            controller.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html#ae59082089746fb78048fbca3357021ed">saveFilmList</a>(user, newList);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        }<span class="keywordflow">catch</span>(Exception e) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            e.getStackTrace();</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_create_list.html#ad9b82d4dbe169ca49e5e091b23f87843">  320</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classclient_1_1ui_1_1_create_list.html#ad9b82d4dbe169ca49e5e091b23f87843">main</a>(String[] args) {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment">//      PruebaListas ui = new PruebaListas();</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="comment">//      ui.setVisible(true);</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    }</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;}</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclassclient_1_1ui_1_1_create_list_html_a45baeb7b3699d8414eefa006034901ef"><div class="ttname"><a href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">client.ui.CreateList.dlmNewList</a></div><div class="ttdeci">static DefaultListModel&lt; String &gt; dlmNewList</div><div class="ttdef"><b>Definition:</b> <a href="_create_list_8java_source.html#l00047">CreateList.java:47</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_user_data_html_ae647b1bd707f01e424d616dac52b00c4"><div class="ttname"><a href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">serialization.UserData.getLogin</a></div><div class="ttdeci">String getLogin()</div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00058">UserData.java:58</a></div></div>
 <div class="ttc" id="anamespaceclient_html"><div class="ttname"><a href="namespaceclient.html">client</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_user_u_i_html"><div class="ttname"><a href="classclient_1_1ui_1_1_user_u_i.html">client.ui.UserUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_u_i_8java_source.html#l00036">UserUI.java:36</a></div></div>
-<div class="ttc" id="anamespaceclient_1_1controller_html"><div class="ttname"><a href="namespaceclient_1_1controller.html">client.controller</a></div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00001">EasyFilmController.java:1</a></div></div>
-<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html">client.controller.EasyFilmController</a></div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00029">EasyFilmController.java:29</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_create_list_html"><div class="ttname"><a href="classclient_1_1ui_1_1_create_list.html">client.ui.CreateList</a></div><div class="ttdef"><b>Definition:</b> <a href="_create_list_8java_source.html#l00018">CreateList.java:18</a></div></div>
-<div class="ttc" id="aclassserialization_1_1_user_data_html"><div class="ttname"><a href="classserialization_1_1_user_data.html">serialization.UserData</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00008">UserData.java:8</a></div></div>
-<div class="ttc" id="anamespaceserialization_html"><div class="ttname"><a href="namespaceserialization.html">serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_actor_data_8java_source.html#l00001">ActorData.java:1</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_create_list_html_acf50469a101db2ce3c943c551d559e55"><div class="ttname"><a href="classclient_1_1ui_1_1_create_list.html#acf50469a101db2ce3c943c551d559e55">client.ui.CreateList.CreateList</a></div><div class="ttdeci">CreateList(UserData user, EasyFilmController controller)</div><div class="ttdef"><b>Definition:</b> <a href="_create_list_8java_source.html#l00033">CreateList.java:33</a></div></div>
+<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html_a85334b4ff6aaeb79f6666f01bcc94494"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html#a85334b4ff6aaeb79f6666f01bcc94494">client.controller.EasyFilmController.getFilmList</a></div><div class="ttdeci">FilmListData getFilmList(UserData userData, String name)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00158">EasyFilmController.java:158</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_film_list_data_html_a4298fcb5af42c5c57aa06f3790de7c16"><div class="ttname"><a href="classserialization_1_1_film_list_data.html#a4298fcb5af42c5c57aa06f3790de7c16">serialization.FilmListData.getFilmList</a></div><div class="ttdeci">ArrayList&lt; String &gt; getFilmList()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_data_8java_source.html#l00040">FilmListData.java:40</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_user_u_i_html"><div class="ttname"><a href="classclient_1_1ui_1_1_user_u_i.html">client.ui.UserUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_u_i_8java_source.html#l00038">UserUI.java:38</a></div></div>
+<div class="ttc" id="anamespaceclient_1_1controller_html"><div class="ttname"><a href="namespaceclient_1_1controller.html">client.controller</a></div><div class="ttdoc">This is the documentation for the Java package client.controller intended to work as a layer for all ...</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00001">EasyFilmController.java:1</a></div></div>
+<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html">client.controller.EasyFilmController</a></div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00034">EasyFilmController.java:34</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_create_list_html"><div class="ttname"><a href="classclient_1_1ui_1_1_create_list.html">client.ui.CreateList</a></div><div class="ttdef"><b>Definition:</b> <a href="_create_list_8java_source.html#l00035">CreateList.java:35</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_create_list_html_ae99854b4009706ab258a6fe61bd38f2d"><div class="ttname"><a href="classclient_1_1ui_1_1_create_list.html#ae99854b4009706ab258a6fe61bd38f2d">client.ui.CreateList.CreateList</a></div><div class="ttdeci">CreateList(UserData user, EasyFilmController controller, String listName)</div><div class="ttdef"><b>Definition:</b> <a href="_create_list_8java_source.html#l00064">CreateList.java:64</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_film_list_data_html"><div class="ttname"><a href="classserialization_1_1_film_list_data.html">serialization.FilmListData</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_data_8java_source.html#l00008">FilmListData.java:8</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_user_data_html"><div class="ttname"><a href="classserialization_1_1_user_data.html">serialization.UserData</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00014">UserData.java:14</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_film_list_data_html_ada4268da9602b4a1ac3275ce38030774"><div class="ttname"><a href="classserialization_1_1_film_list_data.html#ada4268da9602b4a1ac3275ce38030774">serialization.FilmListData.setName</a></div><div class="ttdeci">void setName(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_data_8java_source.html#l00037">FilmListData.java:37</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html">client.ui.MyLists</a></div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00034">MyLists.java:34</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_create_list_html_ad9b82d4dbe169ca49e5e091b23f87843"><div class="ttname"><a href="classclient_1_1ui_1_1_create_list.html#ad9b82d4dbe169ca49e5e091b23f87843">client.ui.CreateList.main</a></div><div class="ttdeci">static void main(String[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_create_list_8java_source.html#l00320">CreateList.java:320</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_film_list_data_html_ad7fd189426fa0cde26a37d0e38903dd8"><div class="ttname"><a href="classserialization_1_1_film_list_data.html#ad7fd189426fa0cde26a37d0e38903dd8">serialization.FilmListData.setFilmList</a></div><div class="ttdeci">void setFilmList(ArrayList&lt; String &gt; filmList)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_data_8java_source.html#l00043">FilmListData.java:43</a></div></div>
+<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html_a1a5611d255d9b2d26c9a54ddba5af28e"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html#a1a5611d255d9b2d26c9a54ddba5af28e">client.controller.EasyFilmController.getAllFilms</a></div><div class="ttdeci">ArrayList&lt; String &gt; getAllFilms()</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00146">EasyFilmController.java:146</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_create_list_html_ad1d21e29ae5a05dad7f3caeef5c80696"><div class="ttname"><a href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">client.ui.CreateList.dlmAllFilms</a></div><div class="ttdeci">static DefaultListModel&lt; String &gt; dlmAllFilms</div><div class="ttdef"><b>Definition:</b> <a href="_create_list_8java_source.html#l00045">CreateList.java:45</a></div></div>
+<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html_ae59082089746fb78048fbca3357021ed"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html#ae59082089746fb78048fbca3357021ed">client.controller.EasyFilmController.saveFilmList</a></div><div class="ttdeci">void saveFilmList(UserData userData, FilmListData list)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00171">EasyFilmController.java:171</a></div></div>
+<div class="ttc" id="anamespaceserialization_html"><div class="ttname"><a href="namespaceserialization.html">serialization</a></div><div class="ttdoc">This is the documentation for the Java package serialization intended to work as a wrapper for the Do...</div><div class="ttdef"><b>Definition:</b> <a href="_actor_data_8java_source.html#l00001">ActorData.java:1</a></div></div>
+<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html_a2f0a58de67f6a72424e402096a33372f"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html#a2f0a58de67f6a72424e402096a33372f">client.controller.EasyFilmController.getAllLists</a></div><div class="ttdeci">ArrayList&lt; FilmListData &gt; getAllLists(String userNick)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00125">EasyFilmController.java:125</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

@@ -6,18 +6,14 @@ import java.util.ArrayList;
 
 import junit.framework.JUnit4TestAdapter;
 import serialization.ActorData;
-import serialization.CommentData;
 import serialization.DirectorData;
 import serialization.FilmData;
 import serialization.FilmListData;
-import serialization.MessageData;
 import serialization.UserData;
 import server.easyFilminData.Actor;
-import server.easyFilminData.Comment;
 import server.easyFilminData.Director;
 import server.easyFilminData.Film;
 import server.easyFilminData.FilmList;
-import server.easyFilminData.Message;
 import server.easyFilminData.User;
 
 import org.junit.Before;
@@ -33,7 +29,6 @@ import org.databene.contiperf.junit.ContiPerfRule;
 public class SerializationTest {
 	
 	private static Actor a1,a2;
-	private static Comment c1,c2;
 	private static Director d1;
 	private static Film f1,f2,f3;
 	private static FilmList fl;
@@ -93,9 +88,7 @@ public class SerializationTest {
 		u1.setLists(lists);
 		
 		LocalDate now = LocalDate.now();
-		System.out.println(now);
-		c1= new Comment("Avengers","Love this movie :)",now);
-		
+		System.out.println(now);		
 		
 		logger.info("Set up before class finished");
 	}
@@ -140,18 +133,7 @@ public class SerializationTest {
 		assertTrue((fd.getDirector().size() == 1));
 		
 		
-		
-		
-	}
-	@Test
-	@PerfTest(invocations = 1000)
-	@Required(max = 1500)
-	public void testCommentData() {
-		CommentData cd = new CommentData(c1);
-		assertTrue(cd.getFilmTitle().equals(c1.getFilmTitle()));
-		assertTrue(cd.getText().equals(c1.getText()));
-		assertTrue(cd.getDate().equals(c1.getDate()));
-		
+				
 	}
 	@SuppressWarnings("unlikely-arg-type")
 	@Test

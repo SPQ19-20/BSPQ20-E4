@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rating_471',['rating',['../classserialization_1_1_film_data.html#a34beeec8dda2fa3caeaa12a642a745b9',1,'serialization.FilmData.rating()'],['../classserver_1_1easy_filmin_data_1_1_film.html#a535c392030bd247c4c0c462ba5c5f276',1,'server.easyFilminData.Film.rating()']]],
-  ['release_472',['release',['../classserialization_1_1_film_data.html#a81a3fe3b1846f318b81dbabcffb1ee69',1,'serialization.FilmData.release()'],['../classserver_1_1easy_filmin_data_1_1_film.html#abef64efa5d10499fe26adbc3138dd759',1,'server.easyFilminData.Film.release()']]]
+  ['title_421',['title',['../classserialization_1_1_film_data.html#acc8e11a54b6379dd98f7fca2bedde3f9',1,'serialization.FilmData.title()'],['../classserver_1_1easy_filmin_data_1_1_film.html#aaa8d115f9ce6f6b6f9f98d8ddaf0d0ae',1,'server.easyFilminData.Film.title()']]],
+  ['trailer_422',['trailer',['../classserialization_1_1_film_data.html#a91eeb5fa3563463b53a0916020295314',1,'serialization.FilmData.trailer()'],['../classserver_1_1easy_filmin_data_1_1_film.html#a6500a63e34f2d2272e9b9299a9da376e',1,'server.easyFilminData.Film.trailer()']]]
 ];

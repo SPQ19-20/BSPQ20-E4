@@ -15,6 +15,9 @@ var dir_306607ca4e8f755ee2dd012ea18f43bf =
     [ "MyLists.java", "_my_lists_8java.html", [
       [ "MyLists", "classclient_1_1ui_1_1_my_lists.html", "classclient_1_1ui_1_1_my_lists" ]
     ] ],
+    [ "PruebaListas.java", "_prueba_listas_8java.html", [
+      [ "PruebaListas", "classclient_1_1ui_1_1_prueba_listas.html", "classclient_1_1ui_1_1_prueba_listas" ]
+    ] ],
     [ "UserLog.java", "_user_log_8java.html", [
       [ "UserLog", "classclient_1_1ui_1_1_user_log.html", "classclient_1_1ui_1_1_user_log" ]
     ] ],

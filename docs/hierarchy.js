@@ -2,8 +2,6 @@ var hierarchy =
 [
     [ "server.easyFilminData.Actor", "classserver_1_1easy_filmin_data_1_1_actor.html", null ],
     [ "serialization.ActorData", "classserialization_1_1_actor_data.html", null ],
-    [ "server.easyFilminData.Comment", "classserver_1_1easy_filmin_data_1_1_comment.html", null ],
-    [ "serialization.CommentData", "classserialization_1_1_comment_data.html", null ],
     [ "Comparable", null, [
       [ "server.easyFilminData.Film", "classserver_1_1easy_filmin_data_1_1_film.html", null ]
     ] ],
@@ -25,8 +23,6 @@ var hierarchy =
     [ "server.easyFilminDAO.IEasyFilminDAO", "interfaceserver_1_1easy_filmin_d_a_o_1_1_i_easy_filmin_d_a_o.html", [
       [ "server.easyFilminDAO.EasyFilminJDO", "classserver_1_1easy_filmin_d_a_o_1_1_easy_filmin_j_d_o.html", null ]
     ] ],
-    [ "server.easyFilminData.Message", "classserver_1_1easy_filmin_data_1_1_message.html", null ],
-    [ "serialization.MessageData", "classserialization_1_1_message_data.html", null ],
     [ "testing.SerializationTest", "classtesting_1_1_serialization_test.html", null ],
     [ "server.Server", "classserver_1_1_server.html", null ],
     [ "server.easyFilminData.User", "classserver_1_1easy_filmin_data_1_1_user.html", null ],
@@ -37,6 +33,7 @@ var hierarchy =
       [ "client.ui.FilmListUI", "classclient_1_1ui_1_1_film_list_u_i.html", null ],
       [ "client.ui.FilmUI", "classclient_1_1ui_1_1_film_u_i.html", null ],
       [ "client.ui.MyLists", "classclient_1_1ui_1_1_my_lists.html", null ],
+      [ "client.ui.PruebaListas", "classclient_1_1ui_1_1_prueba_listas.html", null ],
       [ "client.ui.UserLog", "classclient_1_1ui_1_1_user_log.html", null ],
       [ "client.ui.UserReg", "classclient_1_1ui_1_1_user_reg.html", null ],
       [ "client.ui.UserUI", "classclient_1_1ui_1_1_user_u_i.html", null ]

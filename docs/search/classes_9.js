@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['user_250',['User',['../classserver_1_1easy_filmin_data_1_1_user.html',1,'server::easyFilminData']]],
-  ['userdata_251',['UserData',['../classserialization_1_1_user_data.html',1,'serialization']]],
-  ['userlog_252',['UserLog',['../classclient_1_1ui_1_1_user_log.html',1,'client::ui']]],
-  ['userreg_253',['UserReg',['../classclient_1_1ui_1_1_user_reg.html',1,'client::ui']]],
-  ['userui_254',['UserUI',['../classclient_1_1ui_1_1_user_u_i.html',1,'client::ui']]]
+  ['serializationtest_220',['SerializationTest',['../classtesting_1_1_serialization_test.html',1,'testing']]],
+  ['server_221',['Server',['../classserver_1_1_server.html',1,'server']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['postcomment_381',['postComment',['../classserver_1_1easy_filmin_data_1_1_user.html#a3f5ff2627820f15d49c0c2b817c62e72',1,'server::easyFilminData::User']]]
+  ['pruebalistas_336',['PruebaListas',['../classclient_1_1ui_1_1_prueba_listas.html#a77ee26d3c26a1be275622eda17c65617',1,'client::ui::PruebaListas']]]
 ];

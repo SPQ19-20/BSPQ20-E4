@@ -108,8 +108,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8cd2bde27772cf84972ef5bf6284e7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af50155f2804c404b48c541abc57181c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classserialization_1_1_film_list_data.html">FilmListData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classserver_1_1_server.html#af50155f2804c404b48c541abc57181c4">getFilmList</a> (@PathParam(&quot;user&quot;) String nick, @PathParam(&quot;name&quot;) String name)</td></tr>
 <tr class="separator:af50155f2804c404b48c541abc57181c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18a0d43081aa16f623cea6989695664f"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classserver_1_1_server.html#a18a0d43081aa16f623cea6989695664f">saveFilmList</a> (<a class="el" href="classserialization_1_1_film_list_data.html">FilmListData</a> flData, @PathParam(&quot;nick&quot;) String nick)</td></tr>
+<tr class="separator:a18a0d43081aa16f623cea6989695664f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a537dbdf216587b22e4c90db1f385a1b5"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classserver_1_1_server.html#a537dbdf216587b22e4c90db1f385a1b5">addToList</a> (String listName, @PathParam(&quot;title&quot;) String filmTitle)</td></tr>
 <tr class="separator:a537dbdf216587b22e4c90db1f385a1b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abca654d6db524805b5263410113888e6"><td class="memItemLeft" align="right" valign="top">ArrayList&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classserver_1_1_server.html#abca654d6db524805b5263410113888e6">getAllFilms</a> ()</td></tr>
+<tr class="separator:abca654d6db524805b5263410113888e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05b8a343b4badd7455057cf29a2f8e57"><td class="memItemLeft" align="right" valign="top">Response&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classserver_1_1_server.html#a05b8a343b4badd7455057cf29a2f8e57">sayHello</a> ()</td></tr>
 <tr class="separator:a05b8a343b4badd7455057cf29a2f8e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -121,7 +125,7 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is in charge of handling the calls from the controller and cast them to the Data Access Layer </p>
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00047">47</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00052">52</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae9b3c7fddd5254ee3e575f2c61044a9b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9b3c7fddd5254ee3e575f2c61044a9b">&#9670;&nbsp;</a></span>Server()</h2>
@@ -138,7 +142,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00053">53</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00058">58</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -177,7 +181,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A Response whether is successfully added OK or not BAD.RESPONSE </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00224">224</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00276">276</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -204,7 +208,26 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Response - If the deletion was successful Status.OK / Status.NOT_FOUND if not </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00125">125</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00130">130</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+
+</div>
+</div>
+<a id="abca654d6db524805b5263410113888e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abca654d6db524805b5263410113888e6">&#9670;&nbsp;</a></span>getAllFilms()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArrayList&lt;String&gt; server.Server.getAllFilms </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00324">324</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -231,7 +254,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>listsData - ArrayList of FilmListData </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00139">139</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00144">144</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -323,7 +346,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>usData - return a UserData corresponding to the user </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00106">106</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00111">111</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -350,7 +373,7 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a - Response with an OK/Not OK message </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00065">65</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00070">70</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -378,7 +401,7 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00277">277</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00346">346</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -405,7 +428,38 @@ Static Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reponse - replying if Register is OK or NOT </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00085">85</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00090">90</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+
+</div>
+</div>
+<a id="a18a0d43081aa16f623cea6989695664f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18a0d43081aa16f623cea6989695664f">&#9670;&nbsp;</a></span>saveFilmList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Response server.Server.saveFilmList </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classserialization_1_1_film_list_data.html">FilmListData</a>&#160;</td>
+          <td class="paramname"><em>flData</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">@PathParam(&quot;nick&quot;) String&#160;</td>
+          <td class="paramname"><em>nick</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>&lt; We see if it is a new or a already created filmList</p>
+
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00220">220</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>
@@ -424,7 +478,7 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00273">273</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_server_8java_source.html#l00342">342</a> of file <a class="el" href="_server_8java_source.html">Server.java</a>.</p>
 
 </div>
 </div>

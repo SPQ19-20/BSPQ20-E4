@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pic_469',['pic',['../classserver_1_1easy_filmin_data_1_1_actor.html#abf04c8de720545e40313dbabef781ef0',1,'server.easyFilminData.Actor.pic()'],['../classserver_1_1easy_filmin_data_1_1_director.html#a347d25ed26ccec47b8a540a725b6ed53',1,'server.easyFilminData.Director.pic()']]],
-  ['poster_470',['poster',['../classserialization_1_1_film_data.html#aea42bfb67c6dff22d064c27a2066dd9f',1,'serialization.FilmData.poster()'],['../classserver_1_1easy_filmin_data_1_1_film.html#a00a0625b64045d4d8926091e7942ab67',1,'server.easyFilminData.Film.poster()']]]
+  ['rating_419',['rating',['../classserialization_1_1_film_data.html#a34beeec8dda2fa3caeaa12a642a745b9',1,'serialization.FilmData.rating()'],['../classserver_1_1easy_filmin_data_1_1_film.html#a535c392030bd247c4c0c462ba5c5f276',1,'server.easyFilminData.Film.rating()']]],
+  ['release_420',['release',['../classserialization_1_1_film_data.html#a81a3fe3b1846f318b81dbabcffb1ee69',1,'serialization.FilmData.release()'],['../classserver_1_1easy_filmin_data_1_1_film.html#abef64efa5d10499fe26adbc3138dd759',1,'server.easyFilminData.Film.release()']]]
 ];

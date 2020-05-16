@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 
 import server.easyFilminData.Actor;
-import server.easyFilminData.Comment;
 import server.easyFilminData.Director;
 import server.easyFilminData.Film;
 import server.easyFilminData.Genre;
@@ -23,7 +22,6 @@ public class FilmData {
 	protected int dur;
 	private  double totalRates=0;
 	private int nReviews=0;
-	private ArrayList<Comment> comments;
 
 	//Use this constructor or create a different one to deal with your particular case of Data displaying in the client
 	public FilmData() {
@@ -114,12 +112,5 @@ public class FilmData {
 	}
 	public void setnReviews(int nReviews) {
 		this.nReviews = nReviews;
-	}
-	public ArrayList<Comment> getComments() {
-		return comments;
-	}
-	public void setComments(ArrayList<Comment> comments) {
-		this.comments = comments;
-	}
-	
+	}	
 }

@@ -78,7 +78,7 @@ public class CreateList extends JFrame {
 		
 		//Loading the data of the 2 lists
 		allFilms = new ArrayList<>();
-		//allFilms = controller.getAllFilms();
+		allFilms = controller.getAllFilms();
 		newList = null;
 		if(listName != null) { //Different process IF we are editing or creating 
 			editing = true;

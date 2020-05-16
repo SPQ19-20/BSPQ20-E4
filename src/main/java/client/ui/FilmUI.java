@@ -20,7 +20,6 @@ import client.controller.EasyFilmController;
 import serialization.FilmData;
 import serialization.UserData;
 import server.easyFilminData.Actor;
-import server.easyFilminData.Comment;
 import server.easyFilminData.Director;
 import server.easyFilminData.Film;
 import server.easyFilminData.FilmList;
@@ -199,9 +198,9 @@ public class FilmUI extends JFrame{
 		JScrollPane spComments = new JScrollPane(list);
 		list.setBounds(10, 335, 615, 75);
 		spComments.setBounds(10, 335, 615, 75);
-		for(Comment c: film.getComments()) {
-			dlmComments.addElement(c.getText());	
-		}
+//		for(Comment c: film.getComments()) {
+//			dlmComments.addElement(c.getText());	
+//		}
 		getContentPane().add(spComments);
 		
 		post = new JButton("");

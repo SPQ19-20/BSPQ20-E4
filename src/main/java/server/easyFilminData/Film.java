@@ -84,7 +84,6 @@ public class Film implements Comparable<Film> {
 	 */
 	private int nReviews=0;
 	
-	private ArrayList<Comment> comments;
 	
 	static Logger logger = Logger.getLogger(Film.class.getName());
 
@@ -329,16 +328,5 @@ public class Film implements Comparable<Film> {
 		
 	}
 		
-	public ArrayList<Comment> getComments() {
-		return comments;
-	}
-
-
-
-
-	public void setComments(ArrayList<Comment> comments) {
-		this.comments = comments;
-	}
-
 }
 

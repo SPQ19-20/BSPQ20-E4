@@ -99,143 +99,153 @@ $(document).ready(function(){initNavTree('_my_lists_8java_source.html',''); init
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> java.awt.BorderLayout;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> java.awt.Font;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">import</span> java.awt.event.ActionListener;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">import</span> java.awt.event.MouseAdapter;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">import</span> java.awt.event.MouseEvent;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">import</span> javax.swing.DefaultListModel;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">import</span> javax.swing.JButton;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">import</span> javax.swing.JLabel;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">import</span> javax.swing.JComboBox;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">import</span> org.apache.log4j.Logger;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> org.apache.log4j.PropertyConfigurator;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> java.awt.GridLayout;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">import</span> java.awt.SystemColor;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">import</span> java.awt.event.ActionEvent;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">import</span> java.awt.event.ActionListener;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">import</span> java.awt.event.MouseAdapter;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">import</span> java.awt.event.MouseEvent;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">import</span> javax.swing.DefaultListModel;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">import</span> javax.swing.ImageIcon;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">import</span> javax.swing.JButton;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">import</span> javax.swing.JLabel;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">import</span> javax.swing.JComboBox;</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceclient.html">client</a>.<a class="code" href="namespaceclient_1_1controller.html">controller</a>.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html">   31</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classclient_1_1ui_1_1_my_lists.html">MyLists</a> <span class="keyword">extends</span> JFrame{</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span> <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> controller;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">private</span> JButton back;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">private</span> JLabel info;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">private</span> JList&lt;String&gt; list;</div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">   37</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> DefaultListModel&lt;String&gt; <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">import</span> org.apache.log4j.Logger;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">import</span> org.apache.log4j.PropertyConfigurator;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceclient.html">client</a>.<a class="code" href="namespaceclient_1_1controller.html">controller</a>.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html">   34</a></span>&#160;<span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="classclient_1_1ui_1_1_my_lists.html">MyLists</a> <span class="keyword">extends</span> JFrame{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">private</span> <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> controller;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">private</span> JButton back;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">private</span> JButton bEdit;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> editionPos;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> selectPos;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">static</span> Logger logger = Logger.getLogger(<a class="code" href="classclient_1_1ui_1_1_my_lists.html">MyLists</a>.class.getName());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html#a0599c514117b4ca98195273ba20c0a3c">   49</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a0599c514117b4ca98195273ba20c0a3c">MyLists</a>(<a class="code" href="classserialization_1_1_user_data.html">UserData</a> usData, ArrayList&lt;String&gt; lists, <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> cont) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        this.controller = cont;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        logger.warn(<span class="stringliteral">&quot;This lists parameter should be a ArrayList&lt;FilmListData&gt;, but we are now simplifying things&quot;</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        setDefaultCloseOperation(DISPOSE_ON_CLOSE);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        setSize(500,450);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        setLocation(600,175);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        setResizable(<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">//getContentPane().setLayout(null);</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        getContentPane().setLayout(<span class="keyword">new</span> BorderLayout());</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a> = <span class="keyword">new</span> DefaultListModel&lt;&gt;();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        list = <span class="keyword">new</span> JList&lt;String&gt;(<a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span>(lists != <span class="keyword">null</span> &amp;&amp; !lists.isEmpty()) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;lists.size();i++) <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>.addElement(lists.get(i));     </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            logger.info(<span class="stringliteral">&quot;Displaying Lists of User &quot;</span>+usData.<a class="code" href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">getLogin</a>() );</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            logger.info(<span class="stringliteral">&quot;Lists of User: &quot;</span>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;lists.size();i++)logger.info(lists.get(i));  </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }<span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="comment">//This logger doesnt work yet</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            logger.info(<span class="stringliteral">&quot;No Lists yet&quot;</span>);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        }</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        list.setBounds(220,200,100,100);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        JScrollPane scrollPane = <span class="keyword">new</span> JScrollPane(list);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        JPanel pCentral = <span class="keyword">new</span> JPanel();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        pCentral.add(scrollPane);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        getContentPane().add(pCentral, <span class="stringliteral">&quot;Center&quot;</span>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        info = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;My Lists:&quot;</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        info.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        info.setBounds(40, 52, 70, 13);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">private</span> JLabel info;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">private</span> JList&lt;String&gt; list;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">   41</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> DefaultListModel&lt;String&gt; <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> editionPos;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">private</span> <span class="keywordtype">int</span> selectPos;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">static</span> Logger logger = Logger.getLogger(<a class="code" href="classclient_1_1ui_1_1_my_lists.html">MyLists</a>.class.getName());</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html#a7ef827313baa98d1c98257dc348d4928">   53</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a7ef827313baa98d1c98257dc348d4928">MyLists</a>(<a class="code" href="classserialization_1_1_user_data.html">UserData</a> usData, ArrayList&lt;FilmListData&gt; lists, <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> cont) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        this.controller = cont;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        getContentPane().setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        logger.warn(<span class="stringliteral">&quot;This lists parameter should be a ArrayList&lt;FilmListData&gt;, but we are now simplifying things&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        setDefaultCloseOperation(DISPOSE_ON_CLOSE);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        setSize(500,250);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        setLocation(600,175);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        setResizable(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="comment">//getContentPane().setLayout(null);</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        getContentPane().setLayout(<span class="keyword">new</span> BorderLayout());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a> = <span class="keyword">new</span> DefaultListModel&lt;&gt;();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        list = <span class="keyword">new</span> JList&lt;String&gt;(<a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">if</span>(lists != <span class="keyword">null</span> &amp;&amp; !lists.isEmpty()) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;lists.size();i++) <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>.addElement(lists.get(i).getName());       </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            logger.info(<span class="stringliteral">&quot;Displaying Lists of User &quot;</span>+usData.<a class="code" href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">getLogin</a>() );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            logger.info(<span class="stringliteral">&quot;Lists of User: &quot;</span>);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;lists.size();i++)logger.info(lists.get(i));  </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }<span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="comment">//This logger doesnt work yet</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            logger.info(<span class="stringliteral">&quot;No Lists yet&quot;</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        list.setBounds(220,200,100,100);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        JScrollPane scrollPane = <span class="keyword">new</span> JScrollPane(list);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        JPanel pCentral = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        pCentral.setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        pCentral.add(scrollPane);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        back = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&lt;-&quot;</span>);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        back.setBounds(10, 10, 45, 25);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        JPanel pSuperior = <span class="keyword">new</span> JPanel();</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        pSuperior.add(back);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        pSuperior.add(info);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        getContentPane().add(pSuperior, <span class="stringliteral">&quot;North&quot;</span>);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        list.addMouseListener(<span class="keyword">new</span> MouseAdapter() {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> mouseClicked(MouseEvent e) {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==1){</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                    editionPos = list.locationToIndex(e.getPoint());</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==2){</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                    <span class="keywordflow">if</span> (list.getSelectedIndex()!= -1) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                        dispose();</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                        selectPos = list.locationToIndex(e.getPoint());</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                        <a class="code" href="classserialization_1_1_film_list_data.html">FilmListData</a> fl = controller.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html#a85334b4ff6aaeb79f6666f01bcc94494">getFilmList</a>(usData, <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>.get(selectPos));</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                        <a class="code" href="classclient_1_1ui_1_1_film_list_u_i.html">FilmListUI</a> f = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_film_list_u_i.html">FilmListUI</a>(usData, fl,controller);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        f.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                        </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        getContentPane().add(pCentral, <span class="stringliteral">&quot;Center&quot;</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        info = <span class="keyword">new</span> JLabel(<span class="stringliteral">&quot;My Lists:&quot;</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        info.setFont(<span class="keyword">new</span> Font(<span class="stringliteral">&quot;Tahoma&quot;</span>, Font.BOLD, 10));</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        info.setForeground(SystemColor.menu);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        back = <span class="keyword">new</span> JButton(<span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        back.setIcon(<span class="keyword">new</span> ImageIcon(<span class="stringliteral">&quot;src\\main\\resources\\Back.png&quot;</span>));</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        back.setContentAreaFilled(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        back.setBorderPainted(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        JPanel pSuperior = <span class="keyword">new</span> JPanel();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        pSuperior.setBackground(SystemColor.textHighlight);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        pSuperior.setLayout(<span class="keyword">new</span> GridLayout(0, 2, 0, 0));</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        pSuperior.add(back);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        pSuperior.add(info);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        getContentPane().add(pSuperior, <span class="stringliteral">&quot;North&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        list.addMouseListener(<span class="keyword">new</span> MouseAdapter() {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> mouseClicked(MouseEvent e) {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==1){</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                    editionPos = list.locationToIndex(e.getPoint());</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        });</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        back.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            </div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            @Override</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                dispose();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a> u = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a>(usData, cont);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                u.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordflow">if</span> (e.getClickCount()==2){</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                    <span class="keywordflow">if</span> (list.getSelectedIndex()!= -1) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                        dispose();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                        selectPos = list.locationToIndex(e.getPoint());</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                        <a class="code" href="classserialization_1_1_film_list_data.html">FilmListData</a> fl = controller.<a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html#a85334b4ff6aaeb79f6666f01bcc94494">getFilmList</a>(usData, <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">dlmLists</a>.get(selectPos));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                        <a class="code" href="classclient_1_1ui_1_1_film_list_u_i.html">FilmListUI</a> f = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_film_list_u_i.html">FilmListUI</a>(usData, fl,controller);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                        f.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                        </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        });</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    </div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html#a24d15d0e1250511f21d8dfd6efc17a72">  144</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a24d15d0e1250511f21d8dfd6efc17a72">main</a>(String[] args) {</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> e = <span class="keyword">new</span> <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a>(<span class="stringliteral">&quot;127.0.0.1&quot;</span>,<span class="stringliteral">&quot;8080&quot;</span>);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <a class="code" href="classserialization_1_1_user_data.html">UserData</a> u = <span class="keyword">new</span> <a class="code" href="classserialization_1_1_user_data.html">UserData</a>();</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        u.<a class="code" href="classserialization_1_1_user_data.html#a39872f6e58c8e43ea88b9cd4334733da">setLogin</a>(<span class="stringliteral">&quot;nickPrueba&quot;</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        ArrayList&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i&lt;5;i++) {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            a.add(<span class="stringliteral">&quot;Lista&quot;</span>+i);   </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <a class="code" href="classclient_1_1ui_1_1_my_lists.html">MyLists</a> ui = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a0599c514117b4ca98195273ba20c0a3c">MyLists</a>(u,a,e);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        ui.setVisible(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        back.addActionListener(<span class="keyword">new</span> ActionListener() {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            @Override</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keyword">public</span> <span class="keywordtype">void</span> actionPerformed(ActionEvent e) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                dispose();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a> u = <span class="keyword">new</span> <a class="code" href="classclient_1_1ui_1_1_user_u_i.html">UserUI</a>(usData, cont);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                u.setVisible(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        });</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="classclient_1_1ui_1_1_my_lists.html#a24d15d0e1250511f21d8dfd6efc17a72">  154</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="classclient_1_1ui_1_1_my_lists.html#a24d15d0e1250511f21d8dfd6efc17a72">main</a>(String[] args) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> e = <span class="keyword">new</span> <a class="code" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a>(<span class="stringliteral">&quot;127.0.0.1&quot;</span>,<span class="stringliteral">&quot;8080&quot;</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="classserialization_1_1_user_data.html">UserData</a> u = <span class="keyword">new</span> <a class="code" href="classserialization_1_1_user_data.html">UserData</a>();</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        u.<a class="code" href="classserialization_1_1_user_data.html#a39872f6e58c8e43ea88b9cd4334733da">setLogin</a>(<span class="stringliteral">&quot;nickPrueba&quot;</span>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        ArrayList&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i = 0; i&lt;5;i++) {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            a.add(<span class="stringliteral">&quot;Lista&quot;</span>+i);   </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">//      MyLists ui = new MyLists(u,a,e);</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">//      ui.setVisible(true);</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassserialization_1_1_user_data_html_a39872f6e58c8e43ea88b9cd4334733da"><div class="ttname"><a href="classserialization_1_1_user_data.html#a39872f6e58c8e43ea88b9cd4334733da">serialization.UserData.setLogin</a></div><div class="ttdeci">void setLogin(String login)</div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00055">UserData.java:55</a></div></div>
-<div class="ttc" id="aclassserialization_1_1_user_data_html_ae647b1bd707f01e424d616dac52b00c4"><div class="ttname"><a href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">serialization.UserData.getLogin</a></div><div class="ttdeci">String getLogin()</div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00051">UserData.java:51</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_film_list_u_i_html"><div class="ttname"><a href="classclient_1_1ui_1_1_film_list_u_i.html">client.ui.FilmListUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_u_i_8java_source.html#l00027">FilmListUI.java:27</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_user_data_html_a39872f6e58c8e43ea88b9cd4334733da"><div class="ttname"><a href="classserialization_1_1_user_data.html#a39872f6e58c8e43ea88b9cd4334733da">serialization.UserData.setLogin</a></div><div class="ttdeci">void setLogin(String login)</div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00062">UserData.java:62</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_user_data_html_ae647b1bd707f01e424d616dac52b00c4"><div class="ttname"><a href="classserialization_1_1_user_data.html#ae647b1bd707f01e424d616dac52b00c4">serialization.UserData.getLogin</a></div><div class="ttdeci">String getLogin()</div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00058">UserData.java:58</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_film_list_u_i_html"><div class="ttname"><a href="classclient_1_1ui_1_1_film_list_u_i.html">client.ui.FilmListUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_u_i_8java_source.html#l00029">FilmListUI.java:29</a></div></div>
 <div class="ttc" id="anamespaceclient_html"><div class="ttname"><a href="namespaceclient.html">client</a></div></div>
-<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html_a85334b4ff6aaeb79f6666f01bcc94494"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html#a85334b4ff6aaeb79f6666f01bcc94494">client.controller.EasyFilmController.getFilmList</a></div><div class="ttdeci">FilmListData getFilmList(UserData userData, String name)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00144">EasyFilmController.java:144</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_user_u_i_html"><div class="ttname"><a href="classclient_1_1ui_1_1_user_u_i.html">client.ui.UserUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_u_i_8java_source.html#l00036">UserUI.java:36</a></div></div>
-<div class="ttc" id="anamespaceclient_1_1controller_html"><div class="ttname"><a href="namespaceclient_1_1controller.html">client.controller</a></div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00001">EasyFilmController.java:1</a></div></div>
-<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html">client.controller.EasyFilmController</a></div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00029">EasyFilmController.java:29</a></div></div>
+<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html_a85334b4ff6aaeb79f6666f01bcc94494"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html#a85334b4ff6aaeb79f6666f01bcc94494">client.controller.EasyFilmController.getFilmList</a></div><div class="ttdeci">FilmListData getFilmList(UserData userData, String name)</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00158">EasyFilmController.java:158</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_user_u_i_html"><div class="ttname"><a href="classclient_1_1ui_1_1_user_u_i.html">client.ui.UserUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_u_i_8java_source.html#l00038">UserUI.java:38</a></div></div>
+<div class="ttc" id="anamespaceclient_1_1controller_html"><div class="ttname"><a href="namespaceclient_1_1controller.html">client.controller</a></div><div class="ttdoc">This is the documentation for the Java package client.controller intended to work as a layer for all ...</div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00001">EasyFilmController.java:1</a></div></div>
+<div class="ttc" id="aclassclient_1_1controller_1_1_easy_film_controller_html"><div class="ttname"><a href="classclient_1_1controller_1_1_easy_film_controller.html">client.controller.EasyFilmController</a></div><div class="ttdef"><b>Definition:</b> <a href="_easy_film_controller_8java_source.html#l00034">EasyFilmController.java:34</a></div></div>
 <div class="ttc" id="aclassserialization_1_1_film_list_data_html"><div class="ttname"><a href="classserialization_1_1_film_list_data.html">serialization.FilmListData</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_data_8java_source.html#l00008">FilmListData.java:8</a></div></div>
-<div class="ttc" id="aclassserialization_1_1_user_data_html"><div class="ttname"><a href="classserialization_1_1_user_data.html">serialization.UserData</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00008">UserData.java:8</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html_a24d15d0e1250511f21d8dfd6efc17a72"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html#a24d15d0e1250511f21d8dfd6efc17a72">client.ui.MyLists.main</a></div><div class="ttdeci">static void main(String[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00144">MyLists.java:144</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html">server.easyFilminData.FilmList</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00025">FilmList.java:25</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html">client.ui.MyLists</a></div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00031">MyLists.java:31</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html_a0599c514117b4ca98195273ba20c0a3c"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html#a0599c514117b4ca98195273ba20c0a3c">client.ui.MyLists.MyLists</a></div><div class="ttdeci">MyLists(UserData usData, ArrayList&lt; String &gt; lists, EasyFilmController cont)</div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00049">MyLists.java:49</a></div></div>
-<div class="ttc" id="anamespaceserver_1_1easy_filmin_data_html"><div class="ttname"><a href="namespaceserver_1_1easy_filmin_data.html">server.easyFilminData</a></div><div class="ttdef"><b>Definition:</b> <a href="_actor_8java_source.html#l00001">Actor.java:1</a></div></div>
-<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html_a3c3b733003babeafead0924566464cfe"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">client.ui.MyLists.dlmLists</a></div><div class="ttdeci">static DefaultListModel&lt; String &gt; dlmLists</div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00037">MyLists.java:37</a></div></div>
-<div class="ttc" id="anamespaceserver_html"><div class="ttname"><a href="namespaceserver.html">server</a></div></div>
-<div class="ttc" id="anamespaceserialization_html"><div class="ttname"><a href="namespaceserialization.html">serialization</a></div><div class="ttdef"><b>Definition:</b> <a href="_actor_data_8java_source.html#l00001">ActorData.java:1</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_user_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_user.html">server.easyFilminData.User</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_8java_source.html#l00023">User.java:23</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_user_data_html"><div class="ttname"><a href="classserialization_1_1_user_data.html">serialization.UserData</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_data_8java_source.html#l00014">UserData.java:14</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html_a24d15d0e1250511f21d8dfd6efc17a72"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html#a24d15d0e1250511f21d8dfd6efc17a72">client.ui.MyLists.main</a></div><div class="ttdeci">static void main(String[] args)</div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00154">MyLists.java:154</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html">server.easyFilminData.FilmList</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00027">FilmList.java:27</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html">client.ui.MyLists</a></div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00034">MyLists.java:34</a></div></div>
+<div class="ttc" id="anamespaceserver_1_1easy_filmin_data_html"><div class="ttname"><a href="namespaceserver_1_1easy_filmin_data.html">server.easyFilminData</a></div><div class="ttdoc">This is the documentation for the Java package server.easyFilminData intended to work as the Domain O...</div><div class="ttdef"><b>Definition:</b> <a href="_actor_8java_source.html#l00001">Actor.java:1</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html_a3c3b733003babeafead0924566464cfe"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html#a3c3b733003babeafead0924566464cfe">client.ui.MyLists.dlmLists</a></div><div class="ttdeci">static DefaultListModel&lt; String &gt; dlmLists</div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00041">MyLists.java:41</a></div></div>
+<div class="ttc" id="anamespaceserver_html"><div class="ttname"><a href="namespaceserver.html">server</a></div><div class="ttdoc">This is the documentation for the Java package server intended to work as the server side for the Eas...</div></div>
+<div class="ttc" id="anamespaceserialization_html"><div class="ttname"><a href="namespaceserialization.html">serialization</a></div><div class="ttdoc">This is the documentation for the Java package serialization intended to work as a wrapper for the Do...</div><div class="ttdef"><b>Definition:</b> <a href="_actor_data_8java_source.html#l00001">ActorData.java:1</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_user_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_user.html">server.easyFilminData.User</a></div><div class="ttdef"><b>Definition:</b> <a href="_user_8java_source.html#l00030">User.java:30</a></div></div>
+<div class="ttc" id="aclassclient_1_1ui_1_1_my_lists_html_a7ef827313baa98d1c98257dc348d4928"><div class="ttname"><a href="classclient_1_1ui_1_1_my_lists.html#a7ef827313baa98d1c98257dc348d4928">client.ui.MyLists.MyLists</a></div><div class="ttdeci">MyLists(UserData usData, ArrayList&lt; FilmListData &gt; lists, EasyFilmController cont)</div><div class="ttdef"><b>Definition:</b> <a href="_my_lists_8java_source.html#l00053">MyLists.java:53</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

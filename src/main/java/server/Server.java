@@ -12,13 +12,11 @@ import javax.jdo.Transaction;
 
 import serialization.FilmData;
 import serialization.FilmListData;
-import serialization.MessageData;
 import serialization.UserData;
 import server.easyFilminDAO.EasyFilminJDO;
 import server.easyFilminDAO.IEasyFilminDAO;
 import server.easyFilminData.Film;
 import server.easyFilminData.FilmList;
-import server.easyFilminData.Message;
 import server.easyFilminData.User;
 import server.easyFilminData.WatchList;
 import server.easyFilminData.Watched;

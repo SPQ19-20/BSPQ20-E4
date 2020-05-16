@@ -92,90 +92,101 @@ $(document).ready(function(){initNavTree('_film_list_8java_source.html',''); ini
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">import</span> org.apache.log4j.Logger;</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">import</span> java.util.Collections;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.Iterator;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> javax.jdo.annotations.Inheritance;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> javax.jdo.annotations.InheritanceStrategy;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;@PersistenceCapable(detachable = <span class="stringliteral">&quot;true&quot;</span>)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html">   25</a></span>&#160;public class <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html">FilmList</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">static</span> Logger logger = Logger.getLogger(<a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html">FilmList</a>.class.<a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">getName</a>());</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span> String name;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    @Persistent(defaultFetchGroup=<span class="stringliteral">&quot;true&quot;</span>)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">private</span> ArrayList&lt;Film&gt; filmList;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a7dea7520e4793fca62d80f698c9be8ed">   44</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a7dea7520e4793fca62d80f698c9be8ed">FilmList</a>(String name) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        this.name = name;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        this.filmList = <span class="keyword">new</span> ArrayList&lt;Film&gt;();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#af2e97c7543354e5441a3c8455b49b6a7">   53</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#af2e97c7543354e5441a3c8455b49b6a7">addFilm</a>(<a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html">Film</a> film) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        this.filmList.add(film);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">import</span> <a class="code" href="namespaceserialization.html">serialization</a>.<a class="code" href="classserialization_1_1_film_list_data.html">FilmListData</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">import</span> java.util.ArrayList;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> java.util.Collections;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> java.util.Iterator;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> javax.jdo.annotations.Inheritance;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> javax.jdo.annotations.InheritanceStrategy;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;@PersistenceCapable(detachable = <span class="stringliteral">&quot;true&quot;</span>)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;@Inheritance(strategy=InheritanceStrategy.NEW_TABLE)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html">   27</a></span>&#160;public class <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html">FilmList</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">static</span> Logger logger = Logger.getLogger(<a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html">FilmList</a>.class.<a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">getName</a>());</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">private</span> String name;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    @Persistent(defaultFetchGroup=<span class="stringliteral">&quot;true&quot;</span>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">private</span> ArrayList&lt;Film&gt; filmList;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a7dea7520e4793fca62d80f698c9be8ed">   46</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a7dea7520e4793fca62d80f698c9be8ed">FilmList</a>(String name) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        this.name = name;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        this.filmList = <span class="keyword">new</span> ArrayList&lt;Film&gt;();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#af8100047a27fdf02c3d8c8f56c309beb">   54</a></span>&#160;    <span class="keyword">public</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#af8100047a27fdf02c3d8c8f56c309beb">FilmList</a>(<a class="code" href="classserialization_1_1_film_list_data.html">FilmListData</a> fl) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        this.name = fl.<a class="code" href="classserialization_1_1_film_list_data.html#a5462858be8ca9072df47648f2a185556">getName</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        this.filmList = <span class="keyword">new</span> ArrayList&lt;Film&gt;();</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#adeac7b9a8a926542602423e0ff20820f">   62</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#adeac7b9a8a926542602423e0ff20820f">removeFilm</a>(String title){</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        Iterator&lt;Film&gt; itr = this.filmList.iterator();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">while</span>(itr.hasNext()) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html">Film</a> f = (<a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html">Film</a>) itr.next();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">if</span>(f.<a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html#a045741c96d6afdaa4d5d345ca0703a42">getTitle</a>().equals(title)) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                itr.remove();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        logger.error(<span class="stringliteral">&quot;The film trying to be removed could not be found&quot;</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aac3dff08d1a013c2e59266089b857cc7">   81</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aac3dff08d1a013c2e59266089b857cc7">sortFilmList</a>() {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        Collections.sort(this.filmList);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#af2e97c7543354e5441a3c8455b49b6a7">   63</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#af2e97c7543354e5441a3c8455b49b6a7">addFilm</a>(<a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html">Film</a> film) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        this.filmList.add(film);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#adeac7b9a8a926542602423e0ff20820f">   72</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#adeac7b9a8a926542602423e0ff20820f">removeFilm</a>(String title){</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        Iterator&lt;Film&gt; itr = this.filmList.iterator();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">while</span>(itr.hasNext()) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html">Film</a> f = (<a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html">Film</a>) itr.next();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span>(f.<a class="code" href="classserver_1_1easy_filmin_data_1_1_film.html#a045741c96d6afdaa4d5d345ca0703a42">getTitle</a>().equals(title)) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                itr.remove();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        logger.error(<span class="stringliteral">&quot;The film trying to be removed could not be found&quot;</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">   91</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">getName</a>() {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> name;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aac3dff08d1a013c2e59266089b857cc7">   91</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aac3dff08d1a013c2e59266089b857cc7">sortFilmList</a>() {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        Collections.sort(this.filmList);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aa65fb8e51ae87b2a81395827dbd3a513">  100</a></span>&#160;    <span class="keyword">public</span> ArrayList&lt;Film&gt; <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aa65fb8e51ae87b2a81395827dbd3a513">getFilmList</a>() {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> filmList;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">  101</a></span>&#160;    <span class="keyword">public</span> String <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">getName</a>() {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> name;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aabcf1b47d70131c42776f5bc4e4d65f1">  109</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aabcf1b47d70131c42776f5bc4e4d65f1">setName</a>(String name) {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        this.name = name;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aa65fb8e51ae87b2a81395827dbd3a513">  110</a></span>&#160;    <span class="keyword">public</span> ArrayList&lt;Film&gt; <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aa65fb8e51ae87b2a81395827dbd3a513">getFilmList</a>() {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">return</span> filmList;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a97bc9d1a3308f95cca064e6ee4801b1f">  118</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a97bc9d1a3308f95cca064e6ee4801b1f">setFilmList</a>(ArrayList&lt;Film&gt; filmList) {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        this.filmList = filmList;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aabcf1b47d70131c42776f5bc4e4d65f1">  119</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#aabcf1b47d70131c42776f5bc4e4d65f1">setName</a>(String name) {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        this.name = name;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a97bc9d1a3308f95cca064e6ee4801b1f">  128</a></span>&#160;    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="classserver_1_1easy_filmin_data_1_1_film_list.html#a97bc9d1a3308f95cca064e6ee4801b1f">setFilmList</a>(ArrayList&lt;Film&gt; filmList) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        this.filmList = filmList;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_af2e97c7543354e5441a3c8455b49b6a7"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#af2e97c7543354e5441a3c8455b49b6a7">server.easyFilminData.FilmList.addFilm</a></div><div class="ttdeci">void addFilm(Film film)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00053">FilmList.java:53</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_adeac7b9a8a926542602423e0ff20820f"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#adeac7b9a8a926542602423e0ff20820f">server.easyFilminData.FilmList.removeFilm</a></div><div class="ttdeci">void removeFilm(String title)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00062">FilmList.java:62</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_aabcf1b47d70131c42776f5bc4e4d65f1"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#aabcf1b47d70131c42776f5bc4e4d65f1">server.easyFilminData.FilmList.setName</a></div><div class="ttdeci">void setName(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00109">FilmList.java:109</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_a97bc9d1a3308f95cca064e6ee4801b1f"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#a97bc9d1a3308f95cca064e6ee4801b1f">server.easyFilminData.FilmList.setFilmList</a></div><div class="ttdeci">void setFilmList(ArrayList&lt; Film &gt; filmList)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00118">FilmList.java:118</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_a7dea7520e4793fca62d80f698c9be8ed"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#a7dea7520e4793fca62d80f698c9be8ed">server.easyFilminData.FilmList.FilmList</a></div><div class="ttdeci">FilmList(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00044">FilmList.java:44</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_html_a045741c96d6afdaa4d5d345ca0703a42"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film.html#a045741c96d6afdaa4d5d345ca0703a42">server.easyFilminData.Film.getTitle</a></div><div class="ttdeci">String getTitle()</div><div class="ttdef"><b>Definition:</b> <a href="_film_8java_source.html#l00158">Film.java:158</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_a0a203c3632920233993af13c6ea8bbc9"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">server.easyFilminData.FilmList.getName</a></div><div class="ttdeci">String getName()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00091">FilmList.java:91</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_aac3dff08d1a013c2e59266089b857cc7"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#aac3dff08d1a013c2e59266089b857cc7">server.easyFilminData.FilmList.sortFilmList</a></div><div class="ttdeci">void sortFilmList()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00081">FilmList.java:81</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html">server.easyFilminData.FilmList</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00025">FilmList.java:25</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_af2e97c7543354e5441a3c8455b49b6a7"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#af2e97c7543354e5441a3c8455b49b6a7">server.easyFilminData.FilmList.addFilm</a></div><div class="ttdeci">void addFilm(Film film)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00063">FilmList.java:63</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_adeac7b9a8a926542602423e0ff20820f"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#adeac7b9a8a926542602423e0ff20820f">server.easyFilminData.FilmList.removeFilm</a></div><div class="ttdeci">void removeFilm(String title)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00072">FilmList.java:72</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_aabcf1b47d70131c42776f5bc4e4d65f1"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#aabcf1b47d70131c42776f5bc4e4d65f1">server.easyFilminData.FilmList.setName</a></div><div class="ttdeci">void setName(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00119">FilmList.java:119</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_a97bc9d1a3308f95cca064e6ee4801b1f"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#a97bc9d1a3308f95cca064e6ee4801b1f">server.easyFilminData.FilmList.setFilmList</a></div><div class="ttdeci">void setFilmList(ArrayList&lt; Film &gt; filmList)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00128">FilmList.java:128</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_a7dea7520e4793fca62d80f698c9be8ed"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#a7dea7520e4793fca62d80f698c9be8ed">server.easyFilminData.FilmList.FilmList</a></div><div class="ttdeci">FilmList(String name)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00046">FilmList.java:46</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_html_a045741c96d6afdaa4d5d345ca0703a42"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film.html#a045741c96d6afdaa4d5d345ca0703a42">server.easyFilminData.Film.getTitle</a></div><div class="ttdeci">String getTitle()</div><div class="ttdef"><b>Definition:</b> <a href="_film_8java_source.html#l00157">Film.java:157</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_film_list_data_html_a5462858be8ca9072df47648f2a185556"><div class="ttname"><a href="classserialization_1_1_film_list_data.html#a5462858be8ca9072df47648f2a185556">serialization.FilmListData.getName</a></div><div class="ttdeci">String getName()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_data_8java_source.html#l00034">FilmListData.java:34</a></div></div>
+<div class="ttc" id="aclassserialization_1_1_film_list_data_html"><div class="ttname"><a href="classserialization_1_1_film_list_data.html">serialization.FilmListData</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_data_8java_source.html#l00008">FilmListData.java:8</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_af8100047a27fdf02c3d8c8f56c309beb"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#af8100047a27fdf02c3d8c8f56c309beb">server.easyFilminData.FilmList.FilmList</a></div><div class="ttdeci">FilmList(FilmListData fl)</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00054">FilmList.java:54</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_a0a203c3632920233993af13c6ea8bbc9"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#a0a203c3632920233993af13c6ea8bbc9">server.easyFilminData.FilmList.getName</a></div><div class="ttdeci">String getName()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00101">FilmList.java:101</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_aac3dff08d1a013c2e59266089b857cc7"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#aac3dff08d1a013c2e59266089b857cc7">server.easyFilminData.FilmList.sortFilmList</a></div><div class="ttdeci">void sortFilmList()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00091">FilmList.java:91</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html">server.easyFilminData.FilmList</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00027">FilmList.java:27</a></div></div>
 <div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_html"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film.html">server.easyFilminData.Film</a></div><div class="ttdef"><b>Definition:</b> <a href="_film_8java_source.html#l00027">Film.java:27</a></div></div>
-<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_aa65fb8e51ae87b2a81395827dbd3a513"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#aa65fb8e51ae87b2a81395827dbd3a513">server.easyFilminData.FilmList.getFilmList</a></div><div class="ttdeci">ArrayList&lt; Film &gt; getFilmList()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00100">FilmList.java:100</a></div></div>
+<div class="ttc" id="aclassserver_1_1easy_filmin_data_1_1_film_list_html_aa65fb8e51ae87b2a81395827dbd3a513"><div class="ttname"><a href="classserver_1_1easy_filmin_data_1_1_film_list.html#aa65fb8e51ae87b2a81395827dbd3a513">server.easyFilminData.FilmList.getFilmList</a></div><div class="ttdeci">ArrayList&lt; Film &gt; getFilmList()</div><div class="ttdef"><b>Definition:</b> <a href="_film_list_8java_source.html#l00110">FilmList.java:110</a></div></div>
+<div class="ttc" id="anamespaceserialization_html"><div class="ttname"><a href="namespaceserialization.html">serialization</a></div><div class="ttdoc">This is the documentation for the Java package serialization intended to work as a wrapper for the Do...</div><div class="ttdef"><b>Definition:</b> <a href="_actor_data_8java_source.html#l00001">ActorData.java:1</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>

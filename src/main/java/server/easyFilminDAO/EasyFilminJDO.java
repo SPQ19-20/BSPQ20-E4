@@ -27,7 +27,6 @@ import com.opencsv.CSVReaderBuilder;
 
 import client.ui.FilmListUI;
 import server.easyFilminData.Actor;
-import server.easyFilminData.Comment;
 import server.easyFilminData.Director;
 import server.easyFilminData.Film;
 import server.easyFilminData.FilmList;
@@ -839,46 +838,6 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 		}
 	}
 
-
-	@Override
-	public List<Comment> loadComments(String filmTitle) {
-		// TODO Auto-generated method stub
-		PersistenceManager pm = null;
-		Transaction tx = null;
-		
-		try {
-			logger.info("- Retrieving comments");			
-			//Get the Persistence Manager
-			pm = pmf.getPersistenceManager();
-			//Obtain the current transaction
-			tx = pm.currentTransaction();		
-			//Start the transaction
-			tx.begin();
-
-			Query<Comment> query = pm.newQuery(Comment.class);
-			query.setFilter("filmTitle == '" + filmTitle + "'"); 
-			@SuppressWarnings("unchecked")
-			List<Comment> comments = (List<Comment>) query.execute();
-
-			//End the transaction
-			tx.commit();
-			
-			
-			return comments;
-		} catch (Exception ex) {
-			logger.error(" $ Error retrieving comments using a 'Query': " + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-			
-			if (pm != null && !pm.isClosed()) {
-				pm.close();
-			}
-		}
-		return null;
-		
-	}
 	
 
 	public List<Film> getAllFilms(){
@@ -990,48 +949,6 @@ public class EasyFilminJDO implements IEasyFilminDAO{
 			}
 		}
 		return null;
-	}
-
-
-	@Override
-	public void saveComment(Comment comment) {
-		// TODO Auto-generated method stub
-		PersistenceManager pm = null;
-		Transaction tx = null;
-				
-		try {
-			logger.debug("Insert comment in the DB");			
-			//Get the Persistence Manager
-			pm = pmf.getPersistenceManager();
-			//Obtain the current transaction
-			tx = pm.currentTransaction();		
-			//Start the transaction
-			tx.begin();
-					
-			pm.makePersistent(comment);
-					
-					
-			//End the transaction
-			tx.commit();
-			logger.debug("Changes committed");
-					
-		} catch (Exception ex) {
-			logger.error(" $ Error storing objects in the DB: " + ex.getMessage());
-			ex.printStackTrace();
-				
-		}finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-				logger.debug("Changes rollbacked");
-			}
-					
-			if (pm != null && !pm.isClosed()) {
-				pm.close();
-				logger.debug("Closing the connection");
-				// ATTENTION -  Datanucleus detects that the objects in memory were changed and they are flushed to DB
-			}
-		}
-		
 	}
 
 

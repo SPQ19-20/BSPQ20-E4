@@ -83,6 +83,8 @@ $(document).ready(function(){initNavTree('classclient_1_1ui_1_1_create_list.html
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classclient_1_1ui_1_1_create_list-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">client.ui.CreateList Class Reference</div>  </div>
@@ -97,15 +99,27 @@ Inheritance diagram for client.ui.CreateList:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acf50469a101db2ce3c943c551d559e55"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclient_1_1ui_1_1_create_list.html#acf50469a101db2ce3c943c551d559e55">CreateList</a> (<a class="el" href="classserialization_1_1_user_data.html">UserData</a> user, <a class="el" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> controller)</td></tr>
-<tr class="separator:acf50469a101db2ce3c943c551d559e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae99854b4009706ab258a6fe61bd38f2d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclient_1_1ui_1_1_create_list.html#ae99854b4009706ab258a6fe61bd38f2d">CreateList</a> (<a class="el" href="classserialization_1_1_user_data.html">UserData</a> user, <a class="el" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a> controller, String listName)</td></tr>
+<tr class="separator:ae99854b4009706ab258a6fe61bd38f2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ad9b82d4dbe169ca49e5e091b23f87843"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclient_1_1ui_1_1_create_list.html#ad9b82d4dbe169ca49e5e091b23f87843">main</a> (String[] args)</td></tr>
+<tr class="separator:ad9b82d4dbe169ca49e5e091b23f87843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ad1d21e29ae5a05dad7f3caeef5c80696"><td class="memItemLeft" align="right" valign="top">static DefaultListModel&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclient_1_1ui_1_1_create_list.html#ad1d21e29ae5a05dad7f3caeef5c80696">dlmAllFilms</a></td></tr>
+<tr class="separator:ad1d21e29ae5a05dad7f3caeef5c80696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45baeb7b3699d8414eefa006034901ef"><td class="memItemLeft" align="right" valign="top">static DefaultListModel&lt; String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classclient_1_1ui_1_1_create_list.html#a45baeb7b3699d8414eefa006034901ef">dlmNewList</a></td></tr>
+<tr class="separator:a45baeb7b3699d8414eefa006034901ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_create_list_8java_source.html#l00018">18</a> of file <a class="el" href="_create_list_8java_source.html">CreateList.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_create_list_8java_source.html#l00035">35</a> of file <a class="el" href="_create_list_8java_source.html">CreateList.java</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="acf50469a101db2ce3c943c551d559e55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf50469a101db2ce3c943c551d559e55">&#9670;&nbsp;</a></span>CreateList()</h2>
+<a id="ae99854b4009706ab258a6fe61bd38f2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae99854b4009706ab258a6fe61bd38f2d">&#9670;&nbsp;</a></span>CreateList()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -120,7 +134,13 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classclient_1_1controller_1_1_easy_film_controller.html">EasyFilmController</a>&#160;</td>
-          <td class="paramname"><em>controller</em>&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>listName</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -129,16 +149,96 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This is the info of the creation of the window</p>
-<p>This is a Window that allows the user to create lists from scratch by moving films to one side to the other</p>
-<p>This List loads every film available</p>
-<p>This list shows every film that will be a part of the list</p>
+<p>This class will be used to create an empty list and to edit an old one </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user</td><td>- UserData for the user that's logged </td></tr>
+    <tr><td class="paramname">controller</td><td>- controller </td></tr>
+    <tr><td class="paramname">listName</td><td>- Name of the list to be edited / "null" if new </td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This is the part that contains the info of the window</p>
 <p>This buttons allow to move films to one list to the other</p>
-<p>This button saves the list created by the user with the desired name</p>
-<p>This is the part that allows the control of the window to exit an go back</p>
-<p>This part contains the different listeners of the window</p>
 
-<p class="definition">Definition at line <a class="el" href="_create_list_8java_source.html#l00033">33</a> of file <a class="el" href="_create_list_8java_source.html">CreateList.java</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_create_list_8java_source.html#l00064">64</a> of file <a class="el" href="_create_list_8java_source.html">CreateList.java</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad9b82d4dbe169ca49e5e091b23f87843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9b82d4dbe169ca49e5e091b23f87843">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void client.ui.CreateList.main </td>
+          <td>(</td>
+          <td class="paramtype">String[]&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_create_list_8java_source.html#l00320">320</a> of file <a class="el" href="_create_list_8java_source.html">CreateList.java</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad1d21e29ae5a05dad7f3caeef5c80696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1d21e29ae5a05dad7f3caeef5c80696">&#9670;&nbsp;</a></span>dlmAllFilms</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DefaultListModel&lt;String&gt; client.ui.CreateList.dlmAllFilms</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_create_list_8java_source.html#l00045">45</a> of file <a class="el" href="_create_list_8java_source.html">CreateList.java</a>.</p>
+
+</div>
+</div>
+<a id="a45baeb7b3699d8414eefa006034901ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a45baeb7b3699d8414eefa006034901ef">&#9670;&nbsp;</a></span>dlmNewList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">DefaultListModel&lt;String&gt; client.ui.CreateList.dlmNewList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_create_list_8java_source.html#l00047">47</a> of file <a class="el" href="_create_list_8java_source.html">CreateList.java</a>.</p>
 
 </div>
 </div>
