@@ -13,6 +13,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.text.Position;
@@ -36,6 +37,7 @@ public class FilmListUI extends JFrame{
 	private JButton addFilm;
 	private JButton deleteFilm;
 	private FilmListData filmList;
+	private JLabel peliculas;
 	
 	private int editionPos;
 	private int selectPos;
@@ -53,9 +55,16 @@ public class FilmListUI extends JFrame{
 		
 		getContentPane().setBackground(SystemColor.textHighlight);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución
-		setSize(640,380);
+		setSize(500,400);
 		setLocation(600,175);
 		setResizable(false);
+		
+		// Label peliculas
+		
+		peliculas = new JLabel("Peliculas:");
+		peliculas.setBounds(200, 5, 300, 50);
+		peliculas.setForeground(SystemColor.menu);
+		getContentPane().add(peliculas);
 		
 		//Buttons
 		backbtn = new JButton("");
@@ -65,13 +74,13 @@ public class FilmListUI extends JFrame{
 		backbtn.setBorderPainted(false);
 		backbtn.setBounds(10, 10, 70, 40);
 		addFilm = new JButton("");
-		addFilm.setBounds(525, 260, 50, 50);
+		addFilm.setBounds(400, 280, 50, 50);
 		addFilm.setOpaque(false);
 		addFilm.setIcon(new ImageIcon("src\\main\\resources\\addNew.png"));
 		addFilm.setContentAreaFilled(false);
 		addFilm.setBorderPainted(false);
 		deleteFilm = new JButton("");
-		deleteFilm.setBounds(50, 260, 50, 55);
+		deleteFilm.setBounds(30, 280, 50, 55);
 		deleteFilm.setOpaque(false);
 		deleteFilm.setIcon(new ImageIcon("src\\main\\resources\\Bin.png"));
 		deleteFilm.setContentAreaFilled(false);

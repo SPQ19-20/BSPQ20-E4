@@ -59,7 +59,7 @@ public class MyLists extends JFrame{
 		
 		getContentPane().setBackground(SystemColor.textHighlight);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(640,380);
+		setSize(500,400);
 		setLocation(600,175);
 		setResizable(false);
 		//getContentPane().setLayout(null);

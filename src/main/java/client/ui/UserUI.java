@@ -57,7 +57,7 @@ public class UserUI extends JFrame{
 		this.setTitle(resourceBundle.getString("title_userUI"));
 		this.setTitle( "EasyFilmin User");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // cierra la ventana y se para la ejecución	
-		setSize(700,400);
+		setSize(500,400);
 		setLocation(600,175);
 		this.controller = controller;
 		getContentPane().setLayout(new BorderLayout());
@@ -101,6 +101,7 @@ public class UserUI extends JFrame{
 		JPanel pPic = new JPanel();
 		pPic.setBackground(SystemColor.textHighlight);
 		JLabel profile = new JLabel(user.getLogin());
+		profile.setForeground(SystemColor.menu);
 		JLabel image = new JLabel("");
 		String pathPic = user.getIcon();
 		
