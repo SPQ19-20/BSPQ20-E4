@@ -1,6 +1,7 @@
 package client.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.text.Position;
 
 import serialization.FilmData;
@@ -64,7 +66,12 @@ public class FilmListUI extends JFrame{
 		peliculas = new JLabel("Peliculas:");
 		peliculas.setBounds(200, 5, 300, 50);
 		peliculas.setForeground(SystemColor.menu);
-		getContentPane().add(peliculas);
+		
+		JPanel pSur = new JPanel();
+		JPanel pNorte = new JPanel();
+		JPanel pRelleno = new JPanel();
+		pRelleno.setPreferredSize(new Dimension(70,30));
+		pRelleno.setBackground(SystemColor.textHighlight);
 		
 		//Buttons
 		backbtn = new JButton("");
@@ -85,9 +92,17 @@ public class FilmListUI extends JFrame{
 		deleteFilm.setIcon(new ImageIcon("src\\main\\resources\\Bin.png"));
 		deleteFilm.setContentAreaFilled(false);
 		deleteFilm.setBorderPainted(false);
-		getContentPane().add(backbtn);
-		getContentPane().add(addFilm);
-		getContentPane().add(deleteFilm);
+		pNorte.setBackground(SystemColor.textHighlight);
+		pSur.setBackground(SystemColor.textHighlight);
+		pNorte.add(backbtn);
+		pNorte.add(peliculas);
+		pNorte.add(pRelleno);
+		pSur.add(addFilm);
+		pSur.add(deleteFilm);
+		
+		
+		getContentPane().add(pNorte, "North");
+		getContentPane().add(pSur, "South");
 		
 		
 		dlmFilms = new DefaultListModel<>();
@@ -99,12 +114,14 @@ public class FilmListUI extends JFrame{
 			//This logger doesnt work yet
 			logger.info("No Films in this FilmList yet");
 		}
-		liFilms.setModel(dlmFilms);
+		
+		JScrollPane scrollPane = new JScrollPane(liFilms);
+		scrollPane.setPreferredSize(new Dimension(150, 300));
 		JPanel pCentral = new JPanel();
 		pCentral.setBackground(SystemColor.textHighlight);
-		pCentral.add(liFilms);
+		pCentral.add(scrollPane);
 		
-		getContentPane().add(pCentral);
+		getContentPane().add(pCentral, "Center");
 	
 		backbtn.addActionListener(new ActionListener() {
 			
@@ -151,8 +168,7 @@ public class FilmListUI extends JFrame{
 			FilmData f = controller.getFilm(title);
 			FilmUI u = new FilmUI(us, f, controller, fromList);
 			u.setVisible(true);
-		}
-		
+		}	
 	}
 	public static void main(String[] args) {
 		

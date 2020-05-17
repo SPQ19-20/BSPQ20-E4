@@ -11,6 +11,7 @@ import server.easyFilminData.FilmList;
 import server.easyFilminData.User;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
@@ -81,8 +82,8 @@ public class MyLists extends JFrame{
 			//This logger doesnt work yet
 			logger.info("No Lists yet");
 		}
-		list.setBounds(220,200,100,100);
 		JScrollPane scrollPane = new JScrollPane(list);
+		scrollPane.setPreferredSize(new Dimension(150,300));
 		JPanel pCentral = new JPanel();
 		pCentral.setBackground(SystemColor.textHighlight);
 		pCentral.add(scrollPane);
