@@ -13,6 +13,7 @@ import java.util.Iterator;
 
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
+import javax.jdo.annotations.Join;
 
 
 /**
@@ -36,6 +37,7 @@ public class FilmList {
 	 * This variable represents the list of the film. It stores objects of the Film class
 	 */
 	@Persistent(defaultFetchGroup="true")
+	@Join
 	protected ArrayList<Film> filmList;
 	
 	/** 
