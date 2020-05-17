@@ -5,6 +5,7 @@ import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -200,12 +201,10 @@ public class Server {
 		ArrayList<FilmList> arrFl =u.getLists();
 		int temp = -1;
 		for(int i = 0;i<arrFl.size();i++) {
-			logger.error(name);
 			if(arrFl.get(i).getName().equals(name)) temp = i; 
 		}
 		if(temp>=0) {
 			fl = arrFl.get(temp);
-			logger.error(fl.getName());
 		}else {
 			logger.error("NO HAY UNA LISTA CON EL MISMO NOMBRE");
 		}
@@ -222,26 +221,32 @@ public class Server {
 		FilmList newFL = null;
 		User u = iDAO.loadUser(nick);
 		ArrayList<FilmList> fl = u.getLists();
+		Film temp = null;
 		logger.error("Here arrives !: ");
-		for(FilmList list: fl) {
+		for(Iterator<FilmList> iterator = fl.iterator(); iterator.hasNext();) {
+			FilmList list = iterator.next();
 			if(flData.getName().equals(list.getName())) { /**< We see if it is a new or a already created filmList */
 				newFL = list;
-				fl.remove(list);
+				iterator.remove();
 				editing = true;
-			}else {
-				newFL = new FilmList(flData);				
-				logger.error("NEW FL : "+newFL.getName());
 			}
+		}
+		if(!editing) {
+			newFL = new FilmList(flData);				
+			logger.error("NEW FL : "+newFL.getName());			
 		}
 		for(int i = 0;i<flData.getFilmList().size(); i++) {
 			Film film = iDAO.loadFilm(flData.getFilmList().get(i));
 			if(editing){
 				for(Film ff : newFL.getFilmList()) {
 					if(!ff.getTitle().equals(film.getTitle())) {						
-						newFL.addFilm(film);
+						temp = film;
 						logger.error("Adding film :"+film.getTitle());
 					}
-				}			
+				}
+				if(temp!=null) {
+					newFL.addFilm(temp);					
+				}
 			}else {
 				newFL.addFilm(film);				
 				logger.error("Adding film :"+film.getTitle());
@@ -272,44 +277,61 @@ public class Server {
 	 * @return A Response whether is successfully added OK or not BAD.RESPONSE 
 	 */
 	@POST
-	@Path("/addToList/{title}")
-	public Response addToList(String listName, @PathParam("title") String filmTitle) {
+	@Path("/addToList/{nick}/{title}")
+	public Response addToList(String listName, @PathParam("nick") String nick, @PathParam("title") String filmTitle) {
 		boolean repeated = false;
+		WatchList w = null;
+		Watched wd = null;
 		Film film = iDAO.loadFilm(filmTitle);
-		if(listName.contentEquals("watchlist")) {
-			WatchList w = iDAO.loadWatchList("watchlist");
-			for(Film f : w.getFilmList()) {
-				if (f.getTitle().contentEquals(filmTitle)){ //If not repeated we add it to watchlist
-					repeated = true;
-					break;
+		User u = iDAO.loadUser(nick);
+		ArrayList<FilmList> fl = u.getLists();
+	// WatchList		
+		if(listName.contentEquals("WatchList")) {
+			for(FilmList f : fl) {
+				if(f.equals("WatchList")) {
+					w = (WatchList) f;
+					fl.remove(f);
 				}
+			}
+			if(w.getFilmList().isEmpty()) {
+				logger.error("HELLO");
+				for(Film f : w.getFilmList()) {
+					if (f.getTitle().contentEquals(filmTitle)){ //If not repeated we add it to watchlist
+						repeated = true;
+						break;
+					}
+				}			
 			}
 			if(!repeated) w.addFilm(film);
-			iDAO.saveWatchList(w);
-
-		} else if(listName.contentEquals("watched")) {
-
-			Watched w = iDAO.loadWatched("watched");
-			for(Film f : w.getFilmList()) {
-				if (f.getTitle().contentEquals(filmTitle)){
-					repeated = true;
-					break;
+			fl.add(0,w);
+			u.setLists(fl);
+			iDAO.saveUser(u);
+	// Watched		
+		} else if(listName.contentEquals("Watched")) {
+			for(FilmList f : fl) {
+				if(f.equals("Watched")) { 
+					wd = (Watched) f;
+					fl.remove(f);
 				}
-				if(!repeated) {
-					w.addFilm(film); //If not repeated we add it to watched
-					WatchList wl = iDAO.loadWatchList("watchlist");
-					for(Film fl : wl.getFilmList()) {
-						if (fl.getTitle().contentEquals(filmTitle)){ 
-							wl.removeFilm(filmTitle);
-							break;
-						}
+			}
+			if(!wd.getFilmList().isEmpty()) {
+				logger.error("HELLO");
+				for(Film f : wd.getFilmList()) {
+					if (f.getTitle().contentEquals(filmTitle)){
+						repeated = true;
+						break;
 					}
 				}
-				iDAO.saveWatched(w);
 			}
-		} else {
-			FilmList fl = iDAO.loadFilmList(listName);
-			fl.addFilm(film);
+			if(!repeated) wd.addFilm(film);
+			fl.add(0,wd);
+			u.setLists(fl);
+			iDAO.saveUser(u);					
+			
+	//Not WatchList not Watched		
+		} else { 
+			FilmList flist = iDAO.loadFilmList(listName);
+			flist.addFilm(film);
 			//saveList() method?
 			//iDAO.saveList();
 						      

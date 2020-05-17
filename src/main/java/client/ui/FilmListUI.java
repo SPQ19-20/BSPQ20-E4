@@ -42,7 +42,7 @@ public class FilmListUI extends JFrame{
 
 	static Logger logger = Logger.getLogger(FilmListUI.class.getName());
 
-	public FilmListUI(UserData us, FilmListData flData, EasyFilmController controller) {
+	public FilmListUI(UserData us, FilmListData flData, EasyFilmController controller, boolean fromList) {
 		this.filmList = flData;
 		this.setTitle(flData.getName());
 		this.controller = controller;
@@ -104,8 +104,13 @@ public class FilmListUI extends JFrame{
 				dispose();
 				ArrayList<FilmListData> fl = controller.getAllLists(us.getLogin());
 				
-				MyLists u = new MyLists(us,fl,controller);
-				u.setVisible(true);
+				if(fromList) {
+					MyLists u = new MyLists(us,fl,controller);
+					u.setVisible(true);					
+				}else {
+					UserUI usui = new UserUI(us,controller);
+					usui.setVisible(true);
+				}
 
 			}
 		});
@@ -119,7 +124,7 @@ public class FilmListUI extends JFrame{
 					if (liFilms.getSelectedIndex()!= -1) {
 						selectPos = liFilms.locationToIndex(e.getPoint());
 						dispose();
-						toFilmUI(us);			
+						toFilmUI(us, fromList);			
 					}
 				}
 			}
@@ -130,12 +135,13 @@ public class FilmListUI extends JFrame{
 	/** Calls the controller to open a FilmUI window with the info of this list
 	 * @param us - Data of the User to be stored when returning to the profile
 	 */
-	private void toFilmUI(UserData us) {
+	private void toFilmUI(UserData us, boolean fromList) {
 
 		if (dlmFilms.getElementAt(selectPos) != null){
 			String title = dlmFilms.getElementAt(selectPos);
 			FilmData f = controller.getFilm(title);
-			FilmUI u = new FilmUI(us, f, controller);
+			FilmUI u = new FilmUI(us, f, controller, fromList);
+			u.setVisible(true);
 		}
 		
 	}
@@ -150,7 +156,7 @@ public class FilmListUI extends JFrame{
 		}
 		flData.setFilmList(fl);
 		flData.setName("A1");
-		FilmListUI ui = new FilmListUI(u, flData, e);
+		FilmListUI ui = new FilmListUI(u, flData, e, true);
 		
 		ui.setVisible(true);
 	}

@@ -18,11 +18,13 @@ import javax.swing.JTextField;
 
 import client.controller.EasyFilmController;
 import serialization.FilmData;
+import serialization.FilmListData;
 import serialization.UserData;
 import server.easyFilminData.Actor;
 import server.easyFilminData.Director;
 import server.easyFilminData.Film;
 import server.easyFilminData.FilmList;
+import server.easyFilminData.User;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -61,7 +63,7 @@ public class FilmUI extends JFrame{
 
 	private EasyFilmController controller;
 	
-	public FilmUI(UserData us, FilmData film, EasyFilmController controller) {
+	public FilmUI(UserData us, FilmData film, EasyFilmController controller, boolean fromList) {
 		this.film = film;
 		this.controller = controller;
 		
@@ -83,9 +85,8 @@ public class FilmUI extends JFrame{
 		
 		poster = new JLabel();
 		poster.setBounds(10, 50, 145, 200);
-		poster.setIcon(new ImageIcon("src\\main\\resources\\inglorious_basterds.png")); //Example
-		//Uncomment when FilmData is retrieved from server
-		//poster.setIcon(new ImageIcon(film.getPoster()));
+//		poster.setIcon(new ImageIcon("src\\main\\resources\\inglorious_basterds.png")); //Example
+		poster.setIcon(new ImageIcon(film.getPoster()));
 		getContentPane().add(poster);
 		
 		/** This is the part that allows the control of the window to exit an go back
@@ -110,7 +111,7 @@ public class FilmUI extends JFrame{
 		titleLabel.setForeground(SystemColor.menu);
 		getContentPane().add(titleLabel);
 		
-		titleName = new JLabel("Inglorious Basterds");
+		titleName = new JLabel(film.getTitle());
 		titleName.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		titleName.setBounds(220, 50, 285, 13);
 		titleName.setForeground(SystemColor.menu);
@@ -122,18 +123,17 @@ public class FilmUI extends JFrame{
 		directorLabel.setForeground(SystemColor.menu);
 		getContentPane().add(directorLabel);
 		
-		directorName = new JLabel("Quentin Tarantino");
-		directorName.setForeground(SystemColor.menu);//Example
-		//Uncomment when FilmData is retrieved from server
-//		String directors ="";
-//		for(Director a : film.getDirector()) {
-//			if(directors.equals("")) {
-//				directors += a.getName();	
-//			}else {
-//				directors += ", " + a.getName();
-//			}
-//		}		
-//		directorName = new JLabel(directors);
+
+		String directors ="";
+		for(Director a : film.getDirector()) {
+			if(directors.equals("")) {
+				directors += a.getName();	
+			}else {
+				directors += ", " + a.getName();
+			}
+		}		
+		directorName = new JLabel(directors);
+		directorName.setForeground(SystemColor.menu);
 		directorName.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		directorName.setBounds(220, 73, 285, 13);
 		getContentPane().add(directorName);
@@ -144,18 +144,16 @@ public class FilmUI extends JFrame{
 		actorLabel.setBounds(165, 96, 45, 13);
 		getContentPane().add(actorLabel);
 		
-		actorName = new JLabel("Brad Pitt, Christoph Waltz");
+		String actors ="";
+		for(Actor a : film.getActors()) {
+			if(actors.equals("")) {
+				actors += a.getName();	
+			}else {
+				actors += ", " + a.getName();
+			}
+		}		
+		actorName = new JLabel(actors);
 		actorName.setForeground(SystemColor.menu);//Example
-		//Uncomment when FilmData is retrieved from server
-//		String actors ="";
-//		for(Actor a : film.getActors()) {
-//			if(actors.equals("")) {
-//				actors += a.getName();	
-//			}else {
-//				actors += ", " + a.getName();
-//			}
-//		}		
-//		actorName = new JLabel(actors);
 		actorName.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		actorName.setBounds(220, 96, 285, 13);
 		getContentPane().add(actorName);
@@ -198,9 +196,7 @@ public class FilmUI extends JFrame{
 		JScrollPane spComments = new JScrollPane(list);
 		list.setBounds(10, 335, 615, 75);
 		spComments.setBounds(10, 335, 615, 75);
-//		for(Comment c: film.getComments()) {
-//			dlmComments.addElement(c.getText());	
-//		}
+
 		getContentPane().add(spComments);
 		
 		post = new JButton("");
@@ -267,8 +263,19 @@ public class FilmUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				UserUI ui = new UserUI(null, controller);
-				ui.setVisible(true);
+				if(fromList) {
+					ArrayList<FilmListData> fl = controller.getAllLists(us.getLogin());
+					MyLists ml = new MyLists(us, fl, controller);
+					ml.setVisible(true);
+				}else {
+					ArrayList<String> films = controller.getAllFilms();
+					dispose();
+					FilmListData fl = new FilmListData();
+					fl.setFilmList(films);
+					fl.setName("All Films");
+					FilmListUI ml = new FilmListUI(us, fl, controller, false);
+					ml.setVisible(true);
+				}
 			}
 		});
 		
@@ -281,7 +288,7 @@ public class FilmUI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.addToList("watched", film.getTitle());
+				controller.addToList("Watched", film.getTitle(), us);
 				
 			}
 		});
@@ -289,7 +296,7 @@ public class FilmUI extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.addToList("watchlist", film.getTitle());
+				controller.addToList("WatchList", film.getTitle(), us);
 				
 			}
 		});
@@ -363,7 +370,7 @@ public class FilmUI extends JFrame{
 			a.add("Lista"+i);	
 		}
 
-		FilmUI fu = new FilmUI(u, f, e);
+		FilmUI fu = new FilmUI(u, f, e, true);
 		fu.setVisible(true);
 	}
 }

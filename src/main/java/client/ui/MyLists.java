@@ -58,9 +58,8 @@ public class MyLists extends JFrame{
 		 */
 		
 		getContentPane().setBackground(SystemColor.textHighlight);
-		logger.warn("This lists parameter should be a ArrayList<FilmListData>, but we are now simplifying things");
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(500,250);
+		setSize(640,380);
 		setLocation(600,175);
 		setResizable(false);
 		//getContentPane().setLayout(null);
@@ -102,6 +101,13 @@ public class MyLists extends JFrame{
 		back.setIcon(new ImageIcon("src\\main\\resources\\BackSmall.png"));
 		back.setContentAreaFilled(false);
 		back.setBorderPainted(false);
+		bEdit = new JButton("EDIT");
+		bEdit.setBounds(525, 260, 50, 50);
+		bEdit.setOpaque(false);
+		bEdit.setContentAreaFilled(false);
+		bEdit.setBorderPainted(false);
+		getContentPane().add(bEdit, "South");
+
 
 		JPanel pSuperior = new JPanel();
 		pSuperior.setBackground(SystemColor.textHighlight);
@@ -130,7 +136,7 @@ public class MyLists extends JFrame{
 						dispose();
 						selectPos = list.locationToIndex(e.getPoint());
 						FilmListData fl = controller.getFilmList(usData, dlmLists.get(selectPos));
-						FilmListUI f = new FilmListUI(usData, fl,controller);
+						FilmListUI f = new FilmListUI(usData, fl,controller, true);
 						f.setVisible(true);
 						
 					}
@@ -146,6 +152,21 @@ public class MyLists extends JFrame{
 				dispose();
 				UserUI u = new UserUI(usData, cont);
 				u.setVisible(true);
+			}
+		});
+		
+		bEdit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(dlmLists.get(editionPos)!= null) {
+					String editList = dlmLists.get(editionPos); 
+					CreateList cl = new CreateList(usData, cont, editList);
+					dispose();
+					cl.setVisible(true);
+					
+				}
+				
 			}
 		});
 		

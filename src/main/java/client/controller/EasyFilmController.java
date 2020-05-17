@@ -188,8 +188,8 @@ public class EasyFilmController {
 	 * @param listName - name of the list for the film to be added
 	 * @param filmTitle - title of the film to add
 	 */
-	public void addToList(String listName, String filmTitle) {
-		WebTarget addToListWebTarget = webTarget.path("server/addToList"+"/"+filmTitle); 
+	public void addToList(String listName, String filmTitle, UserData user) {
+		WebTarget addToListWebTarget = webTarget.path("server/addToList"+"/"+user.getLogin()+"/"+filmTitle); 
 		Invocation.Builder invocationBuilder = addToListWebTarget.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.post(Entity.entity(listName, MediaType.APPLICATION_JSON));
 		if (response.getStatus() != Status.OK.getStatusCode()) {

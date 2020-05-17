@@ -41,7 +41,6 @@ public class UserUI extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = -8709399093642804047L;
-	private JTextField busqueda;
 	private JButton nuevaLista;
 	private JButton misListas;
 	private EasyFilmController controller;
@@ -63,12 +62,12 @@ public class UserUI extends JFrame{
 		this.controller = controller;
 		getContentPane().setLayout(new BorderLayout());
 		
-		JLabel buscar = new JLabel("");
+		JButton bAllFilms = new JButton("");
 		JPanel pBusqueda = new JPanel();
 		JPanel pSuperior = new JPanel();
-		buscar.setIcon(new ImageIcon("src\\main\\resources\\Films.png"));
+		bAllFilms.setIcon(new ImageIcon("src\\main\\resources\\Films.png"));
 		pBusqueda.setLayout(new GridLayout(1,2));
-		pBusqueda.add(buscar);
+		pBusqueda.add(bAllFilms);
 		pBusqueda.setBackground(SystemColor.textHighlight);
 		pSuperior.setLayout(new BorderLayout(10,20));
 		pSuperior.setBorder(BorderFactory.createEmptyBorder(30, 20, 0, 20));
@@ -142,11 +141,24 @@ public class UserUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				logger.info("This could be a util method to have in a util class");
-				ArrayList<String> lists = new ArrayList<>();
 				ArrayList<FilmListData> fl = controller.getAllLists(user.getLogin());
 				
 				MyLists u = new MyLists(user,fl,controller);
 				u.setVisible(true);
+			}
+		});
+		bAllFilms.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ArrayList<String> films = controller.getAllFilms();
+				dispose();
+				FilmListData fl = new FilmListData();
+				fl.setFilmList(films);
+				fl.setName("All Films");
+				FilmListUI ml = new FilmListUI(user, fl, controller, false);
+				ml.setVisible(true);
+				
 			}
 		});
 		

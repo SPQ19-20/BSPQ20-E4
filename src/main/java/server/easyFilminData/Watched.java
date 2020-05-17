@@ -1,5 +1,7 @@
 package server.easyFilminData;
 
+import java.util.ArrayList;
+
 import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
@@ -17,6 +19,7 @@ public class Watched extends FilmList {
 	public Watched(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
+		this.filmList=new ArrayList<>();
 	}
 
 }

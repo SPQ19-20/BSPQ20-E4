@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import org.apache.log4j.Logger;
@@ -45,6 +46,7 @@ public class CreateList extends JFrame {
 	public static DefaultListModel<String> dlmAllFilms;
 	private JList<String> lNewList;
 	public static DefaultListModel<String> dlmNewList;
+	private JTextField newListName;
 
 	private int allEditionPos;
 	private int allSelectPos;
@@ -112,8 +114,6 @@ public class CreateList extends JFrame {
 		bBack.setIcon(new ImageIcon("src\\main\\resources\\Back.png"));
 		bBack.setContentAreaFilled(false);
 		bBack.setBorderPainted(false);
-		JTextField newListName = new JTextField();
-		newListName.setPreferredSize(new Dimension(100 ,30));
 		JButton bSave = new JButton((""));
 		bSave.setOpaque(false);
 		bSave.setIcon(new ImageIcon("src\\main\\resources\\save.png"));
@@ -121,7 +121,15 @@ public class CreateList extends JFrame {
 		bSave.setBorderPainted(false);
 		bSave.setFont(new Font("Tahoma", Font.BOLD, 10));
 		pSur.add(bBack);
-		pSur.add(newListName);
+		if(!editing) {
+			newListName = new JTextField();
+			newListName.setPreferredSize(new Dimension(100 ,30));
+			pSur.add(newListName);			
+		}else {
+			JLabel oldListName = new JLabel(listName);
+			oldListName.setPreferredSize(new Dimension(100 ,30));
+			pSur.add(oldListName);
+		}
 		pSur.add(bSave);		 
 
 		getContentPane().add(pSur,"South");
@@ -192,12 +200,7 @@ public class CreateList extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 				if(editing) {
-					logger.error("Change MyLists constructor from Al<String> to Al<FilmListData> and make the conversion inside");
-//					ArrayList<String> flists = new ArrayList<>();
 					ArrayList<FilmListData> lists = controller.getAllLists(user.getLogin());
-//					for(int i=0; i<lists.size();i++) {
-//						flists.add(lists.get(i).getName());
-//					}
 					MyLists mui = new MyLists(user, lists, controller);
 					mui.setVisible(true);
 				}else {
@@ -211,10 +214,12 @@ public class CreateList extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				saveList(newListName.getText(), newList);
+				
 				if(!editing) {
+					saveList(newListName.getText(), newList);
 					logger.error("Saving new list: "+newListName.getText()+" to user: "+user.getLogin());					
 				}else {
+					saveList(listName,newList);
 					logger.error("Saving list: "+listName+" to user: "+user.getLogin());					
 				}
 				dispose();
@@ -304,9 +309,7 @@ public class CreateList extends JFrame {
 	 */
 	void saveList(String name, FilmListData list) {
 		//TODO guardar lista en DB relacionándola con User
-		if(!editing){
-			newList.setName(name);
-		}
+		newList.setName(name);
 		newList.setFilmList(list.getFilmList());
 		try {
 			controller.saveFilmList(user, newList);
