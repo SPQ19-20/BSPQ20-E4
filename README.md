@@ -14,7 +14,7 @@ EasyFilmin is a platform where film lovers can share their taste in films. Users
 - [MySQL Workbench](https://www.mysql.com/products/workbench/)
 - [Maven](https://maven.apache.org/download.cgi)
 
-🠮Also the following libraries should be added to *pom.xml* file for the project to work: **JUnit, OpenCSV, Datanucleus, Log4J, Jersey, Jacoco,ContiPerf,DOxygen.**
+🠮Also the following libraries should be added to *pom.xml* file for the project to work: **Jetty, JUnit, OpenCSV, MySQL, Datanucleus, Log4J, Jersey, Jacoco, ContiPerf, DOxygen.**
 
 # Building and running the project
 These are the steps that must be followed in order to succesfully build and run the project:
@@ -41,12 +41,13 @@ It executes Client's main and the Register/Login window will show up.
 
 ### 7- Run Unit Tests:
 ```mvn test``` 
-
+### 8- Generate site:
+```mvn site``` 
 - To check *Jacoco results*: go to ***target\site\jacoco\index.html***
 - To check *ContiPerf results*: go to ***target\contiperf-report\index.html***
 - To check *DOxygen documentation*: go to ***target\site\doxygen\html\index.html***
 
-### 8- Create DOxygen documentation:
+### 9- Create DOxygen documentation:
 - To generate doxygen reports:
 ``` mvn doxygen:report``` 
 - To copy generated html directory into docs folder:
@@ -54,7 +55,7 @@ It executes Client's main and the Register/Login window will show up.
 - To remove generated target files including dir docs with html code:
 ``` mvn clean```
 
-
+This project contains 3 SystemMessage properties files for it to be translated into Spanish, English or Basque.
 
 # Authors
 - **Ander Eguiluz:** [eguiwow](https://github.com/eguiwow)
