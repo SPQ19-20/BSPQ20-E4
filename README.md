@@ -45,7 +45,7 @@ It executes Client's main and the Register/Login window will show up.
 ```mvn site``` 
 - To check *Jacoco results*: go to ***target\site\jacoco\index.html***
 - To check *ContiPerf results*: go to ***target\contiperf-report\index.html***
-- To check *DOxygen documentation*: go to ***target\site\doxygen\html\index.html***
+- To check *DOxygen documentation*: go to ***target\site\doxygen\html\index.html*** *(after creating DOxygen report)*
 
 ### 9- Create DOxygen documentation:
 - To generate doxygen reports:
@@ -55,7 +55,7 @@ It executes Client's main and the Register/Login window will show up.
 - To remove generated target files including dir docs with html code:
 ``` mvn clean```
 
-This project contains 3 SystemMessage properties files for it to be translated into Spanish, English or Basque.
+This project contains 3 SystemMessage properties files for it to be translated into **Spanish, English or Basque.**
 
 # Authors
 - **Ander Eguiluz:** [eguiwow](https://github.com/eguiwow)
