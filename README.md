@@ -22,8 +22,8 @@ These are the steps that must be followed in order to succesfully build and run 
 *cmd's must be opened in the directory where* ***pom.xml*** *is located.*
 ### 1- Compile the project:
 ```mvn clean compile```
-### 2- Execute db script in MySQL WorkBench:
-Click on the thunder icon
+### 2- Execute .sql script in MySQL WorkBench:
+Click on the thunder icon and refesh tables.
 ### 3- Create SQL schema: 
 ```mvn datanucleus:schema-create```
 ### 4- Run Web Server: 
