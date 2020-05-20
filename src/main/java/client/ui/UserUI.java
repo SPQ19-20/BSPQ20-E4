@@ -43,6 +43,7 @@ public class UserUI extends JFrame{
 	private static final long serialVersionUID = -8709399093642804047L;
 	private JButton nuevaLista;
 	private JButton misListas;
+	private JButton bAllFilms;
 	private EasyFilmController controller;
 	
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("SystemMessages", Locale.getDefault());
@@ -62,12 +63,15 @@ public class UserUI extends JFrame{
 		this.controller = controller;
 		getContentPane().setLayout(new BorderLayout());
 		
-		JButton bAllFilms = new JButton("");
+		bAllFilms = new JButton("");
 		JPanel pBusqueda = new JPanel();
 		JPanel pSuperior = new JPanel();
 		bAllFilms.setIcon(new ImageIcon("src\\main\\resources\\Films.png"));
 		pBusqueda.setLayout(new GridLayout(1,2));
 		pBusqueda.add(bAllFilms);
+		bAllFilms.setOpaque(false);
+		bAllFilms.setContentAreaFilled(false);
+		bAllFilms.setBorderPainted(false);
 		pBusqueda.setBackground(SystemColor.textHighlight);
 		pSuperior.setLayout(new BorderLayout(10,20));
 		pSuperior.setBorder(BorderFactory.createEmptyBorder(30, 20, 0, 20));

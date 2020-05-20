@@ -342,6 +342,7 @@ public class FilmUI extends JFrame{
 		
 		/* This buttons allows the user to post comments
 		 * post adds the comment of the user to the list of comments of the film 
+		 * by clicking on the comment button 
 		 */
 		
 		post.addActionListener(new ActionListener() {
